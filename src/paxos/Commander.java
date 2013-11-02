@@ -19,6 +19,7 @@ public class Commander extends Process {
         this.ballot_number = ballot_number;
         this.slot_number = slot_number;
         this.command = command;
+        loadProp();
         setLogger();
         env.addProc(me, this);
     }

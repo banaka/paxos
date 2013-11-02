@@ -37,20 +37,20 @@ public class Env {
             ProcessId[] leaders = new ProcessId[nLeaders];
 
             for (int i = 0; i < nAcceptors; i++) {
-                acceptors[i] = new ProcessId("acceptor:" + i);
+                acceptors[i] = new ProcessId("acceptor" + i);
                 Acceptor acc = new Acceptor(this, acceptors[i]);
             }
             for (int i = 0; i < nReplicas; i++) {
-                replicas[i] = new ProcessId("replica:" + i);
+                replicas[i] = new ProcessId("replica" + i);
                 Replica repl = new Replica(this, replicas[i], leaders);
             }
             for (int i = 0; i < nLeaders; i++) {
-                leaders[i] = new ProcessId("leader:" + i);
+                leaders[i] = new ProcessId("leader" + i);
                 Leader leader = new Leader(this, leaders[i], acceptors, replicas);
             }
 
             for (int i = 1; i <= nRequests; i++) {
-                ProcessId pid = new ProcessId("client:" + i);
+                ProcessId pid = new ProcessId("client" + i);
                 String[] opTxt=prop.getProperty("Operation"+i).split(TX_MSG_SEPARATOR,2);
                 Operation op = new Operation(opTxt[0],opTxt[1]);
                 for (int r = 0; r < nReplicas; r++) {

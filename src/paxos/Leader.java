@@ -18,6 +18,7 @@ public class Leader extends Process {
         this.acceptors = acceptors;
         this.replicas = replicas;
         this.setLogger();
+        loadProp();
         env.addProc(me, this);
     }
 

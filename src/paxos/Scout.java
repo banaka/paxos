@@ -18,6 +18,7 @@ public class Scout extends Process {
 		this.leader = leader;
 		this.ballot_number = ballot_number;
         setLogger();
+        loadProp();
 		env.addProc(me, this);
 	}
 

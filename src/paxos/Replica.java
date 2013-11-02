@@ -15,6 +15,7 @@ public class Replica extends Process {
         this.me = me;
         this.leaders = leaders;
         setLogger();
+        loadProp();
         env.addProc(me, this);
     }
 

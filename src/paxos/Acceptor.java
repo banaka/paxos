@@ -12,6 +12,7 @@ public class Acceptor extends Process {
 		this.me = me;
 		env.addProc(me, this);
         setLogger();
+        loadProp();
 	}
 
 	public void body(){

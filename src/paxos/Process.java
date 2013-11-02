@@ -12,7 +12,7 @@ public abstract class Process extends Thread {
     Queue<PaxosMessage> inbox = new Queue<PaxosMessage>();
     Env env;
     Properties prop = new Properties();
-
+    int delay;
 
     abstract void body();
 
@@ -21,8 +21,18 @@ public abstract class Process extends Thread {
         env.removeProc(me);
     }
 
-    Properties getProp()throws IOException{
-        prop.load(new FileInputStream("config.properties"));
+    Properties loadProp() {
+        try {
+            prop.load(new FileInputStream("config.properties"));
+            if (prop.getProperty(me.name) != null) {
+                delay = Integer.parseInt(prop.getProperty(me.name));
+            } else {
+                delay = 0;
+            }
+
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, e.getMessage());
+        }
         return prop;
     }
 
@@ -31,13 +41,19 @@ public abstract class Process extends Thread {
     }
 
     void sendMessage(ProcessId dst, PaxosMessage msg) {
+        try {
+            Thread.sleep(this.delay);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         env.sendMessage(dst, msg);
-        this.logger.log(Level.CONFIG, "Sent Msg" + msg + " to " + dst);
+        this.logger.log(Level.CONFIG, "Sent Msg" + msg + " to " + dst + " from " + me);
     }
 
     void deliver(PaxosMessage msg) {
         inbox.enqueue(msg);
-        this.logger.log(Level.CONFIG, "Got msg " + msg);
+        this.logger.log(Level.CONFIG, me + " Got msg " + msg + " from " + msg.src);
     }
 
     public void setLogger() {
