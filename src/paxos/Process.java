@@ -1,6 +1,8 @@
 package paxos;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 import java.util.logging.*;
 
 public abstract class Process extends Thread {
@@ -9,6 +11,8 @@ public abstract class Process extends Thread {
     ProcessId me;
     Queue<PaxosMessage> inbox = new Queue<PaxosMessage>();
     Env env;
+    Properties prop = new Properties();
+
 
     abstract void body();
 
@@ -17,13 +21,18 @@ public abstract class Process extends Thread {
         env.removeProc(me);
     }
 
+    Properties getProp()throws IOException{
+        prop.load(new FileInputStream("config.properties"));
+        return prop;
+    }
+
     PaxosMessage getNextMessage() {
         return inbox.bdequeue();
     }
 
     void sendMessage(ProcessId dst, PaxosMessage msg) {
         env.sendMessage(dst, msg);
-        this.logger.info("Sent Msg" + msg + " to " + dst);
+        this.logger.log(Level.CONFIG, "Sent Msg" + msg + " to " + dst);
     }
 
     void deliver(PaxosMessage msg) {
@@ -47,19 +56,14 @@ public abstract class Process extends Thread {
             consoleHandler = new ConsoleHandler();
             logger.addHandler(consoleHandler);
         }
-        consoleHandler.setLevel(Level.INFO);
-
+        consoleHandler.setLevel(Level.CONFIG);
 
         try {
             FileHandler fileHandler = new FileHandler("log/Log" + me + ".log", true);
-            fileHandler.setLevel(Level.INFO);
-
+            fileHandler.setLevel(Level.CONFIG);
             logger.addHandler(fileHandler);
             SimpleFormatter formatter = new SimpleFormatter();
             fileHandler.setFormatter(formatter);
-
-//            fileHandler.addAppender(new ConsoleAppender(
-//                    new PatternLayout("%-6r [%p] %c - %m%n")));
 
         } catch (SecurityException e) {
             logger.log(Level.SEVERE, e.getMessage());
@@ -69,5 +73,3 @@ public abstract class Process extends Thread {
     }
 
 }
-
-//log4j.appender.A1.layout.ConversionPattern=%d [%t] %-5p %c - %m%n

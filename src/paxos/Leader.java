@@ -17,7 +17,7 @@ public class Leader extends Process {
         ballot_number = new BallotNumber(0, me);
         this.acceptors = acceptors;
         this.replicas = replicas;
-        setLogger();
+        this.setLogger();
         env.addProc(me, this);
     }
 
