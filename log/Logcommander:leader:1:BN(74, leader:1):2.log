@@ -1,0 +1,6 @@
+Nov 01, 2013 10:33:27 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(74, leader:1), slot_number=1, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to acceptor:0
+Nov 01, 2013 10:33:27 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(74, leader:1), slot_number=8} to commander:leader:0:BN(73, leader:0):8
+Nov 01, 2013 10:33:27 PM paxos.Process sendMessage
+INFO: Sent MsgPreemptedMessage{ballot_number=BN(74, leader:1)} to leader:0

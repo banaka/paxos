@@ -1,0 +1,1686 @@
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@66650e56 to acceptor:0
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@7490649e
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@7490649e to acceptor:0
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@e2f97ff
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@e2f97ff to acceptor:2
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@7e23a866
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@7e23a866 to commander:leader:0:BN(0, leader:0):12
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@7490649e
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@7490649e to acceptor:1
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@99436c6
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@99436c6 to commander:leader:0:BN(0, leader:0):12
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@66650e56
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@66650e56 to acceptor:1
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.ProposeMessage@61980613
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.ProposeMessage@61980613 to leader:0
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@1f44f9cc
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@1f44f9cc to acceptor:0
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.DecisionMessage@696bd01d
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.DecisionMessage@696bd01d to replica:1
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@252c55fd
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@252c55fd to commander:leader:0:BN(0, leader:0):12
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@1f44f9cc
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@1f44f9cc to acceptor:1
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.ProposeMessage@409a072a
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.ProposeMessage@409a072a to leader:0
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@4f36836c
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@66650e56
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@4f36836c to acceptor:0
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@66650e56 to acceptor:2
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@7490649e
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@7490649e to acceptor:2
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.DecisionMessage@14cb5de2
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.DecisionMessage@14cb5de2 to replica:0
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@4460cf12
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@4460cf12 to commander:leader:0:BN(0, leader:0):14
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.DecisionMessage@2fbac9d0
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.DecisionMessage@2fbac9d0 to replica:1
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@4f36836c
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@4f36836c to acceptor:1
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.ProposeMessage@7ab8584d
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.ProposeMessage@7ab8584d to leader:0
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@5cad662c
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@5cad662c to commander:leader:0:BN(0, leader:0):14
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@34da7b85
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@34da7b85 to acceptor:0
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@1f44f9cc
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@1f44f9cc to acceptor:2
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@59cc2f42
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@59cc2f42 to commander:leader:0:BN(0, leader:0):13
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@34da7b85
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@34da7b85 to acceptor:1
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@78e941c2
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@78e941c2 to commander:leader:0:BN(0, leader:0):13
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.DecisionMessage@52f18786
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.DecisionMessage@52f18786 to replica:0
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@4f36836c
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@4f36836c to acceptor:2
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@301f417
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@301f417 to commander:leader:0:BN(0, leader:0):13
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.DecisionMessage@7540138b
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.DecisionMessage@7540138b to replica:1
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@6167436c
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@427b9969
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@6167436c to commander:leader:0:BN(0, leader:0):15
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@427b9969 to acceptor:0
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@34da7b85
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@34da7b85 to acceptor:2
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.DecisionMessage@6da1ee47
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.DecisionMessage@6da1ee47 to replica:0
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.DecisionMessage@133321d6
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@1f27273
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.DecisionMessage@133321d6 to replica:1
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@427b9969
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@1f27273 to commander:leader:0:BN(0, leader:0):14
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@427b9969 to acceptor:1
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@7d15e891
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@2957c7bf
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@7d15e891 to commander:leader:0:BN(0, leader:0):15
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@2957c7bf to commander:leader:0:BN(0, leader:0):16
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@3dfe7b92
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@3dfe7b92 to commander:leader:0:BN(0, leader:0):16
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@78c4f9e6
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@78c4f9e6 to commander:leader:0:BN(0, leader:0):15
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@28341db1
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@28341db1 to commander:leader:0:BN(0, leader:0):17
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@f09dafc
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@f09dafc to commander:leader:0:BN(0, leader:0):17
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.DecisionMessage@3486a602
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.DecisionMessage@3486a602 to replica:0
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.DecisionMessage@73fce83e
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.DecisionMessage@73fce83e to replica:0
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2aMessage@427b9969
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2aMessage@427b9969 to acceptor:2
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.DecisionMessage@5960a2f1
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.DecisionMessage@5960a2f1 to replica:1
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@5769aa0e
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@5769aa0e to commander:leader:0:BN(0, leader:0):18
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.DecisionMessage@5a1ba9f7
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.DecisionMessage@5a1ba9f7 to replica:1
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@4e33c558
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@4e33c558 to commander:leader:0:BN(0, leader:0):18
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.DecisionMessage@28e13c84
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.DecisionMessage@28e13c84 to replica:0
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@5b4c1313
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@5b4c1313 to commander:leader:0:BN(0, leader:0):16
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.DecisionMessage@5f787338
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.DecisionMessage@7ddff76
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.DecisionMessage@5f787338 to replica:1
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.DecisionMessage@7ddff76 to replica:0
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@7faea002
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@7faea002 to commander:leader:0:BN(0, leader:0):17
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.DecisionMessage@218b24cb
+Oct 31, 2013 7:56:49 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})
+Oct 31, 2013 7:56:49 PM paxos.Process deliver
+CONFIG: Got msg paxos.P2bMessage@106f29c8
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.DecisionMessage@218b24cb to replica:1
+Oct 31, 2013 7:56:49 PM paxos.Process sendMessage
+CONFIG: Sent Msgpaxos.P2bMessage@106f29c8 to commander:leader:0:BN(0, leader:0):18
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to acceptor:0
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to acceptor:0
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})} to acceptor:2
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):9, slot_number=9, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):9, slot_number=9, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:0
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):7, slot_number=7, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):7, slot_number=7, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to replica:0
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):8, slot_number=8, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):8, slot_number=8, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:1
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):7, slot_number=7, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):7, slot_number=7, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to replica:1
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):9, slot_number=9, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):9, slot_number=9, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:1
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to acceptor:1
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to acceptor:1
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=11}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=11} to commander:leader:0:BN(0, leader:0):11
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=14}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=14} to commander:leader:0:BN(0, leader:0):14
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=11}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=11} to commander:leader:0:BN(0, leader:0):11
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to replica:0
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=12}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=12} to commander:leader:0:BN(0, leader:0):12
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=13}
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=10}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=13} to commander:leader:0:BN(0, leader:0):13
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=10} to commander:leader:0:BN(0, leader:0):10
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to acceptor:0
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to acceptor:2
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})} to replica:0
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to acceptor:2
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to leader:0
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})}
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})} to replica:1
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to acceptor:1
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=12}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=12} to commander:leader:0:BN(0, leader:0):12
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=15}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=15} to commander:leader:0:BN(0, leader:0):15
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=13}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=13} to commander:leader:0:BN(0, leader:0):13
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to replica:1
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})} to replica:0
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=14}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=14} to commander:leader:0:BN(0, leader:0):14
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to replica:0
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=14}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=14} to commander:leader:0:BN(0, leader:0):14
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to acceptor:2
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to leader:0
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:0
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=16}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=16} to commander:leader:0:BN(0, leader:0):16
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=13}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=13} to commander:leader:0:BN(0, leader:0):13
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})}
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=15}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to replica:1
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=15} to commander:leader:0:BN(0, leader:0):15
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})} to replica:1
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to replica:0
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to replica:0
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=15}
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=15} to commander:leader:0:BN(0, leader:0):15
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:0
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to leader:0
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:1
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=16}
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=16} to commander:leader:0:BN(0, leader:0):16
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:1
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:0
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=17}
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=17} to commander:leader:0:BN(0, leader:0):17
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to replica:1
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})}
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to replica:1
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=18}
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=18} to commander:leader:0:BN(0, leader:0):18
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:1
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:2
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=17}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=17} to commander:leader:0:BN(0, leader:0):17
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:2
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=18}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=18} to commander:leader:0:BN(0, leader:0):18
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:0
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:2
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=17}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=17} to commander:leader:0:BN(0, leader:0):17
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:0
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:1
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to replica:0
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:1
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Oct 31, 2013 7:59:44 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=16}
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to replica:1
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=16} to commander:leader:0:BN(0, leader:0):16
+Oct 31, 2013 7:59:44 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Oct 31, 2013 7:59:44 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=18} to commander:leader:0:BN(0, leader:0):18
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to leader:0
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):7, slot_number=7, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=11}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):7, slot_number=7, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to replica:1
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=11} to commander:leader:0:BN(0, leader:0):11
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to acceptor:1
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=9}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=9} to commander:leader:0:BN(0, leader:0):9
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to acceptor:2
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):9, slot_number=9, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):9, slot_number=9, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:0
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=13}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=13} to commander:leader:0:BN(0, leader:0):13
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to leader:0
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to acceptor:0
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:0
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=14}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=14} to commander:leader:0:BN(0, leader:0):14
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):9, slot_number=9, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):9, slot_number=9, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:1
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=8}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=8} to commander:leader:0:BN(0, leader:0):8
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):8, slot_number=8, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):8, slot_number=8, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:0
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:1
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to acceptor:1
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:2
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):8, slot_number=8, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):8, slot_number=8, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:1
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=10}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=10} to commander:leader:0:BN(0, leader:0):10
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to replica:0
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to leader:0
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=16}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=16} to commander:leader:0:BN(0, leader:0):16
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to leader:0
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to acceptor:2
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=15}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=15} to commander:leader:0:BN(0, leader:0):15
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to replica:1
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:0
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=12}
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=12} to commander:leader:0:BN(0, leader:0):12
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:1
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})} to replica:0
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:2
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=11}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=11} to commander:leader:0:BN(0, leader:0):11
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})} to replica:0
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})} to replica:1
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=17}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=17} to commander:leader:0:BN(0, leader:0):17
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:0
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})} to replica:1
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=13}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=13} to commander:leader:0:BN(0, leader:0):13
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to replica:0
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:1
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to replica:1
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=14}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=14} to commander:leader:0:BN(0, leader:0):14
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to replica:0
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:2
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to replica:1
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=18}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=18} to commander:leader:0:BN(0, leader:0):18
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=16}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=16} to commander:leader:0:BN(0, leader:0):16
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to replica:0
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=15}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=15} to commander:leader:0:BN(0, leader:0):15
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to replica:1
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to replica:0
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=17}
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=17} to commander:leader:0:BN(0, leader:0):17
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to replica:1
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=18}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:0
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=18} to commander:leader:0:BN(0, leader:0):18
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:1
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:0
+Oct 31, 2013 8:03:23 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:03:23 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:1
+Oct 31, 2013 8:03:23 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to leader:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=12}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=12} to commander:leader:0:BN(0, leader:0):12
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to acceptor:2
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):9, slot_number=9, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):9, slot_number=9, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:1
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=8}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=8} to commander:leader:0:BN(0, leader:0):8
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):8, slot_number=8, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):8, slot_number=8, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:0
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:1
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):8, slot_number=8, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=13}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):8, slot_number=8, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:1
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=13} to commander:leader:0:BN(0, leader:0):13
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:2
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=10}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=10} to commander:leader:0:BN(0, leader:0):10
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=11, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=11, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to leader:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=11}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=11} to commander:leader:0:BN(0, leader:0):11
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=14}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=14} to commander:leader:0:BN(0, leader:0):14
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})} to replica:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=15}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=15} to commander:leader:0:BN(0, leader:0):15
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=12}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=12} to commander:leader:0:BN(0, leader:0):12
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=12, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=12, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to leader:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})} to replica:0
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})} to replica:1
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=13}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=13} to commander:leader:0:BN(0, leader:0):13
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to replica:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})} to replica:1
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to replica:1
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=16, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=16, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to leader:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=14}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=14} to commander:leader:0:BN(0, leader:0):14
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=13, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to replica:0
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=13, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to leader:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=15}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=15} to commander:leader:0:BN(0, leader:0):15
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to replica:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to acceptor:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=14, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=14, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to leader:0
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to replica:1
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to replica:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=15, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=15, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to leader:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to acceptor:1
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to replica:1
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to acceptor:2
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=16, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=16, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to leader:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=16}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=16} to commander:leader:0:BN(0, leader:0):16
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to replica:1
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to leader:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=16}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=16} to commander:leader:0:BN(0, leader:0):16
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to replica:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to leader:0
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:1
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to replica:1
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:1
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:2
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=17}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=17} to commander:leader:0:BN(0, leader:0):17
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:2
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=17}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=17} to commander:leader:0:BN(0, leader:0):17
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=18}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=18} to commander:leader:0:BN(0, leader:0):18
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:1
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=18}
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=18} to commander:leader:0:BN(0, leader:0):18
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:0
+Oct 31, 2013 8:08:27 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Oct 31, 2013 8:08:27 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Oct 31, 2013 8:08:27 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:1
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to leader:0
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to acceptor:0
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):8, slot_number=8, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):8, slot_number=8, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})}
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to acceptor:1
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to acceptor:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=9, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=9, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:2
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})} to acceptor:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})} to acceptor:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to acceptor:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})}
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})} to acceptor:1
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})} to acceptor:1
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to acceptor:1
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to acceptor:2
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=9}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=9} to commander:leader:0:BN(0, leader:0):9
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):8, slot_number=8, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):8, slot_number=8, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:1
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=14}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=14} to commander:leader:0:BN(0, leader:0):14
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=11, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to acceptor:1
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=11, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to leader:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to acceptor:2
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=11}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=11} to commander:leader:0:BN(0, leader:0):11
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=14}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=14} to commander:leader:0:BN(0, leader:0):14
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):9, slot_number=9, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):9, slot_number=9, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to acceptor:2
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})} to acceptor:2
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})} to acceptor:2
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to acceptor:1
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):9, slot_number=9, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=15}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):9, slot_number=9, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:1
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=15} to commander:leader:0:BN(0, leader:0):15
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=12, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=12, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to leader:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=12}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=12} to commander:leader:0:BN(0, leader:0):12
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to replica:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=13}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=13} to commander:leader:0:BN(0, leader:0):13
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=13}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=13} to commander:leader:0:BN(0, leader:0):13
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to acceptor:2
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=12}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=12} to commander:leader:0:BN(0, leader:0):12
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=11}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=11} to commander:leader:0:BN(0, leader:0):11
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})} to replica:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=15}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=15} to commander:leader:0:BN(0, leader:0):15
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to replica:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to replica:1
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to replica:1
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=10}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=10} to commander:leader:0:BN(0, leader:0):10
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})} to replica:1
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to replica:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=10}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=10} to commander:leader:0:BN(0, leader:0):10
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})} to replica:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to replica:1
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to replica:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to leader:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})} to replica:1
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to replica:1
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to leader:0
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:1
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:2
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=16}
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=16} to commander:leader:0:BN(0, leader:0):16
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:1
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=17}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=17} to commander:leader:0:BN(0, leader:0):17
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=16}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=16} to commander:leader:0:BN(0, leader:0):16
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg ProposeMessage{slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgProposeMessage{slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to leader:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to replica:0
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=17}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:2
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=17} to commander:leader:0:BN(0, leader:0):17
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to replica:1
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:1
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:1
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=18}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=18} to commander:leader:0:BN(0, leader:0):18
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:2
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg P2bMessage{ballot_number=BN(0, leader:0), slot_number=18}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=18} to commander:leader:0:BN(0, leader:0):18
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:0: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:0
+Nov 01, 2013 9:34:04 PM paxos.Process deliver
+CONFIG: Got msg DecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})}
+Nov 01, 2013 9:34:04 PM paxos.Replica perform
+CONFIG: replica:1: perform paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})
+Nov 01, 2013 9:34:04 PM paxos.Process sendMessage
+CONFIG: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:1
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to acceptor:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to acceptor:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to acceptor:1
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to acceptor:1
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to acceptor:2
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):10, slot_number=10, command=paxos.Command(client:1, 0, Operation{opType=Deposit, op='1'})} to replica:1
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgProposeMessage{slot_number=12, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to leader:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})} to replica:1
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=12} to commander:leader:0:BN(0, leader:0):12
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})} to replica:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=14} to commander:leader:0:BN(0, leader:0):14
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to acceptor:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to acceptor:2
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to replica:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=14} to commander:leader:0:BN(0, leader:0):14
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to acceptor:1
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=13} to commander:leader:0:BN(0, leader:0):13
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to acceptor:2
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:1
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:1
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:2
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:2
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):12, slot_number=12, command=paxos.Command(client:3, 0, Operation{opType=Deposit, op='3'})} to replica:1
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgProposeMessage{slot_number=13, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to leader:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=15} to commander:leader:0:BN(0, leader:0):15
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=17} to commander:leader:0:BN(0, leader:0):17
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=13} to commander:leader:0:BN(0, leader:0):13
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to replica:1
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=15} to commander:leader:0:BN(0, leader:0):15
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=17} to commander:leader:0:BN(0, leader:0):17
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=16} to commander:leader:0:BN(0, leader:0):16
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=16} to commander:leader:0:BN(0, leader:0):16
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to replica:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgProposeMessage{slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to leader:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:1
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:1
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to replica:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgProposeMessage{slot_number=18, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to leader:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to replica:1
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to replica:1
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:1
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:2
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=18} to commander:leader:0:BN(0, leader:0):18
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=18} to commander:leader:0:BN(0, leader:0):18
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to replica:0
+Nov 01, 2013 9:38:41 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to replica:1
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to acceptor:0
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to replica:0
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgProposeMessage{slot_number=17, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to leader:0
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):13, slot_number=13, command=paxos.Command(client:4, 0, Operation{opType=Deposit, op='4'})} to replica:1
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to acceptor:1
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):11, slot_number=11, command=paxos.Command(client:2, 0, Operation{opType=Deposit, op='2'})} to replica:1
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:0
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgProposeMessage{slot_number=14, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to leader:0
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:0
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=14} to commander:leader:0:BN(0, leader:0):14
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:1
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=16, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to acceptor:2
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=14, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to acceptor:2
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=16} to commander:leader:0:BN(0, leader:0):16
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=16} to commander:leader:0:BN(0, leader:0):16
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:0
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:1
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:0
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to acceptor:2
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:1
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):16, slot_number=16, command=paxos.Command(client:8, 0, Operation{opType=Deposit, op='8'})} to replica:1
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=17, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to acceptor:2
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=14} to commander:leader:0:BN(0, leader:0):14
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=15} to commander:leader:0:BN(0, leader:0):15
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=15} to commander:leader:0:BN(0, leader:0):15
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=17} to commander:leader:0:BN(0, leader:0):17
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=17} to commander:leader:0:BN(0, leader:0):17
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to replica:0
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgProposeMessage{slot_number=15, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to leader:0
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:0
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to replica:0
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):17, slot_number=17, command=paxos.Command(client:9, 0, Operation{opType=Deposit, op='9'})} to replica:1
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):14, slot_number=14, command=paxos.Command(client:6, 0, Operation{opType=Deposit, op='6'})} to replica:1
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):15, slot_number=15, command=paxos.Command(client:7, 0, Operation{opType=Deposit, op='7'})} to replica:1
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgProposeMessage{slot_number=18, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to leader:0
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to acceptor:0
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to acceptor:1
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=18} to commander:leader:0:BN(0, leader:0):18
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2aMessage{ballot_number=BN(0, leader:0), slot_number=18, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to acceptor:2
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgP2bMessage{ballot_number=BN(0, leader:0), slot_number=18} to commander:leader:0:BN(0, leader:0):18
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to replica:0
+Nov 01, 2013 10:28:13 PM paxos.Process sendMessage
+INFO: Sent MsgDecisionMessage{src=commander:leader:0:BN(0, leader:0):18, slot_number=18, command=paxos.Command(client:5, 0, Operation{opType=Deposit, op='5'})} to replica:1
