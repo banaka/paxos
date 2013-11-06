@@ -80,7 +80,13 @@ public class Env {
     private void operateOn(String input) {
         String[] arr = input.split(" ");
         String inputCommand = arr[0];
-        Commands c = Commands.valueOf(inputCommand);
+        Commands c = null;
+        try {
+        c = Commands.valueOf(inputCommand);
+        } catch(IllegalArgumentException e) {
+            System.err.println("Unknown Command!");
+            return;
+        }
         switch(c){
             case KILL:
                 String pidToKill = arr[1];
@@ -106,7 +112,7 @@ public class Env {
                 }
                 break;
             default:
-                System.err.println("Unknown Command!");
+                System.err.println("UnImplemented Command!");
         }
     }
 }
