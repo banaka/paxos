@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Env {
     Map<ProcessId, Process> procs = new HashMap<ProcessId, Process>();
-    String TX_MSG_SEPARATOR = "\\$";
+    static String TX_MSG_SEPARATOR = "\\$";
 
     synchronized void sendMessage(ProcessId dst, PaxosMessage msg) {
         Process p = procs.get(dst);

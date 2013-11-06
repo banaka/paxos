@@ -20,10 +20,17 @@ public class Account {
     }
 
     public int debit(int by) {
-        return (this.balance = balance - by );
+        return (this.balance = balance - by);
     }
+
     public int credit(int by) {
-       return (this.balance = balance + by );
+        return (this.balance = balance + by);
+    }
+
+    public boolean transfer(Account to, int amt) {
+        to.credit(amt);
+        debit(amt);
+        return true;
     }
 
     @Override
@@ -34,8 +41,8 @@ public class Account {
                 '}';
     }
 
-    public Account(String str, int accountNo){
-        this.accountNo= accountNo;
+    public Account(String str, int accountNo) {
+        this.accountNo = accountNo;
         this.balance = Integer.parseInt(str.split(Env.TX_MSG_SEPARATOR)[1]);
     }
 

@@ -2,7 +2,7 @@ package paxos;
 
 public class Operation {
     OpertationType opType;
-    String op;
+    String operationArgs;
 
     @Override
     public boolean equals(Object o) {
@@ -11,7 +11,7 @@ public class Operation {
 
         Operation operation = (Operation) o;
 
-        if (!op.equals(operation.op)) return false;
+        if (!operationArgs.equals(operation.operationArgs)) return false;
         if (opType != operation.opType) return false;
 
         return true;
@@ -20,7 +20,7 @@ public class Operation {
     @Override
     public int hashCode() {
         int result = opType.hashCode();
-        result = 31 * result + op.hashCode();
+        result = 31 * result + operationArgs.hashCode();
         return result;
     }
 
@@ -29,12 +29,12 @@ public class Operation {
         return "Operation{" +
                 "opType=" + opType +
 
-                ", op='" + op + '\'' +
+                ", op='" + operationArgs + '\'' +
                 '}';
     }
 
     Operation(String opType, String op) {
-        this.op = op;
+        this.operationArgs = op;
         this.opType = OpertationType.valueOf(opType);
     }
 

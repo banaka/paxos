@@ -23,8 +23,7 @@ public class Scout extends Process {
 	}
 
 	public void body(){
-		System.out.println("Scout is running for leader :" + env);
-        P1aMessage m1 = new P1aMessage(me, ballot_number);
+		P1aMessage m1 = new P1aMessage(me, ballot_number);
 		Set<ProcessId> waitfor = new HashSet<ProcessId>();
 		for (ProcessId a: acceptors) {
 			sendMessage(a, m1);
