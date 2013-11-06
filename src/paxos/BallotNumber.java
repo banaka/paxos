@@ -22,6 +22,6 @@ public class BallotNumber implements Comparable {
 	}
 
 	public String toString(){
-		return "BN(" + round + ", " + leader_id + ")";
+		return "BN(" + round + "," + leader_id + ")";
 	}
 }
