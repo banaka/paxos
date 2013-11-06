@@ -79,7 +79,7 @@ public abstract class Process extends Thread {
 
         try {
             FileHandler fileHandler = new FileHandler("log/Log" + me + ".log", true);
-            fileHandler.setLevel(Level.CONFIG);
+            fileHandler.setLevel(Level.FINER);
             logger.addHandler(fileHandler);
             SimpleFormatter formatter = new SimpleFormatter();
             fileHandler.setFormatter(formatter);
