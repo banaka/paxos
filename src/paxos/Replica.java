@@ -7,6 +7,7 @@ import java.util.logging.Level;
 public class Replica extends Process {
     ProcessId[] leaders;
     int slot_num = 1;
+    int state = 1;
     List<Account> accountList;
     Map<Integer /* slot number */, Command> proposals = new HashMap<Integer, Command>();
     Map<Integer /* slot number */, Command> decisions = new HashMap<Integer, Command>();
@@ -47,57 +48,48 @@ public class Replica extends Process {
 
     void perform(Command c) {
         //TODO:CHECK WHAT IS HAPPENING HERE.. SAME CMD SEEMS TO BE EXECUTING MULTIPLE TIMES..
+        //TODO : The replica should be executing a given cmd only Once If a cmd has been executed
         for (int s = 1; s < slot_num; s++) {
             if (c.equals(decisions.get(s))) {
-                //TODO : The replica should be executing a given cmd only Once If a cmd has been executed
-                //It should not be executed again.
                 slot_num++;
                 return;
-            } else {
-                //Act on the decisions uptil slot_no
-                String[] operationArgs = c.op.operationArgs.split(Env.TX_MSG_SEPARATOR);
-                try {
-                    Account account = accountList.get(Integer.parseInt(operationArgs[0]));
-                    int amt = Integer.parseInt(operationArgs[1]);
-                    String output = "";
-                    switch (c.op.opType) {
-                        case Deposit:
-                            account.debit(amt);
-                            output = account.toString();
-                            break;
-                        case Inquiry:
-                            account.getBalance();
-                            output = account.toString();
-                            break;
-                        case Transfer:
-                            Account toAccount = accountList.get(Integer.parseInt(operationArgs[2]));
-                            account.transfer(toAccount, amt);
-                            output = account.toString() + toAccount.toString();
-                            break;
-                        case Withdraw:
-                            account.credit(amt);
-                            output = account.toString();
-                            break;
-                        default:
-                            output = "INVALID OPERATION TYPE";
-                            break;
-                    }
-
-                } catch (Exception e) {
-                  logger.log(Level.SEVERE,"Error in the input msg ");
-                    //TODO : send error msg to the client
-                }
-                //TODO: Send msg to client with output
-
             }
         }
         logger.log(Level.CONFIG, "" + me + ": perform " + c);
-
-        for (Account acc : accountList) {
-            logger.log(Level.CONFIG, acc.toString());
+        String[] operationArgs = c.op.operationArgs.split(Env.TX_MSG_SEPARATOR);
+        try {
+            Account account = accountList.get(Integer.parseInt(operationArgs[0]));
+            int amt = Integer.parseInt(operationArgs[1]);
+            String output = "Perform for " + state + " Cmd " + c;
+            switch (c.op.opType) {
+                case Deposit:
+                    account.credit(amt);
+                    output = account.toString();
+                    break;
+                case Inquiry:
+                    account.getBalance();
+                    output = account.toString();
+                    break;
+                case Transfer:
+                    Account toAccount = accountList.get(Integer.parseInt(operationArgs[2]));
+                    account.transfer(toAccount, amt);
+                    output = account.toString() + toAccount.toString();
+                    break;
+                case Withdraw:
+                    account.debit(amt);
+                    output = account.toString();
+                    break;
+                default:
+                    output = "INVALID OPERATION TYPE";
+                    break;
+            }
+            logger.log(Level.CONFIG, output);
+        //TODO send msg to client with output
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Error in the input msg ");
+            //TODO : send error msg to the client
         }
         slot_num++;
-        //Need to send the response to client here
     }
 
     public void body() {
