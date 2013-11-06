@@ -47,15 +47,13 @@ public class Replica extends Process {
     }
 
     void perform(Command c) {
-        //TODO:CHECK WHAT IS HAPPENING HERE.. SAME CMD SEEMS TO BE EXECUTING MULTIPLE TIMES..
-        //TODO : The replica should be executing a given cmd only Once If a cmd has been executed
+        //TODO:CHECK WHAT IS HAPPENING HERE.. SAME CMD SHOULD NOT BE BE EXECUTED MULTIPLE TIMES..
         for (int s = 1; s < slot_num; s++) {
             if (c.equals(decisions.get(s))) {
                 slot_num++;
                 return;
             }
         }
-        logger.log(Level.CONFIG, "" + me + ": perform " + c);
         String[] operationArgs = c.op.operationArgs.split(Env.TX_MSG_SEPARATOR);
         try {
             Account account = accountList.get(Integer.parseInt(operationArgs[0]));
@@ -83,11 +81,13 @@ public class Replica extends Process {
                     output = "INVALID OPERATION TYPE";
                     break;
             }
-            logger.log(Level.CONFIG, output);
-        //TODO send msg to client with output
+            logger.log(Level.CONFIG, "" + me + ": perform " + c+ " resulted in "+ output);
+            System.out.println(output);
+            //TODO send msg to client with output
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error in the input msg ");
             //TODO : send error msg to the client
+            System.out.println("Error in the input msg");
         }
         slot_num++;
     }

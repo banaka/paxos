@@ -13,7 +13,7 @@ public class Command {
 
 	public boolean equals(Object o) {
 		Command other = (Command) o;
-		return req_id == other.req_id && op.equals(other.op);
+		return client == other.client && req_id == other.req_id && op.equals(other.op);
 	}
 
 	public String toString(){
