@@ -3,6 +3,7 @@ package paxos;
 import java.lang.*;
 import java.util.*;
 import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public class Scout extends Process {
 
@@ -31,7 +32,7 @@ public class Scout extends Process {
 		}
 
 		Set<PValue> pvalues = new HashSet<PValue>();
-		while (2 * waitfor.size() >= acceptors.length) {
+		while (2 * waitfor.size() >= acceptors.length && !stop_request) {
 			PaxosMessage msg = getNextMessage();
 
 			if (msg instanceof P1bMessage) {
@@ -48,10 +49,11 @@ public class Scout extends Process {
 				}
 			}
 			else {
-				System.err.println("paxos.Scout: unexpected msg");
+                logger.log(Level.SEVERE, "paxos.Scout: unexpected msg");
 			}
 		}
 
-		sendMessage(leader, new AdoptedMessage(me, ballot_number, pvalues));
+        if(!stop_request)
+		    sendMessage(leader, new AdoptedMessage(me, ballot_number, pvalues));
 	}
 }

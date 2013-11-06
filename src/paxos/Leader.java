@@ -1,7 +1,7 @@
 package paxos;
 
-import java.util.*;
-import java.util.logging.Level;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Leader extends Process {
     ProcessId[] acceptors;
@@ -23,11 +23,11 @@ public class Leader extends Process {
     }
 
     public void body() {
-        logger.info("Here I am: " + me);
+        logger.log(messageLevel, "Here I am: " + me);
 
         new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
                 me, acceptors, ballot_number);
-        for (; ; ) {
+        while (!stop_request) {
             PaxosMessage msg = getNextMessage();
 
             if (msg instanceof ProposeMessage) {

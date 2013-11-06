@@ -54,6 +54,7 @@ public class Replica extends Process {
                 return;
             }
         }
+        logger.log(messageLevel, "" + me + ": perform " + c);
         String[] operationArgs = c.op.operationArgs.split(Env.TX_MSG_SEPARATOR);
         try {
             Account account = accountList.get(Integer.parseInt(operationArgs[0]));
@@ -81,7 +82,7 @@ public class Replica extends Process {
                     output = "INVALID OPERATION TYPE";
                     break;
             }
-            logger.log(Level.CONFIG, "" + me + ": perform " + c+ " resulted in "+ output);
+            logger.log(messageLevel, "" + me + ": perform " + c+ " resulted in "+ output);
             System.out.println(output);
             //TODO send msg to client with output
         } catch (Exception e) {
@@ -93,8 +94,8 @@ public class Replica extends Process {
     }
 
     public void body() {
-        logger.log(Level.CONFIG, "Here I am: " + me);
-        for (; ; ) {
+        logger.log(messageLevel, "Here I am: " + me);
+        while (!stop_request) {
             PaxosMessage msg = getNextMessage();
 
             if (msg instanceof RequestMessage) {
@@ -103,7 +104,7 @@ public class Replica extends Process {
             } else if (msg instanceof DecisionMessage) {
                 DecisionMessage m = (DecisionMessage) msg;
                 decisions.put(m.slot_number, m.command);
-                for (; ; ) {
+                while (!stop_request) {
                     Command c = decisions.get(slot_num);
                     if (c == null) {
                         break;

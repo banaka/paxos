@@ -1,7 +1,11 @@
 package paxos;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.util.*;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
 public class Env {
     Map<ProcessId, Process> procs = new HashMap<ProcessId, Process>();
@@ -62,7 +66,47 @@ public class Env {
         }
     }
 
-    public static void main(String[] args) {
-        new Env().run(args);
+    public static void main(String[] args) throws Exception {
+        Env e = new Env();
+        e.run(args);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        while(true) {
+            System.out.print("$ Enter new Command KILL|SHOW|HELP > ");
+            String input = br.readLine();
+            e.operateOn(input);
+        }
+    }
+
+    private void operateOn(String input) {
+        String[] arr = input.split(" ");
+        String inputCommand = arr[0];
+        Commands c = Commands.valueOf(inputCommand);
+        switch(c){
+            case KILL:
+                String pidToKill = arr[1];
+                for(ProcessId p : procs.keySet()){
+                    if(p.toString().equals(pidToKill)){
+                        procs.get(p).stop_request = true;
+                        removeProc(p);
+                        System.out.println("Killed "+pidToKill);
+                        return;
+                    }
+                }
+                System.out.println("Could not find such process...type SHOW for live processes");
+                break;
+            case SHOW:
+                for(ProcessId p : procs.keySet()){
+                    System.out.print(p + " | ");
+                }
+                System.out.println();
+                break;
+            case HELP:
+                for(Commands cc : Commands.values()){
+                    System.out.println(cc + " -- " + cc.getDescription());
+                }
+                break;
+            default:
+                System.err.println("Unknown Command!");
+        }
     }
 }

@@ -13,6 +13,8 @@ public abstract class Process extends Thread {
     Env env;
     Properties prop = new Properties();
     int delay;
+    public boolean stop_request = false;
+    public Level messageLevel;
 
     abstract void body();
 
@@ -27,8 +29,9 @@ public abstract class Process extends Thread {
             if (prop.getProperty(me.name) != null) {
                 delay = Integer.parseInt(prop.getProperty(me.name));
             } else {
-                delay = 0;
+                delay = Integer.parseInt(prop.getProperty("delay"));
             }
+            messageLevel = prop.getProperty("printMessages").equals("TRUE") ? Level.CONFIG : Level.FINER;
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.getMessage());
@@ -48,12 +51,12 @@ public abstract class Process extends Thread {
         }
 
         env.sendMessage(dst, msg);
-        this.logger.log(Level.CONFIG, "Sent Msg" + msg + " to " + dst + " from " + me);
+        this.logger.log(messageLevel, "Sent Msg" + msg + " to " + dst + " from " + me);
     }
 
     void deliver(PaxosMessage msg) {
         inbox.enqueue(msg);
-        this.logger.log(Level.CONFIG, me + " Got msg " + msg + " from " + msg.src);
+        this.logger.log(messageLevel, me + " Got msg " + msg + " from " + msg.src);
     }
 
     public void setLogger() {

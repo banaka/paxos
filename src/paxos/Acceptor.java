@@ -1,7 +1,7 @@
 package paxos;
 
-import java.util.*;
-import java.util.logging.Level;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Acceptor extends Process {
     BallotNumber ballot_number = null;
@@ -10,14 +10,14 @@ public class Acceptor extends Process {
 	public Acceptor(Env env, ProcessId me){
 		this.env = env;
 		this.me = me;
-		env.addProc(me, this);
         setLogger();
         loadProp();
+        env.addProc(me, this);
 	}
 
 	public void body(){
-        logger.log(Level.CONFIG, "Here I am: " + me);
-		for (;;) {
+        logger.log(messageLevel, "Here I am: " + me);
+		while (!stop_request) {
 			PaxosMessage msg = getNextMessage();
 
 			if (msg instanceof P1aMessage) {

@@ -20,3 +20,17 @@ public class Command {
 		return "paxos.Command(" + client + ", " + req_id + ", " + op + ")";
 	}
 }
+
+enum Commands {
+    KILL("KILL <pid> // Kills the pid thread"),
+    SHOW("Shows all live pids"),
+    HELP("Shows this stuff again");
+
+    private String description;
+    Commands(String description){
+        this.description = description;
+    }
+    public String getDescription(){
+        return this.description;
+    }
+}

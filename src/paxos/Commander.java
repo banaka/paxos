@@ -32,7 +32,7 @@ public class Commander extends Process {
             waitfor.add(a);
         }
 
-        while (2 * waitfor.size() >= acceptors.length) {
+        while (2 * waitfor.size() >= acceptors.length && !stop_request) {
             PaxosMessage msg = getNextMessage();
 
             if (msg instanceof P2bMessage) {
@@ -49,8 +49,9 @@ public class Commander extends Process {
             }
         }
 
-        for (ProcessId r : replicas) {
-            sendMessage(r, new DecisionMessage(me, slot_number, command));
-        }
+        if(!stop_request)
+            for (ProcessId r : replicas) {
+                sendMessage(r, new DecisionMessage(me, slot_number, command));
+            }
     }
 }
