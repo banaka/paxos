@@ -1,8 +1,6 @@
 package paxos;
 
-import java.lang.*;
 import java.util.*;
-import java.util.logging.Logger;
 import java.util.logging.Level;
 
 public class Scout extends Process {

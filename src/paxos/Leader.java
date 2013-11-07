@@ -19,6 +19,7 @@ public class Leader extends Process {
         this.replicas = replicas;
         this.setLogger();
         loadProp();
+        new Heartbeat(env, new ProcessId("heartbeat:" + me + ":"),me);
         env.addProc(me, this);
     }
 

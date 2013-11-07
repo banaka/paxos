@@ -3,13 +3,14 @@ package paxos;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 public class Env {
     Map<ProcessId, Process> procs = new HashMap<ProcessId, Process>();
     static String TX_MSG_SEPARATOR = "\\$";
+
+    public static List<Replica> replicas;
+    public static List<Leader> leaders;
 
     synchronized void sendMessage(ProcessId dst, PaxosMessage msg) {
         Process p = procs.get(dst);
@@ -36,29 +37,33 @@ public class Env {
             int nLeaders = Integer.parseInt(prop.getProperty("nLeaders"));
             int nRequests = Integer.parseInt(prop.getProperty("nRequests"));
 
-            ProcessId[] acceptors = new ProcessId[nAcceptors];
-            ProcessId[] replicas = new ProcessId[nReplicas];
-            ProcessId[] leaders = new ProcessId[nLeaders];
+            ProcessId[] accepts = new ProcessId[nAcceptors];
+            ProcessId[] repls = new ProcessId[nReplicas];
+            ProcessId[] leads = new ProcessId[nLeaders];
 
             for (int i = 0; i < nAcceptors; i++) {
-                acceptors[i] = new ProcessId("acceptor" + i);
-                Acceptor acc = new Acceptor(this, acceptors[i]);
+                accepts[i] = new ProcessId("acceptor" + i);
+                Acceptor acc = new Acceptor(this, accepts[i]);
             }
+
+            replicas = new ArrayList<Replica>();
             for (int i = 0; i < nReplicas; i++) {
-                replicas[i] = new ProcessId("replica" + i);
-                Replica repl = new Replica(this, replicas[i], leaders);
+                repls[i] = new ProcessId("replica" + i);
+                replicas.add(new Replica(this, repls[i], leads));
             }
+
+            leaders = new ArrayList<Leader>();
             for (int i = 0; i < nLeaders; i++) {
-                leaders[i] = new ProcessId("leader" + i);
-                Leader leader = new Leader(this, leaders[i], acceptors, replicas);
+                leads[i] = new ProcessId("leader" + i);
+                leaders.add(new Leader(this, leads[i], accepts, repls));
             }
 
             for (int i = 1; i <= nRequests; i++) {
                 ProcessId pid = new ProcessId("client" + i);
-                String[] opTxt=prop.getProperty("Operation"+i).split(TX_MSG_SEPARATOR,2);
-                Operation op = new Operation(opTxt[0],opTxt[1]);
+                String[] opTxt = prop.getProperty("Operation" + i).split(TX_MSG_SEPARATOR, 2);
+                Operation op = new Operation(opTxt[0], opTxt[1]);
                 for (int r = 0; r < nReplicas; r++) {
-                    sendMessage(replicas[r], new RequestMessage(pid, new Command(pid, 0, op)));
+                    sendMessage(repls[r], new RequestMessage(pid, new Command(pid, 0, op)));
                 }
             }
         } catch (Exception e) {
@@ -70,7 +75,7 @@ public class Env {
         Env e = new Env();
         e.run(args);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        while(true) {
+        while (true) {
             System.out.print("$ Enter new Command KILL|SHOW|HELP > ");
             String input = br.readLine();
             e.operateOn(input);
@@ -82,32 +87,32 @@ public class Env {
         String inputCommand = arr[0];
         Commands c = null;
         try {
-        c = Commands.valueOf(inputCommand);
-        } catch(IllegalArgumentException e) {
+            c = Commands.valueOf(inputCommand);
+        } catch (IllegalArgumentException e) {
             System.err.println("Unknown Command!");
             return;
         }
-        switch(c){
+        switch (c) {
             case KILL:
                 String pidToKill = arr[1];
-                for(ProcessId p : procs.keySet()){
-                    if(p.toString().equals(pidToKill)){
+                for (ProcessId p : procs.keySet()) {
+                    if (p.toString().equals(pidToKill)) {
                         procs.get(p).stop_request = true;
                         removeProc(p);
-                        System.out.println("Killed "+pidToKill);
+                        System.out.println("Killed " + pidToKill);
                         return;
                     }
                 }
                 System.out.println("Could not find such process...type SHOW for live processes");
                 break;
             case SHOW:
-                for(ProcessId p : procs.keySet()){
+                for (ProcessId p : procs.keySet()) {
                     System.out.print(p + " | ");
                 }
                 System.out.println();
                 break;
             case HELP:
-                for(Commands cc : Commands.values()){
+                for (Commands cc : Commands.values()) {
                     System.out.println(cc + " -- " + cc.getDescription());
                 }
                 break;

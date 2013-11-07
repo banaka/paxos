@@ -6,6 +6,22 @@ public class PaxosMessage {
     ProcessId src;
 }
 
+class PingMessage extends PaxosMessage {
+    ProcessId destination;
+
+    @Override
+    public String toString() {
+        return "PingMessage{" +
+                "src=" + src +
+                '}';
+    }
+
+    PingMessage(ProcessId src) {
+        this.src = src;
+    }
+
+}
+
 class P1aMessage extends PaxosMessage {
     BallotNumber ballot_number;
 
