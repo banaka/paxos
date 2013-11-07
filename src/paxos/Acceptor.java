@@ -17,7 +17,7 @@ public class Acceptor extends Process {
 
 	public void body(){
         logger.log(messageLevel, "Here I am: " + me);
-		while (!stop_request) {
+		while (!stop_request()) {
 			PaxosMessage msg = getNextMessage();
 
 			if (msg instanceof P1aMessage) {

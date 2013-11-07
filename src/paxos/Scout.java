@@ -1,6 +1,7 @@
 package paxos;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 
 public class Scout extends Process {
@@ -30,7 +31,7 @@ public class Scout extends Process {
 		}
 
 		Set<PValue> pvalues = new HashSet<PValue>();
-		while (2 * waitfor.size() >= acceptors.length && !stop_request) {
+		while (2 * waitfor.size() >= acceptors.length && !stop_request()) {
 			PaxosMessage msg = getNextMessage();
 
 			if (msg instanceof P1bMessage) {
@@ -51,7 +52,7 @@ public class Scout extends Process {
 			}
 		}
 
-        if(!stop_request)
+        if(!stop_request())
 		    sendMessage(leader, new AdoptedMessage(me, ballot_number, pvalues));
 	}
 }

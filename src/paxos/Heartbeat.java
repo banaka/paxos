@@ -19,7 +19,7 @@ public class Heartbeat extends Process {
     }
 
     public void body() {
-        while (!stop_request) {
+        while (true) {
             for (Leader i : env.leaders) {
                 sendMessage(i.me, new PingMessage(me));
 
