@@ -50,8 +50,8 @@ public abstract class Process extends Thread {
             e.printStackTrace();
         }
 
-        env.sendMessage(dst, msg);
         this.logger.log(messageLevel, "Sent Msg" + msg + " to " + dst + " from " + me);
+        env.sendMessage(dst, msg);
     }
 
     void deliver(PaxosMessage msg) {
