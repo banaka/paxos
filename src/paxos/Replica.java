@@ -77,7 +77,7 @@ public class Replica extends Process {
                 case Transfer:
                     Account toAccount = accountList.get(Integer.parseInt(operationArgs[2]));
                     account.transfer(toAccount, amt);
-                    output = account.toString() + "\n"+ toAccount.toString();
+                    output = account.toString() + " : "+ toAccount.toString();
                     break;
                 case Withdraw:
                     account.debit(amt);
@@ -88,12 +88,11 @@ public class Replica extends Process {
                     break;
             }
             logger.log(messageLevel, "PERFORM " + c + " OUTPUT :" + output);
-            System.out.println(output);
-            //TODO send msg to client with output
+            sendMessage(c.client,new ResponseMessage(me,c,account));
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error in the input msg ");
             //TODO : send error msg to the client
-            System.out.println("Error in the input msg");
+            sendMessage(c.client,new ResponseMessage(me,c,null));
         }
         slot_num++;
     }

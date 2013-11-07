@@ -28,7 +28,7 @@ public class Operation {
     public String toString() {
         return "Operation{" +
                 "opType=" + opType +
-                ", op='" + operationArgs + '\'' +
+                ",op='" + operationArgs + '\'' +
                 '}';
     }
 

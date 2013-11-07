@@ -179,6 +179,40 @@ class RequestMessage extends PaxosMessage {
     }
 }
 
+class TxMessage extends PaxosMessage {
+    Command command;
+
+    public TxMessage(ProcessId src, Command command) {
+        this.src = src;
+        this.src_name = src.name;
+        this.command = command;
+    }
+
+    @Override
+    public String toString() {
+        return "TxMessage{" +
+                "command=" + command +
+                '}';
+    }
+}
+
+class ResponseMessage extends PaxosMessage {
+    Command command;
+    Account account;
+
+    public ResponseMessage(ProcessId src, Command command, Account account) {
+        this.src = src;
+        this.src_name = src.name;
+        this.command = command;
+        this.account = account;
+    }
+
+    @Override
+    public String toString() {
+        return "Command: " + command + " done. A/c update :"+ account;
+    }
+}
+
 class ProposeMessage extends PaxosMessage {
     int slot_number;
     Command command;

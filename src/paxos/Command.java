@@ -35,14 +35,15 @@ public class Command {
     }
 
     public String toString(){
-		return "paxos.Command(" + client + ", " + req_id + ", " + op + ")";
+		return "paxos.Command(" + client + "," + req_id + "," + op + ")";
 	}
 }
 
 enum Commands {
     KILL("KILL <pid> // Kills the pid thread"),
     SHOW("Shows all live pids"),
-    HELP("Shows this stuff again");
+    HELP("Shows this stuff again"),
+    TX("Make a Transaction");
 
     private String description;
     Commands(String description){

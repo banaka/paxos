@@ -14,7 +14,7 @@ public abstract class Process extends Thread {
     Properties prop = new Properties();
     int delay;
     public boolean assign_stop_request = false;
-    public Level messageLevel;
+    public Level messageLevel = Level.FINER;
     String my_name = "";
 
     public boolean stop_request() {

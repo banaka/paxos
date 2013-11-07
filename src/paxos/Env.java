@@ -7,10 +7,12 @@ import java.util.*;
 
 public class Env {
     Map<ProcessId, Process> procs = new HashMap<ProcessId, Process>();
-    static String TX_MSG_SEPARATOR = "\\$";
-
+    static final String TX_MSG_SEPARATOR = "\\$";
+    static final String CLIENT_MSG_SEPARATOR = ":";
+    ProcessId pid = new ProcessId("Main");
     public static List<Replica> replicas;
     public static List<Leader> leaders;
+    Map<String, Client> clnts;
 
     synchronized void sendMessage(ProcessId dst, PaxosMessage msg) {
         Process p = procs.get(dst);
@@ -35,11 +37,13 @@ public class Env {
             int nAcceptors = Integer.parseInt(prop.getProperty("nAcceptors"));
             int nReplicas = Integer.parseInt(prop.getProperty("nReplicas"));
             int nLeaders = Integer.parseInt(prop.getProperty("nLeaders"));
-            int nRequests = Integer.parseInt(prop.getProperty("nRequests"));
+//            int nRequests = Integer.parseInt(prop.getProperty("nRequests"));
 
             ProcessId[] accepts = new ProcessId[nAcceptors];
             ProcessId[] repls = new ProcessId[nReplicas];
             ProcessId[] leads = new ProcessId[nLeaders];
+
+            clnts = new HashMap<String, Client>();
 
             for (int i = 0; i < nAcceptors; i++) {
                 accepts[i] = new ProcessId("acceptor" + i);
@@ -58,14 +62,14 @@ public class Env {
                 leaders.add(new Leader(this, leads[i], accepts, repls));
             }
 
-            for (int i = 1; i <= nRequests; i++) {
-                ProcessId pid = new ProcessId("client" + i);
-                String[] opTxt = prop.getProperty("Operation" + i).split(TX_MSG_SEPARATOR, 2);
-                Operation op = new Operation(opTxt[0], opTxt[1]);
-                for (int r = 0; r < nReplicas; r++) {
-                    sendMessage(repls[r], new RequestMessage(pid, new Command(pid, 0, op)));
-                }
-            }
+//            for (int i = 1; i <= nRequests; i++) {
+//                ProcessId pid = new ProcessId("client" + i);
+//                String[] opTxt = prop.getProperty("Operation" + i).split(TX_MSG_SEPARATOR, 2);
+//                Operation op = new Operation(opTxt[0], opTxt[1]);
+//                for (int r = 0; r < nReplicas; r++) {
+//                    sendMessage(repls[r], new RequestMessage(pid, new Command(pid, 0, op)));
+//                }
+//            }
         } catch (Exception e) {
             System.out.println("Error while reading the properties file for the Operation");
         }
@@ -76,7 +80,7 @@ public class Env {
         e.run(args);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
-            System.out.print("$ Enter new Command KILL|SHOW|HELP > ");
+            System.out.print("$ Enter new Command KILL|SHOW|TX|HELP > ");
             String input = br.readLine();
             e.operateOn(input);
         }
@@ -89,7 +93,8 @@ public class Env {
         try {
             c = Commands.valueOf(inputCommand);
         } catch (IllegalArgumentException e) {
-            System.err.println("Unknown Command!");
+            if(!("".equals(inputCommand)))
+                System.err.println("Unknown Command! "+inputCommand);
             return;
         }
         switch (c) {
@@ -115,6 +120,16 @@ public class Env {
                 for (Commands cc : Commands.values()) {
                     System.out.println(cc + " -- " + cc.getDescription());
                 }
+                break;
+            case TX:
+                String clientArr[] = arr[1].split(CLIENT_MSG_SEPARATOR);
+                String clientName = "client"+clientArr[0];
+                if(!(clnts.containsKey(clientName)))
+                    clnts.put(clientName, new Client(this, new ProcessId(clientName)));
+                Client client = clnts.get(clientName);
+                String[] opTxt = clientArr[1].split(TX_MSG_SEPARATOR, 2);
+                Operation op = new Operation(opTxt[0], opTxt[1]);
+                sendMessage(client.me, new TxMessage(pid, new Command(pid, 0, op)));
                 break;
             default:
                 System.err.println("UnImplemented Command!");
