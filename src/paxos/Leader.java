@@ -8,6 +8,7 @@ public class Leader extends Process {
     ProcessId[] replicas;
     BallotNumber ballot_number;
     boolean active = false;
+    Heartbeat heartbeat;
     Map<Integer, Command> proposals = new HashMap<Integer, Command>();
 
     public Leader(Env env, ProcessId me, ProcessId[] acceptors,
@@ -19,7 +20,7 @@ public class Leader extends Process {
         this.replicas = replicas;
         this.setLogger();
         loadProp();
-        new Heartbeat(env, new ProcessId("heartbeat:" + me + ":"),me);
+        heartbeat = new Heartbeat(env, new ProcessId("heartbeat:" + me + ":"),me);
         env.addProc(me, this);
     }
 

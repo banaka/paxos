@@ -20,21 +20,21 @@ public class Heartbeat extends Process {
 
     public void body() {
         while (true) {
-            for (Leader i : env.leaders) {
-                sendMessage(i.me, new PingMessage(me));
+            try {
+                Thread.sleep(50);
+            } catch (Exception e) {
+                logger.log(Level.SEVERE, e.getMessage());
 
+            }
+            for (Leader i : env.leaders) {
+                if(i.me != this.forLeader)
+                    sendMessage(i.heartbeat.me, new PingMessage(me));
             }
             PaxosMessage msg = getNextMessage();
             if (msg instanceof PingMessage) {
                 PingMessage ping = (PingMessage) msg;
                 upSet.add(ping.src);
                 sendMessage(ping.src, new PingMessage(me));
-            }
-            try {
-                Thread.sleep(10);
-            } catch (Exception e) {
-                logger.log(Level.SEVERE, e.getMessage());
-
             }
         }
 

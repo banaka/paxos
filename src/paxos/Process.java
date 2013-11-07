@@ -16,7 +16,7 @@ public abstract class Process extends Thread {
     public boolean assign_stop_request = false;
     public Level messageLevel;
 
-    public boolean stop_request(){
+    public boolean stop_request() {
         try {
             Thread.sleep(this.delay);
         } catch (InterruptedException e) {
@@ -24,6 +24,7 @@ public abstract class Process extends Thread {
         }
         return assign_stop_request;
     }
+
     abstract void body();
 
     public void run() {
