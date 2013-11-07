@@ -1,12 +1,14 @@
 package paxos;
 
 import java.util.HashSet;
+import java.util.Properties;
 import java.util.Set;
 import java.util.logging.Level;
 
 public class Heartbeat extends Process {
     ProcessId forLeader;
-    Set<ProcessId> upSet ;
+    Set<ProcessId> upSet;
+    int pingDelay;
 
     public Heartbeat(Env env, ProcessId me, ProcessId leader) {
         this.env = env;
@@ -18,16 +20,26 @@ public class Heartbeat extends Process {
         env.addProc(me, this);
     }
 
+    Properties loadProp() {
+        super.loadProp();
+        try {
+            pingDelay = Integer.parseInt(prop.getProperty("heartBeatDelay"));
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, e.getMessage());
+        }
+        return prop;
+    }
+
     public void body() {
         while (true) {
             try {
-                Thread.sleep(50);
+                Thread.sleep(this.pingDelay);
             } catch (Exception e) {
                 logger.log(Level.SEVERE, e.getMessage());
 
             }
             for (Leader i : env.leaders) {
-                if(i.me != this.forLeader)
+                if (i.me != this.forLeader)
                     sendMessage(i.heartbeat.me, new PingMessage(me));
             }
             PaxosMessage msg = getNextMessage();
