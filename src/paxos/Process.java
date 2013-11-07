@@ -15,6 +15,7 @@ public abstract class Process extends Thread {
     int delay;
     public boolean assign_stop_request = false;
     public Level messageLevel;
+    String my_name = "";
 
     public boolean stop_request() {
         try {
@@ -64,17 +65,22 @@ public abstract class Process extends Thread {
             e.printStackTrace();
         }
 
-        this.logger.log(messageLevel, "Sent Msg" + msg + " to " + dst + " from " + me);
+        this.logger.log(messageLevel,my_name+ "SENT >>" + dst + ">> : " + msg);
         env.sendMessage(dst, msg);
     }
 
     void deliver(PaxosMessage msg) {
         inbox.enqueue(msg);
-        this.logger.log(messageLevel, me + " Got msg " + msg + " from " + msg.src);
+        this.logger.log(messageLevel,my_name+ "RCVD <<" + msg.src_name + "<< : " + msg);
     }
 
     public void setLogger() {
-        logger = Logger.getLogger("MyLog");
+        String loggerName = me.toString();
+        if(this instanceof Scout)
+            loggerName = ((Scout)this).leader.toString();
+        else if(this instanceof Commander)
+            loggerName = ((Commander)this).leader.toString();
+        logger = Logger.getLogger(loggerName);
         logger.setUseParentHandlers(false);
         logger.setLevel(Level.FINER);
         Handler consoleHandler = null;
@@ -90,18 +96,19 @@ public abstract class Process extends Thread {
             logger.addHandler(consoleHandler);
         }
         consoleHandler.setLevel(Level.CONFIG);
+        if(!(this instanceof Scout || this instanceof Commander)) {
+            try {
+                FileHandler fileHandler = new FileHandler("log/Log" + loggerName + ".log", true);
+                fileHandler.setLevel(Level.FINER);
+                logger.addHandler(fileHandler);
+                SimpleFormatter formatter = new SimpleFormatter();
+                fileHandler.setFormatter(formatter);
 
-        try {
-            FileHandler fileHandler = new FileHandler("log/Log" + me + ".log", true);
-            fileHandler.setLevel(Level.FINER);
-            logger.addHandler(fileHandler);
-            SimpleFormatter formatter = new SimpleFormatter();
-            fileHandler.setFormatter(formatter);
-
-        } catch (SecurityException e) {
-            logger.log(Level.SEVERE, e.getMessage());
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, e.getMessage());
+            } catch (SecurityException e) {
+                logger.log(Level.SEVERE, e.getMessage());
+            } catch (IOException e) {
+                logger.log(Level.SEVERE, e.getMessage());
+            }
         }
     }
 

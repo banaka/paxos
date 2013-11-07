@@ -17,6 +17,7 @@ public class Scout extends Process {
 		this.acceptors = acceptors;
 		this.leader = leader;
 		this.ballot_number = ballot_number;
+        this.my_name = "[["+me.toString()+"]]";
         setLogger();
         loadProp();
 		env.addProc(me, this);

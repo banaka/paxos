@@ -59,7 +59,7 @@ public class Replica extends Process {
                 return;
             }
         }
-        logger.log(messageLevel, "" + me + ": perform " + c + " for slot " + slot_num);
+        logger.log(messageLevel, "PERFORM " + c + " for slot " + slot_num);
         String[] operationArgs = c.op.operationArgs.split(Env.TX_MSG_SEPARATOR);
         try {
             Account account = accountList.get(Integer.parseInt(operationArgs[0]));
@@ -77,7 +77,7 @@ public class Replica extends Process {
                 case Transfer:
                     Account toAccount = accountList.get(Integer.parseInt(operationArgs[2]));
                     account.transfer(toAccount, amt);
-                    output = account.toString() + toAccount.toString();
+                    output = account.toString() + "\n"+ toAccount.toString();
                     break;
                 case Withdraw:
                     account.debit(amt);
@@ -87,7 +87,7 @@ public class Replica extends Process {
                     output = "INVALID OPERATION TYPE";
                     break;
             }
-            logger.log(messageLevel, "" + me + ": perform " + c + " resulted in " + output);
+            logger.log(messageLevel, "PERFORM " + c + " OUTPUT :" + output);
             System.out.println(output);
             //TODO send msg to client with output
         } catch (Exception e) {
@@ -111,12 +111,12 @@ public class Replica extends Process {
                 decisions.put(m.slot_number, m.command);
                 while (!stop_request()) {
                     Command c = decisions.get(slot_num);
-                    //logger.log(messageLevel,me + " dc: "+decisions+" "+m+" "+c);
+//                    System.out.println(me + " dc: "+decisions+" "+m+" "+c);
                     if (c == null) {
                         break;
                     }
                     Command c2 = proposals.get(slot_num);
-                    //logger.log(messageLevel,me + " pc2: "+proposals+" "+c2);
+//                    System.out.println(me + " pc2: "+proposals+" "+c2);
                     if (c2 != null && !c2.equals(c)) {
                         propose(c2);
                     }

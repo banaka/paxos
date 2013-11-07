@@ -4,6 +4,7 @@ import java.util.*;
 
 public class PaxosMessage {
     ProcessId src;
+    String src_name;
 }
 
 class PingMessage extends PaxosMessage {
@@ -34,6 +35,7 @@ class P1aMessage extends PaxosMessage {
 
     P1aMessage(ProcessId src, BallotNumber ballot_number) {
         this.src = src;
+        this.src_name = src.name;
         this.ballot_number = ballot_number;
     }
 
@@ -45,6 +47,7 @@ class P1bMessage extends PaxosMessage {
 
     P1bMessage(ProcessId src, BallotNumber ballot_number, Set<PValue> accepted) {
         this.src = src;
+        this.src_name = src.name;
         this.ballot_number = ballot_number;
         this.accepted = accepted;
     }
@@ -65,6 +68,7 @@ class P2aMessage extends PaxosMessage {
 
     P2aMessage(ProcessId src, BallotNumber ballot_number, int slot_number, Command command) {
         this.src = src;
+        this.src_name = src.name;
         this.ballot_number = ballot_number;
         this.slot_number = slot_number;
         this.command = command;
@@ -86,6 +90,7 @@ class P2bMessage extends PaxosMessage {
 
     P2bMessage(ProcessId src, BallotNumber ballot_number, int slot_number) {
         this.src = src;
+        this.src_name = src.name;
         this.ballot_number = ballot_number;
         this.slot_number = slot_number;
     }
@@ -121,6 +126,7 @@ class AdoptedMessage extends PaxosMessage {
 
     AdoptedMessage(ProcessId src, BallotNumber ballot_number, Set<PValue> accepted) {
         this.src = src;
+        this.src_name = src.name;
         this.ballot_number = ballot_number;
         this.accepted = accepted;
     }
@@ -141,6 +147,7 @@ class DecisionMessage extends PaxosMessage {
 
     public DecisionMessage(ProcessId src, int slot_number, Command command) {
         this.src = src;
+        this.src_name = src.name;
         this.slot_number = slot_number;
         this.command = command;
     }
@@ -160,6 +167,7 @@ class RequestMessage extends PaxosMessage {
 
     public RequestMessage(ProcessId src, Command command) {
         this.src = src;
+        this.src_name = src.name;
         this.command = command;
     }
 
@@ -177,6 +185,7 @@ class ProposeMessage extends PaxosMessage {
 
     public ProposeMessage(ProcessId src, int slot_number, Command command) {
         this.src = src;
+        this.src_name = src.name;
         this.slot_number = slot_number;
         this.command = command;
     }
