@@ -181,11 +181,15 @@ class RequestMessage extends PaxosMessage {
 
 class TxMessage extends PaxosMessage {
     Command command;
+    public ProcessId delayReplica;
+    public int delayReplicaTime;
 
-    public TxMessage(ProcessId src, Command command) {
+    public TxMessage(ProcessId src, Command command, ProcessId pid, int delay) {
         this.src = src;
         this.src_name = src.name;
         this.command = command;
+        this.delayReplica = pid;
+        this.delayReplicaTime = delay;
     }
 
     @Override

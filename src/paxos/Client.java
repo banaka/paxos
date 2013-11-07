@@ -3,10 +3,29 @@ package paxos;
 import java.util.ArrayList;
 import java.util.List;
 
+class Messenger extends Thread {
+    PaxosMessage message;
+    Process dest;
+    Client src;
+
+    Messenger(PaxosMessage m, Process d, Client s){
+        this.message = m;
+        this.dest = d;
+        this.src = s;
+    }
+
+    public void run() {
+        if(((TxMessage)message).delayReplica == null || dest.me.equals(((TxMessage)message).delayReplica)) {
+            try {
+                Thread.sleep(((TxMessage)message).delayReplicaTime);
+            } catch (InterruptedException e) {}
+        }
+        src.sendMessage(dest.me, new RequestMessage(src.me, new Command(src.me, src.currentMessage, ((TxMessage) message).command.op)));
+    }
+}
 public class Client extends Process {
     List<PaxosMessage> queue = new ArrayList<PaxosMessage>();
     int currentMessage = 0;
-    int currentRcvdMessage = 0;
 
     public Client(Env env, ProcessId me){
         this.env = env;
@@ -19,7 +38,7 @@ public class Client extends Process {
         if(currentMessage < (queue.size()))  {
             PaxosMessage msg = queue.get(currentMessage);
             for (Replica r: env.replicas) {
-                sendMessage(r.me, new RequestMessage(me, new Command(me, currentMessage, ((TxMessage) msg).command.op)));
+                new Messenger(msg,r,this).start();
             }
         }
     }
@@ -30,7 +49,6 @@ public class Client extends Process {
         while (!stop_request()) {
             PaxosMessage msg = getNextMessage();
 
-            //Add to Queue
             if(msg instanceof TxMessage){
                 queue.add(msg);
                 checkIfMessageCanBeSent();

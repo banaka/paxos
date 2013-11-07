@@ -9,6 +9,7 @@ public class Env {
     Map<ProcessId, Process> procs = new HashMap<ProcessId, Process>();
     static final String TX_MSG_SEPARATOR = "\\$";
     static final String CLIENT_MSG_SEPARATOR = ":";
+    static final String BODY_MSG_SEPERATOR = " ";
     ProcessId pid = new ProcessId("Main");
     public static List<Replica> replicas;
     public static List<Leader> leaders;
@@ -87,7 +88,7 @@ public class Env {
     }
 
     private void operateOn(String input) {
-        String[] arr = input.split(" ");
+        String[] arr = input.split(BODY_MSG_SEPERATOR,2);
         String inputCommand = arr[0];
         Commands c = null;
         try {
@@ -122,14 +123,25 @@ public class Env {
                 }
                 break;
             case TX:
-                String clientArr[] = arr[1].split(CLIENT_MSG_SEPARATOR);
+                String[] bodySplit = arr[1].split(BODY_MSG_SEPERATOR,2); //[0]=1:Withdraw$0$20 [1]=replica1:3000
+                ProcessId delayReplica=null;
+                int delayReplicaTime=0;
+                if(bodySplit.length > 1){
+                    String[] optionalSplit = bodySplit[1].split(CLIENT_MSG_SEPARATOR);
+                    for(Replica r: replicas){
+                        if(r.me.toString().equals(optionalSplit[0]))
+                            delayReplica = r.me;
+                    }
+                    delayReplicaTime = Integer.parseInt(optionalSplit[1]);
+                }
+                String clientArr[] = bodySplit[0].split(CLIENT_MSG_SEPARATOR);
                 String clientName = "client"+clientArr[0];
                 if(!(clnts.containsKey(clientName)))
                     clnts.put(clientName, new Client(this, new ProcessId(clientName)));
                 Client client = clnts.get(clientName);
                 String[] opTxt = clientArr[1].split(TX_MSG_SEPARATOR, 2);
                 Operation op = new Operation(opTxt[0], opTxt[1]);
-                sendMessage(client.me, new TxMessage(pid, new Command(pid, 0, op)));
+                sendMessage(client.me, new TxMessage(pid, new Command(pid, 0, op),delayReplica,delayReplicaTime));
                 break;
             default:
                 System.err.println("UnImplemented Command!");
