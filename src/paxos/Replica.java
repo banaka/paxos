@@ -33,18 +33,22 @@ public class Replica extends Process {
     }
 
     void propose(Command c) {
+        //Bug in the code itself...
         if (!decisions.containsValue(c)) {
             for (int s = 1; ; s++) {
                 if (!proposals.containsKey(s) && !decisions.containsKey(s)) {
                     proposals.put(s, c);
                     for (ProcessId ldr : leaders) {
                         sendMessage(ldr, new ProposeMessage(me, s, c));
+                        logger.log(messageLevel, "" + me + ": propose " + c + " for slot "+ s +
+                                " decisons exists "+decisions.containsKey(s));
+                    }
                     }
                     break;
                 }
             }
         }
-    }
+    //}
 
     void perform(Command c) {
         //TODO:CHECK WHAT IS HAPPENING HERE.. SAME CMD SHOULD NOT BE BE EXECUTED MULTIPLE TIMES..
@@ -54,7 +58,7 @@ public class Replica extends Process {
                 return;
             }
         }
-        logger.log(messageLevel, "" + me + ": perform " + c);
+        logger.log(messageLevel, "" + me + ": perform " + c+" for slot "+ slot_num);
         String[] operationArgs = c.op.operationArgs.split(Env.TX_MSG_SEPARATOR);
         try {
             Account account = accountList.get(Integer.parseInt(operationArgs[0]));

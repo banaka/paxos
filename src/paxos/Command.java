@@ -11,12 +11,30 @@ public class Command {
 		this.op = op;
 	}
 
-	public boolean equals(Object o) {
-		Command other = (Command) o;
-		return client == other.client && req_id == other.req_id && op.equals(other.op);
-	}
+    @Override
+    public int hashCode() {
+        int result = client.hashCode();
+        result = 31 * result + req_id;
+        result = 31 * result + op.hashCode();
+        return result;
+    }
 
-	public String toString(){
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Command)) return false;
+
+        Command command = (Command) o;
+
+        if (req_id != command.req_id) return false;
+        if (!client.equals(command.client)) return false;
+        if (!op.equals(command.op)) return false;
+
+        return true;
+    }
+
+    public String toString(){
 		return "paxos.Command(" + client + ", " + req_id + ", " + op + ")";
 	}
 }

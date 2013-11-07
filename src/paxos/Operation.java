@@ -1,7 +1,7 @@
 package paxos;
 
 public class Operation {
-    OpertationType opType;
+    OperationType opType;
     String operationArgs;
 
     @Override
@@ -28,19 +28,18 @@ public class Operation {
     public String toString() {
         return "Operation{" +
                 "opType=" + opType +
-
                 ", op='" + operationArgs + '\'' +
                 '}';
     }
 
     Operation(String opType, String op) {
         this.operationArgs = op;
-        this.opType = OpertationType.valueOf(opType);
+        this.opType = OperationType.valueOf(opType);
     }
 
 
 
-    public enum OpertationType {
+    public enum OperationType {
         Deposit("Deposit"),
         Withdraw("Withdraw"),
         Transfer("Transfer"),
@@ -48,7 +47,7 @@ public class Operation {
 
         public String opType;
 
-        OpertationType(String opType) {
+        OperationType(String opType) {
             this.opType = opType;
         }
     }

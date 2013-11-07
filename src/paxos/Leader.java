@@ -39,6 +39,10 @@ public class Leader extends Process {
                                 new ProcessId("commander:" + me + ":" + ballot_number + ":" + m.slot_number),
                                 me, acceptors, replicas, ballot_number, m.slot_number, m.command);
                     }
+                } else {
+                    //TODO : WHat should happen here ? ideally replica should not be sending any msg with slot
+                    // no already propsoed for
+                    logger.log(messageLevel, "This Slot is already occupied, therefore NO ACTION");
                 }
             } else if (msg instanceof AdoptedMessage) {
                 AdoptedMessage m = (AdoptedMessage) msg;
@@ -63,6 +67,7 @@ public class Leader extends Process {
             } else if (msg instanceof PreemptedMessage) {
                 PreemptedMessage m = (PreemptedMessage) msg;
                 if (ballot_number.compareTo(m.ballot_number) < 0) {
+                    //TODO : Add the failure detection
                     ballot_number = new BallotNumber(m.ballot_number.round + 1, me);
                     new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
                             me, acceptors, ballot_number);
