@@ -27,7 +27,7 @@ public class Leader extends Process {
 
         new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
                 me, acceptors, ballot_number);
-        while (!stop_request) {
+        while (!stop_request()) {
             PaxosMessage msg = getNextMessage();
 
             if (msg instanceof ProposeMessage) {

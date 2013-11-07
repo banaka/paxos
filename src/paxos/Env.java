@@ -92,7 +92,7 @@ public class Env {
                 String pidToKill = arr[1];
                 for(ProcessId p : procs.keySet()){
                     if(p.toString().equals(pidToKill)){
-                        procs.get(p).stop_request = true;
+                        procs.get(p).assign_stop_request = true;
                         removeProc(p);
                         System.out.println("Killed "+pidToKill);
                         return;

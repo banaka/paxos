@@ -13,9 +13,17 @@ public abstract class Process extends Thread {
     Env env;
     Properties prop = new Properties();
     int delay;
-    public boolean stop_request = false;
+    public boolean assign_stop_request = false;
     public Level messageLevel;
 
+    public boolean stop_request(){
+        try {
+            Thread.sleep(this.delay);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return assign_stop_request;
+    }
     abstract void body();
 
     public void run() {

@@ -33,6 +33,8 @@ public class Replica extends Process {
     }
 
     void propose(Command c) {
+        System.out.println(me+" d: "+decisions+" "+c);
+        System.out.println(me+" p: "+proposals+" "+c);
         if (!decisions.containsValue(c)) {
             for (int s = 1; ; s++) {
                 if (!proposals.containsKey(s) && !decisions.containsKey(s)) {
@@ -98,7 +100,7 @@ public class Replica extends Process {
 
     public void body() {
         logger.log(messageLevel, "Here I am: " + me);
-        while (!stop_request) {
+        while (!stop_request()) {
             PaxosMessage msg = getNextMessage();
 
             if (msg instanceof RequestMessage) {
@@ -107,12 +109,14 @@ public class Replica extends Process {
             } else if (msg instanceof DecisionMessage) {
                 DecisionMessage m = (DecisionMessage) msg;
                 decisions.put(m.slot_number, m.command);
-                while (!stop_request) {
+                while (!stop_request()) {
                     Command c = decisions.get(slot_num);
+                    System.out.println(me + " dc: "+decisions+" "+m+" "+c);
                     if (c == null) {
                         break;
                     }
                     Command c2 = proposals.get(slot_num);
+                    System.out.println(me + " pc2: "+proposals+" "+c2);
                     if (c2 != null && !c2.equals(c)) {
                         propose(c2);
                     }
