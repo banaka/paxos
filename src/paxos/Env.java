@@ -101,11 +101,22 @@ public class Env {
         switch (c) {
             case KILL:
                 String pidToKill = arr[1];
+                String[] pidOptions = pidToKill.split(BODY_MSG_SEPERATOR,2);
                 for(ProcessId p : procs.keySet()){
-                    if(p.toString().equals(pidToKill)){
-                        procs.get(p).assign_stop_request = true;
-                        removeProc(p);
-                        System.out.println("Killed " + pidToKill);
+                    if(p.toString().equals(pidOptions[0])){
+                        if(pidOptions.length == 1) {
+                            procs.get(p).assign_stop_request = true;
+                        } else {
+                            String[] pidOptionSplit = pidOptions[1].split(CLIENT_MSG_SEPARATOR,2);
+                            ProcessId pidToCount = null;
+                            for(ProcessId pp : procs.keySet())
+                                if(pp.toString().equals(pidOptionSplit[1]))
+                                    pidToCount = pp;
+                            procs.get(p).scheduledToCountSend = ("SEND").equals(pidOptionSplit[0]);
+                            procs.get(p).countMessagesOf = pidToCount;
+                            procs.get(p).messagesToCount = Integer.parseInt(pidOptionSplit[2]);
+                        }
+                        System.out.println("Scheduled Kill " + pidToKill);
                         return;
                     }
                 }
@@ -121,6 +132,29 @@ public class Env {
                 for (Commands cc : Commands.values()) {
                     System.out.println(cc + " -- " + cc.getDescription());
                 }
+                break;
+            case DELAY:
+                String[] pidDelay = arr[1].split(BODY_MSG_SEPERATOR, 2);
+                for (ProcessId p : procs.keySet()) {
+                    if(p.toString().equals(pidDelay[0])) {
+                        procs.get(p).delay = Integer.parseInt(pidDelay[1]);
+                        System.out.println("Delay of "+pid+" changed to "+pidDelay[1]);
+                    }
+                }
+                break;
+            case L2L:
+                String[] l2lTimeout = arr[1].split(BODY_MSG_SEPERATOR, 2);
+                for (Leader l: leaders){
+                    if(l.me.toString().equals(l2lTimeout[0])) {
+                        l.failureDetectionTimeout = Integer.parseInt(l2lTimeout[1]);
+                        System.out.println("FD Timeout of "+l.me+" changed to "+l2lTimeout[1]);
+                    }
+                }
+                break;
+            case FD:
+                for (Leader l: leaders)
+                    l.failureDetection = Boolean.parseBoolean(arr[1]);
+                System.out.println("Failure Detection made to "+ arr[1]);
                 break;
             case TX:
                 String[] bodySplit = arr[1].split(BODY_MSG_SEPERATOR,2); //[0]=1:Withdraw$0$20 [1]=replica1:3000

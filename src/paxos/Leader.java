@@ -13,6 +13,8 @@ public class Leader extends Process {
     boolean failureDetection = false;
     ProcessId activeLeader;
     Heartbeat heartbeat;
+    int failureDetectionTimeout;
+    boolean failureDetection;
     Map<Integer, Command> proposals = new HashMap<Integer, Command>();
 
     public Leader(Env env, ProcessId me, ProcessId[] acceptors,

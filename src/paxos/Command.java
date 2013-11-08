@@ -43,7 +43,10 @@ enum Commands {
     KILL("KILL <pid> // Kills the pid thread"),
     SHOW("Shows all live pids"),
     HELP("Shows this stuff again"),
-    TX("Make a Transaction");
+    TX("TX 1:Deposit$0$21 replica0:3000//Make a Transaction"),
+    DELAY("DELAY <pid> <time>"),
+    L2L("L2L <pid> <time> //Leader ping timeout"),
+    FD("FD T/F");
 
     private String description;
     Commands(String description){

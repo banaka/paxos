@@ -2,6 +2,8 @@ package paxos;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.logging.*;
 
@@ -13,9 +15,16 @@ public abstract class Process extends Thread {
     Env env;
     Properties prop = new Properties();
     int delay;
+
     public boolean assign_stop_request = false;
+    public boolean scheduledToCountSend = true;
+    public int messagesToCount = 0;
+    public ProcessId countMessagesOf;
+
     public Level messageLevel = Level.FINER;
     String my_name = "";
+    Map<String,Integer> sentCount = new HashMap<String, Integer>();
+    Map<String,Integer> rcvdCount = new HashMap<String, Integer>();
 
     public boolean stop_request() {
         try {
@@ -23,6 +32,8 @@ public abstract class Process extends Thread {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        if(assign_stop_request)
+            env.removeProc(me);
         return assign_stop_request;
     }
 
@@ -59,19 +70,56 @@ public abstract class Process extends Thread {
     }
 
     void sendMessage(ProcessId dst, PaxosMessage msg) {
-        try {
-            Thread.sleep(this.delay);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        this.logger.log(messageLevel,my_name+ "SENT >>" + dst + ">> : " + msg);
+        incrementSendMessages(dst);
+        this.logger.log(messageLevel, my_name + "SENT >>" + dst + ">> : " + msg);
         env.sendMessage(dst, msg);
     }
 
+    private void incrementSendMessages(ProcessId dst) {
+        if(sentCount.get(dst.toString()) == null)
+            sentCount.put(dst.toString(),1);
+        else
+            sentCount.put(dst.toString(),sentCount.get(dst)+1);
+        if(messagesToCount > 0 && scheduledToCountSend == true){
+            if((countMessagesOf == null && getTotalSentMessages() == messagesToCount) ||
+                (countMessagesOf != null && sentCount.get(countMessagesOf) == messagesToCount)){
+                    assign_stop_request = true;
+                    this.logger.log(Level.SEVERE,me +" is going to get killed.");
+            }
+        }
+    }
+
     void deliver(PaxosMessage msg) {
+        incrementRcvdMessages(msg.src_name);
         inbox.enqueue(msg);
         this.logger.log(messageLevel,my_name+ "RCVD <<" + msg.src_name + "<< : " + msg);
+    }
+
+    public Integer getTotalSentMessages(){
+        int total = 0;
+        for(String s: sentCount.keySet())
+            total += sentCount.get(s);
+        return total;
+    }
+
+    public Integer getTotalRcvdMessages(){
+        int total = 0;
+        for(String s: rcvdCount.keySet())
+            total += rcvdCount.get(s);
+        return total;
+    }
+    private void incrementRcvdMessages(String src_name) {
+        if(rcvdCount.get(src_name) == null)
+            rcvdCount.put(src_name, 1);
+        else
+            rcvdCount.put(src_name, rcvdCount.get(src_name));
+        if(messagesToCount > 0 && scheduledToCountSend == false){
+            if((countMessagesOf == null && getTotalRcvdMessages() == messagesToCount) ||
+                (countMessagesOf != null && rcvdCount.get(countMessagesOf) == messagesToCount)){
+                assign_stop_request = true;
+                this.logger.log(Level.SEVERE,me +" is going to get killed.");
+            }
+        }
     }
 
     public void setLogger() {
