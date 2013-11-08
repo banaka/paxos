@@ -27,13 +27,13 @@ public class Scout extends Process {
 		P1aMessage m1 = new P1aMessage(me, ballot_number);
 		Set<ProcessId> waitfor = new HashSet<ProcessId>();
 		for (ProcessId a: acceptors) {
-            if(stop_request()) break;
+            if(stop_request(me)) break;
             sendMessage(a, m1);
 			waitfor.add(a);
 		}
 
 		Set<PValue> pvalues = new HashSet<PValue>();
-		while (2 * waitfor.size() >= acceptors.length && !leader.stop_request()) {
+		while (2 * waitfor.size() >= acceptors.length && !leader.stop_request(me)) {
 			PaxosMessage msg = getNextMessage();
 
 			if (msg instanceof P1bMessage) {
@@ -54,7 +54,7 @@ public class Scout extends Process {
 			}
 		}
 
-        if(!stop_request())
+        if(!stop_request(me))
 		    sendMessage(leader.me, new AdoptedMessage(me, ballot_number, pvalues));
 	}
 }

@@ -26,17 +26,21 @@ public abstract class Process extends Thread {
     Map<String,Integer> sentCount = new HashMap<String, Integer>();
     Map<String,Integer> rcvdCount = new HashMap<String, Integer>();
 
-    public boolean stop_request() {
+    public boolean stop_request(ProcessId whoGotKilled){
         try {
             Thread.sleep(this.delay);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         if(assign_stop_request) {
-            env.removeProc(me);
-            logger.log(Level.SEVERE, me+" is getting killed. Bbye.");
+            env.removeProc(whoGotKilled);
+            logger.log(Level.SEVERE, whoGotKilled+" is getting killed. Bbye.");
         }
         return assign_stop_request;
+    }
+
+    public boolean stop_request() {
+        return stop_request(me);
     }
 
     abstract void body();
@@ -127,9 +131,9 @@ public abstract class Process extends Thread {
     public void setLogger() {
         String loggerName = me.toString();
         if(this instanceof Scout)
-            loggerName = ((Scout)this).leader.toString();
+            loggerName = ((Scout)this).leader.me.toString();
         else if(this instanceof Commander)
-            loggerName = ((Commander)this).leader.toString();
+            loggerName = ((Commander)this).leader.me.toString();
         logger = Logger.getLogger(loggerName);
         logger.setUseParentHandlers(false);
         logger.setLevel(Level.FINER);

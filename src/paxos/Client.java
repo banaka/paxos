@@ -54,7 +54,7 @@ public class Client extends Process {
         this.me = me;
         setLogger();
         loadProp();
-        clientTimeout = Integer.parseInt(prop.getProperty("clientTimeout", "0"));
+        clientTimeout = Integer.parseInt(prop.getProperty("clientTimeout", "10000"));
         env.addProc(me, this);
     }
 
