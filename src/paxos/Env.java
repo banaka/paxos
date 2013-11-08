@@ -135,11 +135,18 @@ public class Env {
                 break;
             case DELAY:
                 String[] pidDelay = arr[1].split(BODY_MSG_SEPERATOR, 2);
+                boolean changed= false;
                 for (ProcessId p : procs.keySet()) {
                     if(p.toString().equals(pidDelay[0])) {
                         procs.get(p).delay = Integer.parseInt(pidDelay[1]);
+                        changed = true;
                         System.out.println("Delay of "+pid+" changed to "+pidDelay[1]);
                     }
+                }
+                if(changed == false) {
+                    for (ProcessId p : procs.keySet())
+                        procs.get(p).delay = Integer.parseInt(pidDelay[1]);
+                    System.out.println("Delay of all changed to "+pidDelay[1]);
                 }
                 break;
             case L2L:

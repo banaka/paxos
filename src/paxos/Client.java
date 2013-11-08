@@ -3,6 +3,27 @@ package paxos;
 import java.util.ArrayList;
 import java.util.List;
 
+class TimeoutClock extends Thread {
+    int oldMessageCount;
+    int timeout;
+    Client client;
+    TimeoutClock(int oldMessageCount, int timeout, Client client){
+        this.oldMessageCount = oldMessageCount;
+        this.timeout = timeout;
+        this.client = client;
+    }
+    public void run() {
+        try {
+            Thread.sleep(timeout);
+        } catch (InterruptedException e) {
+        }
+        if(client.currentMessage == oldMessageCount) {
+            System.err.println("Client Timeout! Resending request to Replicas...");
+            client.checkIfMessageCanBeSent();
+        }
+    }
+}
+
 class Messenger extends Thread {
     PaxosMessage message;
     Process dest;
@@ -26,17 +47,21 @@ class Messenger extends Thread {
 public class Client extends Process {
     List<PaxosMessage> queue = new ArrayList<PaxosMessage>();
     int currentMessage = 0;
+    int clientTimeout;
 
     public Client(Env env, ProcessId me){
         this.env = env;
         this.me = me;
         setLogger();
+        loadProp();
+        clientTimeout = Integer.parseInt(prop.getProperty("clientTimeout", "0"));
         env.addProc(me, this);
     }
 
     public void checkIfMessageCanBeSent(){
         if(currentMessage < (queue.size()))  {
             PaxosMessage msg = queue.get(currentMessage);
+            new TimeoutClock(currentMessage, clientTimeout, this).start();
             for (Replica r: env.replicas) {
                 new Messenger(msg,r,this).start();
             }
