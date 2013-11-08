@@ -3,13 +3,13 @@ package paxos;
 import java.util.*;
 
 public class Commander extends Process {
-    ProcessId leader;
+    Process leader;
     ProcessId[] acceptors, replicas;
     BallotNumber ballot_number;
     int slot_number;
     Command command;
 
-    public Commander(Env env, ProcessId me, ProcessId leader, ProcessId[] acceptors,
+    public Commander(Env env, ProcessId me, Process leader, ProcessId[] acceptors,
                      ProcessId[] replicas, BallotNumber ballot_number, int slot_number, Command command) {
         this.env = env;
         this.me = me;
@@ -34,7 +34,7 @@ public class Commander extends Process {
             waitfor.add(a);
         }
 
-        while (2 * waitfor.size() >= acceptors.length && !stop_request()) {
+        while (2 * waitfor.size() >= acceptors.length && !leader.stop_request()) {
             PaxosMessage msg = getNextMessage();
 
             if (msg instanceof P2bMessage) {
@@ -45,7 +45,7 @@ public class Commander extends Process {
                         waitfor.remove(m.src);
                     }
                 } else {
-                    sendMessage(leader, new PreemptedMessage(me, m.ballot_number));
+                    sendMessage(leader.me, new PreemptedMessage(me, m.ballot_number));
                     return;
                 }
             }

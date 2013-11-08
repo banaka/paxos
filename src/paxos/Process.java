@@ -32,8 +32,10 @@ public abstract class Process extends Thread {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        if(assign_stop_request)
+        if(assign_stop_request) {
             env.removeProc(me);
+            logger.log(Level.SEVERE, me+" is getting killed. Bbye.");
+        }
         return assign_stop_request;
     }
 

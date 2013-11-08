@@ -44,7 +44,7 @@ public class Leader extends Process {
         logger.log(messageLevel, "Here I am: " + me);
 
         new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
-                me, acceptors, ballot_number);
+                this, acceptors, ballot_number);
         while (!stop_request()) {
             PaxosMessage msg = getNextMessage();
 
@@ -55,7 +55,7 @@ public class Leader extends Process {
                     if (active) {
                         new Commander(env,
                                 new ProcessId("commander:" + me + ":" + ballot_number + ":" + m.slot_number),
-                                me, acceptors, replicas, ballot_number, m.slot_number, m.command);
+                                this, acceptors, replicas, ballot_number, m.slot_number, m.command);
                     }
                 } else {
                     //TODO : What should happen here ? ideally replica should not be sending any msg with slot
@@ -78,7 +78,7 @@ public class Leader extends Process {
                     for (int sn : proposals.keySet()) {
                         new Commander(env,
                                 new ProcessId("commander:" + me + ":" + ballot_number + ":" + sn),
-                                me, acceptors, replicas, ballot_number, sn, proposals.get(sn));
+                                this, acceptors, replicas, ballot_number, sn, proposals.get(sn));
                     }
                     active = true;
                 }
@@ -96,7 +96,7 @@ public class Leader extends Process {
                     if (ballot_number.compareTo(m.ballot_number) < 0) {
                         ballot_number = new BallotNumber(m.ballot_number.round + 1, me);
                         new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
-                                me, acceptors, ballot_number);
+                                this, acceptors, ballot_number);
                         active = false;
                     }
                 }

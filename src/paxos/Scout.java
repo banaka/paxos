@@ -6,11 +6,11 @@ import java.util.logging.Level;
 
 public class Scout extends Process {
 
-    ProcessId leader;
+    Process leader;
 	ProcessId[] acceptors;
 	BallotNumber ballot_number;
 
-	public Scout(Env env, ProcessId me, ProcessId leader,
+	public Scout(Env env, ProcessId me, Process leader,
 			ProcessId[] acceptors, BallotNumber ballot_number){
 		this.env = env;
 		this.me = me;
@@ -33,7 +33,7 @@ public class Scout extends Process {
 		}
 
 		Set<PValue> pvalues = new HashSet<PValue>();
-		while (2 * waitfor.size() >= acceptors.length && !stop_request()) {
+		while (2 * waitfor.size() >= acceptors.length && !leader.stop_request()) {
 			PaxosMessage msg = getNextMessage();
 
 			if (msg instanceof P1bMessage) {
@@ -41,7 +41,7 @@ public class Scout extends Process {
 
 				int cmp = ballot_number.compareTo(m.ballot_number);
 				if (cmp != 0) {
-					sendMessage(leader, new PreemptedMessage(me, m.ballot_number));
+					sendMessage(leader.me, new PreemptedMessage(me, m.ballot_number));
 					return;
 				}
 				if (waitfor.contains(m.src)) {
@@ -55,6 +55,6 @@ public class Scout extends Process {
 		}
 
         if(!stop_request())
-		    sendMessage(leader, new AdoptedMessage(me, ballot_number, pvalues));
+		    sendMessage(leader.me, new AdoptedMessage(me, ballot_number, pvalues));
 	}
 }
