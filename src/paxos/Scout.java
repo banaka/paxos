@@ -27,7 +27,8 @@ public class Scout extends Process {
 		P1aMessage m1 = new P1aMessage(me, ballot_number);
 		Set<ProcessId> waitfor = new HashSet<ProcessId>();
 		for (ProcessId a: acceptors) {
-			sendMessage(a, m1);
+            if(stop_request()) break;
+            sendMessage(a, m1);
 			waitfor.add(a);
 		}
 

@@ -29,6 +29,7 @@ public class Commander extends Process {
         P2aMessage m2 = new P2aMessage(me, ballot_number, slot_number, command);
         Set<ProcessId> waitfor = new HashSet<ProcessId>();
         for (ProcessId a : acceptors) {
+            if(stop_request()) break;
             sendMessage(a, m2);
             waitfor.add(a);
         }
@@ -49,10 +50,9 @@ public class Commander extends Process {
                 }
             }
         }
-
-        if(!stop_request())
-            for (ProcessId r : replicas) {
-                sendMessage(r, new DecisionMessage(me, slot_number, command));
-            }
+        for (ProcessId r : replicas) {
+            if(stop_request()) break;
+            sendMessage(r, new DecisionMessage(me, slot_number, command));
+        }
     }
 }
