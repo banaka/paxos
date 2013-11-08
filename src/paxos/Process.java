@@ -41,7 +41,7 @@ public abstract class Process extends Thread {
             } else {
                 delay = Integer.parseInt(prop.getProperty("delay"));
             }
-            messageLevel = prop.getProperty("printMessages").equals("TRUE") ? Level.CONFIG : Level.FINER;
+            messageLevel = prop.getProperty("printMessages").equalsIgnoreCase("TRUE") ? Level.CONFIG : Level.FINER;
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.getMessage());

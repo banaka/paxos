@@ -7,9 +7,25 @@ public class PaxosMessage {
     String src_name;
 }
 
-class PingMessage extends PaxosMessage {
-    ProcessId destination;
+class LeaderTimeoutMessage extends PaxosMessage {
+    ProcessId deadLeader;
 
+    @Override
+    public String toString() {
+        return "LeaderTimeoutMessage{" +
+                "src=" + src +
+                "deadLeader=" + deadLeader +
+                '}';
+    }
+
+    LeaderTimeoutMessage(ProcessId src,ProcessId timeedOutLeader) {
+        this.src = src;
+        this.deadLeader = timeedOutLeader;
+    }
+
+}
+
+class PingMessage extends PaxosMessage {
     @Override
     public String toString() {
         return "PingMessage{" +
@@ -18,6 +34,20 @@ class PingMessage extends PaxosMessage {
     }
 
     PingMessage(ProcessId src) {
+        this.src = src;
+    }
+
+}
+
+class PongMessage extends PaxosMessage {
+    @Override
+    public String toString() {
+        return "PongMessage{" +
+                "src=" + src +
+                '}';
+    }
+
+    PongMessage(ProcessId src) {
         this.src = src;
     }
 

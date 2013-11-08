@@ -2,12 +2,16 @@ package paxos;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
+import java.util.logging.Level;
 
 public class Leader extends Process {
     ProcessId[] acceptors;
     ProcessId[] replicas;
     BallotNumber ballot_number;
     boolean active = false;
+    boolean failureDetection = false;
+    ProcessId activeLeader;
     Heartbeat heartbeat;
     Map<Integer, Command> proposals = new HashMap<Integer, Command>();
 
@@ -20,8 +24,18 @@ public class Leader extends Process {
         this.replicas = replicas;
         this.setLogger();
         loadProp();
-        heartbeat = new Heartbeat(env, new ProcessId("heartbeat:" + me + ":"),me);
+        heartbeat = new Heartbeat(env, new ProcessId("heartbeat:" + me + ":"), me);
         env.addProc(me, this);
+    }
+
+    Properties loadProp() {
+        super.loadProp();
+        try {
+            failureDetection = prop.getProperty("failureDetection").equalsIgnoreCase("TRUE") ? true : false;
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, e.getMessage());
+        }
+        return prop;
     }
 
     public void body() {
@@ -42,7 +56,7 @@ public class Leader extends Process {
                                 me, acceptors, replicas, ballot_number, m.slot_number, m.command);
                     }
                 } else {
-                    //TODO : WHat should happen here ? ideally replica should not be sending any msg with slot
+                    //TODO : What should happen here ? ideally replica should not be sending any msg with slot
                     // no already propsoed for
                     logger.log(messageLevel, "This Slot is already occupied, therefore NO ACTION");
                 }
@@ -67,15 +81,34 @@ public class Leader extends Process {
                     active = true;
                 }
             } else if (msg instanceof PreemptedMessage) {
-                PreemptedMessage m = (PreemptedMessage) msg;
-                if (ballot_number.compareTo(m.ballot_number) < 0) {
-                    //TODO : Add the failure detection
-                    ballot_number = new BallotNumber(m.ballot_number.round + 1, me);
-                    new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
-                            me, acceptors, ballot_number);
-                    active = false;
+                if (failureDetection) {
+                    PreemptedMessage m = (PreemptedMessage) msg;
+                    if (ballot_number.compareTo(m.ballot_number) < 0) {
+                        //TODO : Add the failure detection
+                        activeLeader = m.ballot_number.leader_id;
+                        if (failureDetection) {
+                            new FailureDetector(env, new ProcessId("failureDetector:" + me + ":" + activeLeader), me, activeLeader);
+                        }
+                        active = false;
+                    }
+                } else {
+                    PreemptedMessage m = (PreemptedMessage) msg;
+                    if (ballot_number.compareTo(m.ballot_number) < 0) {
+                        ballot_number = new BallotNumber(m.ballot_number.round + 1, me);
+                        new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
+                                me, acceptors, ballot_number);
+                        active = false;
+                    }
                 }
-            } else {
+//            }else if (msg instanceof LeaderTimeoutMessage) {
+//                LeaderTimeoutMessage m = (LeaderTimeoutMessage) msg;
+//                if (ballot_number.compareTo(m.ballot_number) < 0) {
+//                    ballot_number = new BallotNumber(m.ballot_number.round + 1, me);
+//                    new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
+//                            me, acceptors, ballot_number);
+//                    active = false;
+//                }
+            }else {
                 System.err.println("paxos.Leader: unknown msg type");
             }
         }
