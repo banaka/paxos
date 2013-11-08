@@ -10,7 +10,6 @@ public class Leader extends Process {
     ProcessId[] replicas;
     BallotNumber ballot_number;
     boolean active = false;
-    boolean failureDetection = false;
     ProcessId activeLeader;
     Heartbeat heartbeat;
     int failureDetectionTimeout;
@@ -33,8 +32,9 @@ public class Leader extends Process {
     Properties loadProp() {
         super.loadProp();
         try {
-            failureDetection = prop.getProperty("failureDetection").equalsIgnoreCase("TRUE") ? true : false;
+            failureDetection = "TRUE".equalsIgnoreCase(prop.getProperty("failureDetection")) ? true : false;
         } catch (Exception e) {
+            e.printStackTrace();
             logger.log(Level.SEVERE, e.getMessage());
         }
         return prop;
@@ -88,9 +88,7 @@ public class Leader extends Process {
                     if (ballot_number.compareTo(m.ballot_number) < 0) {
                         //TODO : Add the failure detection
                         activeLeader = m.ballot_number.leader_id;
-                        if (failureDetection) {
-                            new FailureDetector(env, new ProcessId("failureDetector:" + me + ":" + activeLeader), me, activeLeader);
-                        }
+//                        new FailureDetector(env, new ProcessId("failureDetector:" + me + ":" + activeLeader), me, activeLeader);
                         active = false;
                     }
                 } else {

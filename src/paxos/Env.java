@@ -107,7 +107,7 @@ public class Env {
                         if(pidOptions.length == 1) {
                             procs.get(p).assign_stop_request = true;
                         } else {
-                            String[] pidOptionSplit = pidOptions[1].split(CLIENT_MSG_SEPARATOR,2);
+                            String[] pidOptionSplit = pidOptions[1].split(CLIENT_MSG_SEPARATOR,3);
                             ProcessId pidToCount = null;
                             for(ProcessId pp : procs.keySet())
                                 if(pp.toString().equals(pidOptionSplit[1]))

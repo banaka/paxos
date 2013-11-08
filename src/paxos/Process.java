@@ -52,7 +52,7 @@ public abstract class Process extends Thread {
             } else {
                 delay = Integer.parseInt(prop.getProperty("delay"));
             }
-            messageLevel = prop.getProperty("printMessages").equalsIgnoreCase("TRUE") ? Level.CONFIG : Level.FINER;
+            messageLevel = "TRUE".equalsIgnoreCase(prop.getProperty("printMessages")) ? Level.CONFIG : Level.FINER;
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.getMessage());
@@ -79,10 +79,10 @@ public abstract class Process extends Thread {
         if(sentCount.get(dst.toString()) == null)
             sentCount.put(dst.toString(),1);
         else
-            sentCount.put(dst.toString(),sentCount.get(dst)+1);
+            sentCount.put(dst.toString(), sentCount.get(dst.toString())+1);
         if(messagesToCount > 0 && scheduledToCountSend == true){
             if((countMessagesOf == null && getTotalSentMessages() == messagesToCount) ||
-                (countMessagesOf != null && sentCount.get(countMessagesOf) == messagesToCount)){
+                (countMessagesOf != null && sentCount.get(countMessagesOf.toString()) != null && sentCount.get(countMessagesOf.toString()) == messagesToCount)){
                     assign_stop_request = true;
                     this.logger.log(Level.SEVERE,me +" is going to get killed.");
             }
@@ -112,7 +112,7 @@ public abstract class Process extends Thread {
         if(rcvdCount.get(src_name) == null)
             rcvdCount.put(src_name, 1);
         else
-            rcvdCount.put(src_name, rcvdCount.get(src_name));
+            rcvdCount.put(src_name, rcvdCount.get(src_name)+1);
         if(messagesToCount > 0 && scheduledToCountSend == false){
             if((countMessagesOf == null && getTotalRcvdMessages() == messagesToCount) ||
                 (countMessagesOf != null && rcvdCount.get(countMessagesOf) == messagesToCount)){
