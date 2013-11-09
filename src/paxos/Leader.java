@@ -58,8 +58,6 @@ public class Leader extends Process {
                                 new ProcessId("commander:" + me + ":" + ballot_number + ":" + m.slot_number),
                                 this, acceptors, replicas, ballot_number, m.slot_number, m.command);
                     }
-                } else {
-                    logger.log(messageLevel, "This Slot is already proposed for, therefore NO ACTION");
                 }
             } else if (msg instanceof AdoptedMessage) {
                 AdoptedMessage m = (AdoptedMessage) msg;
