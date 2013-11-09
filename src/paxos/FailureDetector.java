@@ -6,7 +6,6 @@ import java.util.logging.Level;
 public class FailureDetector extends Process {
     Leader forLeader;
     BallotNumber lastActiveBallot_number;
-    boolean leaderAlive;
     int timeout;
 
     public FailureDetector(Env env, ProcessId me, Leader leader, BallotNumber lastActiveBallot_number) {
@@ -14,7 +13,6 @@ public class FailureDetector extends Process {
         this.me = me;
         this.forLeader = leader;
         this.lastActiveBallot_number = lastActiveBallot_number;
-        this.leaderAlive = true;
         setLogger();
         loadProp();
         env.addProc(me, this);
@@ -33,19 +31,16 @@ public class FailureDetector extends Process {
     public void body() {
         logger.log(messageLevel, "Here I am: " + me);
 
-        while (!forLeader.stop_request() ) {
+        while (!forLeader.stop_request()) {
             Leader p = (Leader) env.procs.get(lastActiveBallot_number.leader_id);
-            try{
+            try {
                 sendMessage(p.heartbeat.me, new PingMessage(me));
-            } catch ( Exception e ){
+            } catch (NullPointerException e) {
                 sendMessage(forLeader.me, new LeaderTimeoutMessage(me, lastActiveBallot_number));
                 break;
             }
-            leaderAlive = false;
             PaxosMessage msg = getNextMessage(this.timeout);
-            if (msg instanceof PongMessage) {
-                leaderAlive = true;
-            } else if (!leaderAlive) {
+            if (!(msg instanceof PongMessage) || msg == null ) {
                 sendMessage(forLeader.me, new LeaderTimeoutMessage(me, lastActiveBallot_number));
                 break;
             }

@@ -9,7 +9,7 @@ public class Leader extends Process {
     ProcessId[] acceptors;
     ProcessId[] replicas;
     BallotNumber ballot_number;
-    BallotNumber lastActiveBallot_number;
+
     boolean active = false;
     Heartbeat heartbeat;
     FailureDetector failureDetector;
@@ -82,33 +82,29 @@ public class Leader extends Process {
                     active = true;
                 }
             } else if (msg instanceof PreemptedMessage) {
-                if (failureDetection) {
-                    PreemptedMessage m = (PreemptedMessage) msg;
-                    if (ballot_number.compareTo(m.ballot_number) < 0) {
+                PreemptedMessage m = (PreemptedMessage) msg;
+                if (ballot_number.compareTo(m.ballot_number) < 0) {
+                    if (failureDetection && failureDetector == null) {
                         ProcessId activeLeader = m.ballot_number.leader_id;
-                        lastActiveBallot_number = m.ballot_number;
-                        if(failureDetector == null)
-                            failureDetector = new FailureDetector(env, new ProcessId("failureDetector:" + me + ":" + activeLeader), this, lastActiveBallot_number);
+                        BallotNumber lastActiveBallot_number = m.ballot_number;
+                        failureDetector = new FailureDetector(env, new ProcessId("failureDetector:" + me + ":" + activeLeader), this, lastActiveBallot_number);
                         logger.log(messageLevel, "Created a FailureDetector for " + activeLeader);
-                        active = false;
-                    }
-                } else {
-                    PreemptedMessage m = (PreemptedMessage) msg;
-                    if (ballot_number.compareTo(m.ballot_number) < 0) {
+                    } else {
                         ballot_number = new BallotNumber(m.ballot_number.round + 1, me);
                         new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
                                 this, acceptors, ballot_number);
-                        active = false;
                     }
+                    active = false;
                 }
             } else if (msg instanceof LeaderTimeoutMessage) {
                 LeaderTimeoutMessage m = (LeaderTimeoutMessage) msg;
-                if (ballot_number.compareTo(m.lastActiveBallot_number) < 0) {
-                    ballot_number = new BallotNumber(m.lastActiveBallot_number.round + 1, me);
-                    new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
-                            this, acceptors, ballot_number);
-                    active = false;
-                }
+//                if (ballot_number.compareTo(m.lastActiveBallot_number) < 0) {
+                ballot_number = new BallotNumber(m.lastActiveBallot_number.round + 1, me);
+                new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
+                        this, acceptors, ballot_number);
+                active = false;
+                failureDetector = null;
+//                }
             } else {
                 System.err.println("paxos.Leader: unknown msg type");
             }
