@@ -36,12 +36,13 @@ class Messenger extends Thread {
     }
 
     public void run() {
+        int clientCurrentMessage = src.currentMessage;
         if(((TxMessage)message).delayReplica == null || dest.me.equals(((TxMessage)message).delayReplica)) {
             try {
                 Thread.sleep(((TxMessage)message).delayReplicaTime);
             } catch (InterruptedException e) {}
         }
-        src.sendMessage(dest.me, new RequestMessage(src.me, new Command(src.me, src.currentMessage, ((TxMessage) message).command.op)));
+        src.sendMessage(dest.me, new RequestMessage(src.me, new Command(src.me, clientCurrentMessage, ((TxMessage) message).command.op)));
     }
 }
 public class Client extends Process {
