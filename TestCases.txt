@@ -55,6 +55,10 @@ Leader 2: is able to send the decision
 
 Testing Failure detection :
 
+Changes in Congif.properties
+failureDetection=TRUE
+failureDetectionTimeout=1000
+
 Test 1:
 Env :
 Replicas: 2
@@ -70,6 +74,12 @@ Leader 1 dies.
 Leader 0 time-out and acts as the leader.
 Replicas send a request to both the leaders.
 Leader 0 gets the values decided and sends decision to all
+
+Cmds:
+> TX 1:Withdraw$0$50
+> KILL leader1
+> TX 1:Withdraw$0$50
+
 
 Test 2:
 Env :
