@@ -70,6 +70,13 @@ public abstract class Process extends Thread {
         return inbox.bdequeue();
     }
 
+    PaxosMessage getNextMessage(int timeout) {
+        this.logger.log(messageLevel, "Timeout "+timeout);
+        PaxosMessage p = inbox.bdequeue(timeout);
+        this.logger.log(messageLevel, "msg "+p);
+        return p;
+    }
+
     void sendMessage(ProcessId dst, PingMessage msg) {
         this.logger.log(messageLevel, "PingMsg" + msg + " to " + dst + " from " + me);
         env.sendMessage(dst, msg);

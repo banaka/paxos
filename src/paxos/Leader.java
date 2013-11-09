@@ -9,9 +9,10 @@ public class Leader extends Process {
     ProcessId[] acceptors;
     ProcessId[] replicas;
     BallotNumber ballot_number;
+    BallotNumber lastActiveBallot_number;
     boolean active = false;
-    ProcessId activeLeader;
     Heartbeat heartbeat;
+    FailureDetector failureDetector;
     int failureDetectionTimeout;
     boolean failureDetection;
     Map<Integer, Command> proposals = new HashMap<Integer, Command>();
@@ -25,7 +26,7 @@ public class Leader extends Process {
         this.replicas = replicas;
         this.setLogger();
         loadProp();
-        heartbeat = new Heartbeat(env, new ProcessId("heartbeat:" + me + ":"), me);
+        heartbeat = new Heartbeat(env, new ProcessId("heartbeat:" + me + ":"), this);
         env.addProc(me, this);
     }
 
@@ -58,9 +59,7 @@ public class Leader extends Process {
                                 this, acceptors, replicas, ballot_number, m.slot_number, m.command);
                     }
                 } else {
-                    //TODO : What should happen here ? ideally replica should not be sending any msg with slot
-                    // no already propsoed for
-                    logger.log(messageLevel, "This Slot is already occupied, therefore NO ACTION");
+                    logger.log(messageLevel, "This Slot is already proposed for, therefore NO ACTION");
                 }
             } else if (msg instanceof AdoptedMessage) {
                 AdoptedMessage m = (AdoptedMessage) msg;
@@ -86,9 +85,11 @@ public class Leader extends Process {
                 if (failureDetection) {
                     PreemptedMessage m = (PreemptedMessage) msg;
                     if (ballot_number.compareTo(m.ballot_number) < 0) {
-                        //TODO : Add the failure detection
-                        activeLeader = m.ballot_number.leader_id;
-//                        new FailureDetector(env, new ProcessId("failureDetector:" + me + ":" + activeLeader), me, activeLeader);
+                        ProcessId activeLeader = m.ballot_number.leader_id;
+                        lastActiveBallot_number = m.ballot_number;
+                        if(failureDetector == null)
+                            failureDetector = new FailureDetector(env, new ProcessId("failureDetector:" + me + ":" + activeLeader), this, lastActiveBallot_number);
+                        logger.log(messageLevel, "Created a FailureDetector for " + activeLeader);
                         active = false;
                     }
                 } else {
@@ -100,15 +101,15 @@ public class Leader extends Process {
                         active = false;
                     }
                 }
-//            }else if (msg instanceof LeaderTimeoutMessage) {
-//                LeaderTimeoutMessage m = (LeaderTimeoutMessage) msg;
-//                if (ballot_number.compareTo(m.ballot_number) < 0) {
-//                    ballot_number = new BallotNumber(m.ballot_number.round + 1, me);
-//                    new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
-//                            me, acceptors, ballot_number);
-//                    active = false;
-//                }
-            }else {
+            } else if (msg instanceof LeaderTimeoutMessage) {
+                LeaderTimeoutMessage m = (LeaderTimeoutMessage) msg;
+                if (ballot_number.compareTo(m.lastActiveBallot_number) < 0) {
+                    ballot_number = new BallotNumber(m.lastActiveBallot_number.round + 1, me);
+                    new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
+                            this, acceptors, ballot_number);
+                    active = false;
+                }
+            } else {
                 System.err.println("paxos.Leader: unknown msg type");
             }
         }
