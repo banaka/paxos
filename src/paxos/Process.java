@@ -151,7 +151,8 @@ public abstract class Process extends Thread {
         consoleHandler.setLevel(Level.CONFIG);
         if(!(this instanceof Scout || this instanceof Commander)) {
             try {
-                FileHandler fileHandler = new FileHandler("log/Log" + loggerName + ".log", true);
+                boolean clean = Boolean.parseBoolean(prop.getProperty("clean"));
+                FileHandler fileHandler = new FileHandler("log/Log" + loggerName + ".log", !clean);
                 fileHandler.setLevel(Level.FINER);
                 logger.addHandler(fileHandler);
                 SimpleFormatter formatter = new SimpleFormatter();
