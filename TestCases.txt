@@ -55,6 +55,7 @@ Leader 2: is able to send the decision
 
 Testing Failure detection :
 
+
 Changes in Congif.properties
 failureDetection=TRUE
 failureDetectionTimeout=1000
@@ -80,7 +81,6 @@ Cmds:
 > KILL leader1
 > TX 1:Withdraw$0$50
 
-
 Test 2:
 Env :
 Replicas: 2
@@ -95,11 +95,16 @@ Leader 2 is the Master Leader
 Leader 0 is monitoring Leader 2
 Leader 1 is monitoring Leader 2
 
-Leader 2 dies: No change in the Leader 0 and 1
+Leader 1 dies: No change in the Leader 0 and 2
+Leader 2 dies:
+Leader 0 is the new Leader (sends a new Scout)
 
-We don't need to show any cmd getting executed even the presence of Scouts should be enough to show who is the current leader.
-
-Leader 2 dies: Leader 0 is the new Leader (sends a new Scout)
+Cmds:
+Config.properties: leader0=400(delay leader0 more than the rest of the leaders)
+> TX 1:Withdraw$0$50
+> KILL leader1
+> KILL leader2
+We don't need to show any cmd getting executed even the presence of Scouts and commanders in the logs of the new leader (in this case Leader 0 show that the 0 is not the new Current alive Leader).
 
 Test 3:
 Env :
@@ -117,7 +122,14 @@ Leader 2 dies:
 Leader 1 dies:
 Leader 0 is the Leader.
 
-We don't need to show any cmd getting executed even the presence of Scouts should be enough to show who is the current leader.
+We don't need to show any cmd getting executed even the presence of Scouts and commanders in the logs of the new leader (in this case Leader 1 and then the Leader 0 show who is the current leader).
+
+Cmds:
+> TX 1:Withdraw$0$50
+> KILL leader2
+> KILL leader1
+> TX 1:Withdraw$0$50
+
 
 Test 4:
 Env :
