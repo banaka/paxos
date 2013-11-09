@@ -1,6 +1,5 @@
 Testing Cases for Paxos:
 
-
 Test Case 1:
 Env :
 Replicas: 2
@@ -57,62 +56,6 @@ Leader 2: is able to send the decision
 Testing Failure detection :
 
 Test 1:
-
-Env :
-Replicas: 2
-Leaders: 3
-Acceptors:  3
-Client requests :
-
-Flow :
-
-All the three leaders send the Phase one msg to all the three acceptors. Leader 2 and Leader 3 get  pre-empted with the ballot no of Leader 1.
-Leader 3 is the Master Leader
-Leader 1 is monitoring Leader 3
-Leader 2 is monitoring Leader 3
-
-Leader 2 dies: No change in the Leader 1 and 3
-
-We don't need to show any cmd getting executed even the presence of Scouts should be enough to show who is the current leader.
-
-Leader 3 dies: Leader 1 is the new Leader (sends a new Scout)
-
-NOTE: Either test 2 will work or test 3(doubt we can recreate both 2 and 3)
-Test 2:
-Env :
-Replicas: 2
-Leaders: 3
-Acceptors:  3
-
-Flow :
-All the three leaders send the Phase one msg to all the three acceptors. Leader 2 gets pre-empted with the ballot no of Leader 1. Leader 3 get  pre-empted with the ballot no of Leader 2.
-Leader 1 is the Master Leader
-Leader 2 is monitoring Leader 1
-Leader 3 is monitoring Leader 2
-
-Leader 2 dies:
-Leader 3 sends a scout again and gets pre-empted because the ballot of 0 is of more wieght
-
-We don't need to show any cmd getting executed even the presence of Scouts should be enough to show who is the current leader.
-
-Test 3:
-Env :
-Replicas: 2
-Leaders: 3
-Acceptors:  3
-
-Flow :
-All the three leaders send the Phase one msg to all the three acceptors. Leader 2 gets pre-empted with the ballot no of Leader 1. Leader 3 get  pre-empted with the ballot no of Leader 2.
-Leader 1 is the Master Leader
-Leader 2 is monitoring Leader 1
-Leader 3 is monitoring Leader 2
-
-Leader 2 dies:
-Leader 3 sends a scout again and gets gets chosen as the leader and now Leader 1 is pre-empted
-
-We don't need to show any cmd getting executed even the presence of Scouts should be enough to show who is the current leader.
-
-Test 4:
 Env :
 Replicas: 2
 Leaders: 2
@@ -121,13 +64,68 @@ Acceptors:  3
 Flow :
 
 Leader 1 is the Master Leader
-Leader 2 is monitoring Leader 1
+Leader 0 is monitoring Leader 1
 
-Leader 1 slows down.
-Leader 2 time-out and acts as the leader.
+Leader 1 dies.
+Leader 0 time-out and acts as the leader.
 Replicas send a request to both the leaders.
-Leader 1 gets pre-empted. and starts listening to Leader 2.
-Leader 2 gets the values decided and sends decision to all
+Leader 0 gets the values decided and sends decision to all
+
+Test 2:
+Env :
+Replicas: 2
+Leaders: 3
+Acceptors:  3
+Client requests :
+
+Flow :
+
+All the three leaders send the Phase one msg to all the three acceptors. Leader 0 and Leader 1 get  pre-empted with the ballot no of Leader 2.
+Leader 2 is the Master Leader
+Leader 0 is monitoring Leader 2
+Leader 1 is monitoring Leader 2
+
+Leader 2 dies: No change in the Leader 0 and 1
+
+We don't need to show any cmd getting executed even the presence of Scouts should be enough to show who is the current leader.
+
+Leader 2 dies: Leader 0 is the new Leader (sends a new Scout)
+
+Test 3:
+Env :
+Replicas: 2
+Leaders: 3
+Acceptors:  3
+
+Flow :
+All the three leaders send the Phase one msg to all the three acceptors. Leader 0 gets pre-empted with the ballot no of Leader 1. Leader 1 get  pre-empted with the ballot no of Leader 2.
+Leader 2 is the Master Leader
+Leader 1 is monitoring Leader 2
+Leader 0 is monitoring Leader 1
+
+Leader 2 dies:
+Leader 1 dies:
+Leader 0 is the Leader.
+
+We don't need to show any cmd getting executed even the presence of Scouts should be enough to show who is the current leader.
+
+Test 4:
+Env :
+Replicas: 2
+Leaders: 3
+Acceptors:  3
+
+Flow :
+All the three leaders send the Phase one msg to all the three acceptors. Leader 0 gets pre-empted with the ballot no of Leader 1. Leader 1 get  pre-empted with the ballot no of Leader 2.
+Leader 2 is the Master Leader
+Leader 1 is monitoring Leader 2
+Leader 0 is monitoring Leader 1
+
+Leader 1 dies:
+Leader 0 sends a scout again and gets pre-empted because the ballot of Leader 2 is of more weight.
+Leader 0 monitors Leader 2
+
+We don't need to show any cmd getting executed even the presence of Scouts should be enough to show who is the current leader.
 
 Test 5:
 Env :
@@ -138,11 +136,74 @@ Acceptors:  3
 Flow :
 
 Leader 1 is the Master Leader
-Leader 2 is monitoring Leader 1
+Leader 0 is monitoring Leader 1
 
 Leader 1 slows down.
-Leader 2 time-out and acts as the leader.
-Replicas send a request to both the leaders.
-Leader 1 gets pre-empted. and starts listening to Leader 2.
-Leader 2 gets the values decided and sends decision to all
+Leader 0 time-out and acts as the leader.
+Replica 1 sends a request to both the leaders.
+Leader 1 gets pre-empted when it sends the commander and starts listening to Leader 0.
+Leader 0 gets the values decided and sends decision to all
 
+Test 6:
+Env :
+Replicas: 2
+Leaders: 2
+Acceptors:  3
+
+Flow :
+
+Leader 1 is the Master Leader
+Leader 0 is monitoring Leader 1
+
+
+Replica 0 sends a request <client : 1, request :2, slot : 2> to Leader 1 and not Leader 0.
+Replica 1 sends a request <client : 3, request :1, slot : 2> to Leader 0 and not Leader 1.
+
+Leader 1 gets Replica 0 msg accepted by Acceptor 0 and Acceptor 1.
+Leader 1 dies before sending any msg to the Replica’s.
+Leader 0 time-out and acts as the leader.
+Leader 0 gets Request <client : 3, request :1, slot : 2> from Replica 1
+Leader 0 should decide on the value : <client : 1, request :2, slot : 2> and send to both the replicas.
+Replica 1 should propose the value <client : 3, request :1, slot : 2> again.
+
+Test 7:
+Env :
+Replicas: 2
+Leaders: 2
+Acceptors:  3
+
+Flow :
+Leader 1 is the Master Leader
+Leader 0 is monitoring Leader 1
+
+Replica 0 sends a request <client : 1, request :2, slot : 2> to Leader 1 and not Leader 0.
+Replica 1 sends a request <client : 3, request :1, slot : 2> to Leader 0 and not Leader 1.
+
+Leader 1. gets one value accepted by Acceptor 0.
+Leader 1 Slows down before sending any msg to acceptor 1 and acceptor 2.
+Leader 0 timeouts and acts as the leader.
+Leader 0 gets Request <client : 3, request :1, slot : 2> from Replica 1
+Leader 0 gets the value : <client : 3, request :2, slot : 2> decided.
+Replica 0 should propose the value <client : 1, request :1, slot : 2> again.
+
+Test 8:
+Env :
+Replicas: 2
+Leaders: 2
+Acceptors:  3
+
+Flow :
+Leader 1 is the Master Leader
+Leader 0 is monitoring Leader 1
+
+Replica 0 sends a request <client : 1, request :2, slot : 2> to Leader 1 and not Leader 0.
+Replica 1 sends a request <client : 3, request :1, slot : 2> to Leader 0 and not Leader 1.
+
+Leader 1 gets one value accepted by Acceptor 0.
+Leader 1 Slows down before sending any msg to Acceptor 1 and acceptor 2.
+Leader 0 timeouts and acts as the leader.
+Leader 0 gets Request <client : 3, request :1, slot : 2> from Replica 1 accepted by Acceptor’s
+Leader 1 should decide on the value : <client : 3, request :2, slot : 2>
+
+
+TO CHECK IF we need the functionality to test the messages begin sent by the commanders to the acceptors slow down the messages being sent individually to the acceptors
