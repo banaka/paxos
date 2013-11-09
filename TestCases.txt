@@ -7,12 +7,17 @@ Leaders: 1
 Acceptors:  3
 
 Flow :
-Replica 1: Proposes request <client : 1, request :1, slot : 1>
-Replica 2: Proposes request <client : 2, request :1, slot : 1>
+Replica0: Proposes request <client : 1, request :1, slot : 1>
+Replica1: Proposes request <client : 2, request :1, slot : 1>
 Decision : <client : 2, request :1, slot : 1>
 
-Replica 1: proposes again <client : 1, request :1, slot : 2>
+Replica0: proposes again <client : 1, request :1, slot : 2>
 
+$$
+TX 2:Deposit$0$22 replica0:1000
+TX 1:Deposit$0$11 replica1:10000
+
+----------------------------------------------------------------------
 Test Case 2:
 Env :
 Replicas: 2
@@ -20,11 +25,14 @@ Leaders: 1
 Acceptors:  3
 
 Flow :
-Replica 1: Proposes request <client : 2, request :2, slot : 4>
-Decision : <client : 2, request :2, slot : 4>
+Replica0: Proposes request <client : 1, request :0, slot : 1>
+Decision : <client : 1, request :0, slot : 1>  sent to all Replicas
+Replica1: Gets the client request after the decision. Do not propose the request as the decision is already there.
 
-Replica 2: Gets the client request when at Slot 2. Do not propose the request as the decision is already there.
+$$
+TX 1:Deposit$0$11 replica1:5000
 
+------------------------------------------------------------------------
 Test Case 3:
 Env :
 Replicas: 2
@@ -32,13 +40,22 @@ Leaders: 1
 Acceptors:  3
 
 Flow :
-Replica 1: Proposes request <client : 2, request :2, slot : 4>
-Replica 2: Proposes request <client : 2, request :2, slot : 2> (because it didnt receive any decision for this request yet thus decision for slot 4 is not yet in for the Replica 2)
+Replica0: Proposes request <client : 2, request :1, slot : 1> ,<client : 1, request :1, slot : 2>
+Replica1: Proposes request <client : 1, request :1, slot : 1>
+(because it didnt receive any decision for this request yet thus decision for slot 4 is not yet in for the Replica 2)
 
-Decision : <client : 2, request :2, slot : 4>
-Decision : <client : 2, request :2, slot : 2>
+Decision : <client : 1, request :1, slot : 1>
+Decision : <client : 2, request :1, slot : 1> to slot 3.
+Decision : <client : 1, request :1, slot : 2>
+
+$$
+TX 1:Deposit$1$20 replica1:5000
+TX 2:Deposit$2$30 replica0:1000
+## replica0=700
+## Check Replica 1 ...it should get two decisions 2$30 for different slot numbers, but it performs only the first.
 
 Replica 1 and 2 : Dont process again the same request <client : 2, request :2, slot : 2>
+------------------------------------------------------------------------
 
 Test Case 4:
 Env :
