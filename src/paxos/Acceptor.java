@@ -6,12 +6,16 @@ import java.util.Set;
 public class Acceptor extends Process {
     BallotNumber ballot_number = null;
 	Set<PValue> accepted = new HashSet<PValue>();
+    ProcessId leaser;
+    long leaseStartTime;
+    int leaseTime;
 
 	public Acceptor(Env env, ProcessId me){
 		this.env = env;
 		this.me = me;
         setLogger();
         loadProp();
+        leaseTime = Integer.parseInt(prop.getProperty("leaseTime", "0"));
         env.addProc(me, this);
 	}
 
@@ -26,6 +30,8 @@ public class Acceptor extends Process {
 				if (ballot_number == null ||
 						ballot_number.compareTo(m.ballot_number) < 0) {
 					ballot_number = m.ballot_number;
+                    leaseStartTime = m.leaseStartTime;
+                    leaser = m.srcLeader;
 				}
 				sendMessage(m.src, new P1bMessage(me, ballot_number, new HashSet<PValue>(accepted)));
 			}
