@@ -23,18 +23,18 @@ public abstract class Process extends Thread {
 
     public Level messageLevel = Level.FINER;
     String my_name = "";
-    Map<String, Integer> sentCount = new HashMap<String, Integer>();
-    Map<String, Integer> rcvdCount = new HashMap<String, Integer>();
+    Map<String,Integer> sentCount = new HashMap<String, Integer>();
+    Map<String,Integer> rcvdCount = new HashMap<String, Integer>();
 
-    public boolean stop_request(ProcessId whoGotKilled) {
+    public boolean stop_request(ProcessId whoGotKilled){
         try {
             Thread.sleep(this.delay);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        if (assign_stop_request) {
+        if(assign_stop_request) {
             env.removeProc(whoGotKilled);
-            logger.log(Level.SEVERE, whoGotKilled + " is getting killed. Bbye.");
+            logger.log(Level.SEVERE, whoGotKilled+" is getting killed. Bbye.");
         }
         return assign_stop_request;
     }
@@ -74,6 +74,11 @@ public abstract class Process extends Thread {
         return inbox.bdequeue(timeout);
     }
 
+    void sendMessage(ProcessId dst, PingMessage msg) {
+        this.logger.log(messageLevel, "PingMsg" + msg + " to " + dst + " from " + me);
+        env.sendMessage(dst, msg);
+    }
+
     void sendMessage(ProcessId dst, PaxosMessage msg) {
         incrementSendMessages(dst);
         this.logger.log(messageLevel, my_name + "SENT >>" + dst + ">> : " + msg);
@@ -81,15 +86,15 @@ public abstract class Process extends Thread {
     }
 
     private void incrementSendMessages(ProcessId dst) {
-        if (sentCount.get(dst.toString()) == null)
-            sentCount.put(dst.toString(), 1);
+        if(sentCount.get(dst.toString()) == null)
+            sentCount.put(dst.toString(),1);
         else
-            sentCount.put(dst.toString(), sentCount.get(dst.toString()) + 1);
-        if (messagesToCount > 0 && scheduledToCountSend == true) {
-            if ((countMessagesOf == null && getTotalSentMessages() == messagesToCount) ||
-                    (countMessagesOf != null && sentCount.get(countMessagesOf.toString()) != null && sentCount.get(countMessagesOf.toString()) == messagesToCount)) {
-                assign_stop_request = true;
-                this.logger.log(Level.SEVERE, me + " is going to get killed.");
+            sentCount.put(dst.toString(), sentCount.get(dst.toString())+1);
+        if(messagesToCount > 0 && scheduledToCountSend == true){
+            if((countMessagesOf == null && getTotalSentMessages() == messagesToCount) ||
+                (countMessagesOf != null && sentCount.get(countMessagesOf.toString()) != null && sentCount.get(countMessagesOf.toString()) == messagesToCount)){
+                    assign_stop_request = true;
+                    this.logger.log(Level.SEVERE,me +" is going to get killed.");
             }
         }
     }
@@ -97,43 +102,42 @@ public abstract class Process extends Thread {
     void deliver(PaxosMessage msg) {
         incrementRcvdMessages(msg.src_name);
         inbox.enqueue(msg);
-        this.logger.log(messageLevel, my_name + "RCVD <<" + msg.src_name + "<< : " + msg);
+        this.logger.log(messageLevel,my_name+ "RCVD <<" + msg.src_name + "<< : " + msg);
     }
 
-    public Integer getTotalSentMessages() {
+    public Integer getTotalSentMessages(){
         int total = 0;
-        for (String s : sentCount.keySet())
+        for(String s: sentCount.keySet())
             total += sentCount.get(s);
         return total;
     }
 
-    public Integer getTotalRcvdMessages() {
+    public Integer getTotalRcvdMessages(){
         int total = 0;
-        for (String s : rcvdCount.keySet())
+        for(String s: rcvdCount.keySet())
             total += rcvdCount.get(s);
         return total;
     }
-
     private void incrementRcvdMessages(String src_name) {
-        if (rcvdCount.get(src_name) == null)
+        if(rcvdCount.get(src_name) == null)
             rcvdCount.put(src_name, 1);
         else
-            rcvdCount.put(src_name, rcvdCount.get(src_name) + 1);
-        if (messagesToCount > 0 && scheduledToCountSend == false) {
-            if ((countMessagesOf == null && getTotalRcvdMessages() == messagesToCount) ||
-                    (countMessagesOf != null && rcvdCount.get(countMessagesOf) == messagesToCount)) {
+            rcvdCount.put(src_name, rcvdCount.get(src_name)+1);
+        if(messagesToCount > 0 && scheduledToCountSend == false){
+            if((countMessagesOf == null && getTotalRcvdMessages() == messagesToCount) ||
+                (countMessagesOf != null && rcvdCount.get(countMessagesOf) == messagesToCount)){
                 assign_stop_request = true;
-                this.logger.log(Level.SEVERE, me + " is going to get killed.");
+                this.logger.log(Level.SEVERE,me +" is going to get killed.");
             }
         }
     }
 
     public void setLogger() {
         String loggerName = me.toString();
-        if (this instanceof Scout)
-            loggerName = ((Scout) this).leader.me.toString();
-        else if (this instanceof Commander)
-            loggerName = ((Commander) this).leader.me.toString();
+        if(this instanceof Scout)
+            loggerName = ((Scout)this).leader.me.toString();
+        else if(this instanceof Commander)
+            loggerName = ((Commander)this).leader.me.toString();
         logger = Logger.getLogger(loggerName);
         logger.setUseParentHandlers(false);
         logger.setLevel(Level.FINER);
@@ -150,7 +154,7 @@ public abstract class Process extends Thread {
             logger.addHandler(consoleHandler);
         }
         consoleHandler.setLevel(Level.CONFIG);
-        if (!(this instanceof Scout || this instanceof Commander)) {
+        if(!(this instanceof Scout || this instanceof Commander)) {
             try {
                 FileHandler fileHandler = new FileHandler("log/Log" + loggerName + ".log", true);
                 fileHandler.setLevel(Level.FINER);

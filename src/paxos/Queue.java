@@ -25,7 +25,10 @@ public class Queue<T> {
         while (ll.size() == 0) {
             try {
                 wait(timeout);
+                if(ll.size() == 0)
+                    return null;
             } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
         return ll.removeFirst();

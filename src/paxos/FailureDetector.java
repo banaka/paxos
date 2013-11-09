@@ -36,6 +36,7 @@ public class FailureDetector extends Process {
             try {
                 sendMessage(p.heartbeat.me, new PingMessage(me));
             } catch (NullPointerException e) {
+                //e.printStackTrace();
                 sendMessage(forLeader.me, new LeaderTimeoutMessage(me, lastActiveBallot_number));
                 break;
             }
