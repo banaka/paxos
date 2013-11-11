@@ -10,12 +10,14 @@ public class Heartbeat extends Process {
         setLogger();
         loadProp();
         env.addProc(me, this);
+        delay = 0;
     }
 
     public void body() {
         while (!forLeader.stop_request() ) {
             logger.log(messageLevel, "Here I am: " + me);
             PaxosMessage msg = getNextMessage();
+            stop_request();
             if (msg instanceof PingMessage) {
                 PingMessage ping = (PingMessage) msg;
                 sendMessage(ping.src, new PongMessage(me));
