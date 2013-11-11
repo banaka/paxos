@@ -56,12 +56,11 @@ public class Replica extends Process {
                 return;
             }
         }
-        logger.log(messageLevel, "PERFORM " + c + " for slot " + slot_num);
         String[] operationArgs = c.op.operationArgs.split(Env.TX_MSG_SEPARATOR);
         try {
             Account account = accountList.get(Integer.parseInt(operationArgs[0]));
             int amt = Integer.parseInt(operationArgs[1]);
-            String output = "Perform for " + state + " Cmd " + c;
+            String output;
             switch (c.op.opType) {
                 case Deposit:
                     account.credit(amt);
@@ -84,7 +83,7 @@ public class Replica extends Process {
                     output = "INVALID OPERATION TYPE";
                     break;
             }
-            logger.log(messageLevel, "PERFORM " + c + " OUTPUT :" + output);
+            logger.log(messageLevel, "PERFORM " + c + " for slot :" + (slot_num) + " OUTPUT :" + output);
             sendMessage(c.client,new ResponseMessage(me,c,account));
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error in the input msg ");

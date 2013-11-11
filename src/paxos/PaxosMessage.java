@@ -8,19 +8,19 @@ public class PaxosMessage {
 }
 
 class LeaderTimeoutMessage extends PaxosMessage {
-    ProcessId deadLeader;
+    BallotNumber lastActiveBallot_number;
 
     @Override
     public String toString() {
         return "LeaderTimeoutMessage{" +
-                "src=" + src +
-                "deadLeader=" + deadLeader +
+                ", lastActiveBallot_number=" + lastActiveBallot_number +
                 '}';
     }
 
-    LeaderTimeoutMessage(ProcessId src,ProcessId timeedOutLeader) {
+    LeaderTimeoutMessage(ProcessId src, BallotNumber lastActiveBallot_number) {
         this.src = src;
-        this.deadLeader = timeedOutLeader;
+        this.src_name = src.name;
+        this.lastActiveBallot_number = lastActiveBallot_number;
     }
 
 }
@@ -35,6 +35,7 @@ class PingMessage extends PaxosMessage {
 
     PingMessage(ProcessId src) {
         this.src = src;
+        this.src_name = src.name;
     }
 
 }
@@ -144,6 +145,7 @@ class PreemptedMessage extends PaxosMessage {
 
     PreemptedMessage(ProcessId src, BallotNumber ballot_number) {
         this.src = src;
+        this.src_name = src.name;
         this.ballot_number = ballot_number;
     }
 
@@ -248,7 +250,7 @@ class ResponseMessage extends PaxosMessage {
 
     @Override
     public String toString() {
-        return "Command: " + command + " done. A/c update :"+ account;
+        return "Command: " + command + " done. A/c update :" + account;
     }
 }
 

@@ -70,9 +70,8 @@ public abstract class Process extends Thread {
         return inbox.bdequeue();
     }
 
-    void sendMessage(ProcessId dst, PingMessage msg) {
-        this.logger.log(messageLevel, "PingMsg" + msg + " to " + dst + " from " + me);
-        env.sendMessage(dst, msg);
+    PaxosMessage getNextMessage(int timeout) {
+        return inbox.bdequeue(timeout);
     }
 
     void sendMessage(ProcessId dst, PaxosMessage msg) {
@@ -152,7 +151,8 @@ public abstract class Process extends Thread {
         consoleHandler.setLevel(Level.CONFIG);
         if(!(this instanceof Scout || this instanceof Commander)) {
             try {
-                FileHandler fileHandler = new FileHandler("log/Log" + loggerName + ".log", true);
+                boolean clean = Boolean.parseBoolean(prop.getProperty("clean"));
+                FileHandler fileHandler = new FileHandler("log/Log" + loggerName + ".log", !clean);
                 fileHandler.setLevel(Level.FINER);
                 logger.addHandler(fileHandler);
                 SimpleFormatter formatter = new SimpleFormatter();

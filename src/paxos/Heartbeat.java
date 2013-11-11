@@ -1,9 +1,9 @@
 package paxos;
 
 public class Heartbeat extends Process {
-    ProcessId forLeader;
+    Leader forLeader;
 
-    public Heartbeat(Env env, ProcessId me, ProcessId leader) {
+    public Heartbeat(Env env, ProcessId me, Leader leader) {
         this.env = env;
         this.me = me;
         this.forLeader = leader;
@@ -13,7 +13,8 @@ public class Heartbeat extends Process {
     }
 
     public void body() {
-        while (!stop_request()) {
+        while (!forLeader.stop_request() ) {
+            logger.log(messageLevel, "Here I am: " + me);
             PaxosMessage msg = getNextMessage();
             if (msg instanceof PingMessage) {
                 PingMessage ping = (PingMessage) msg;
