@@ -15,7 +15,7 @@ public class Leader extends Process {
     boolean failureDetection;
     Map<Integer, Command> proposals = new HashMap<Integer, Command>();
     public long leaseEndTime;
-    public HashMap<Integer, List<ReadOnlyMessage>> readOnlyMessagesFlag;
+    public HashMap<Integer, Set<ReadOnlyMessage>> readOnlyMessagesFlag;
     public HashSet<Integer /*slot number*/> decisionsTaken;
 
     public Leader(Env env, ProcessId me, ProcessId[] acceptors,
@@ -110,8 +110,8 @@ public class Leader extends Process {
                     //straight away tell the last decided slot to the replica
                     sendMessage(msg.src, new ReadOnlyDecisionMessage(me, getMaxDecisionSlot(), m.command));
                     //tag the next slot message
-                    List<ReadOnlyMessage> current = readOnlyMessagesFlag.get(1 + getMaxDecisionSlot());
-                    if(current == null) current = new ArrayList<ReadOnlyMessage>(); else current.add(m);
+                    Set<ReadOnlyMessage> current = readOnlyMessagesFlag.get(1 + getMaxDecisionSlot());
+                    if(current == null) current = new HashSet<ReadOnlyMessage>(); else current.add(m);
                     readOnlyMessagesFlag.put(getMaxDecisionSlot(), current);
                 }
             } else {

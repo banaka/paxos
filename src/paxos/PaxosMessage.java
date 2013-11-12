@@ -178,9 +178,9 @@ class DecisionMessage extends PaxosMessage {
     ProcessId src;
     int slot_number;
     Command command;
-    List<ReadOnlyMessage> readOnlyMessages;
+    Set<ReadOnlyMessage> readOnlyMessages;
 
-    public DecisionMessage(ProcessId src, int slot_number, Command command, List<ReadOnlyMessage> readOnlyMessages) {
+    public DecisionMessage(ProcessId src, int slot_number, Command command, Set<ReadOnlyMessage> readOnlyMessages) {
         this.src = src;
         this.src_name = src.name;
         this.slot_number = slot_number;
