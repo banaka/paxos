@@ -262,17 +262,19 @@ class TxMessage extends PaxosMessage {
 class ResponseMessage extends PaxosMessage {
     Command command;
     Account account;
+    long createdAt;
 
     public ResponseMessage(ProcessId src, Command command, Account account) {
         this.src = src;
         this.src_name = src.name;
         this.command = command;
         this.account = account;
+        this.createdAt = System.currentTimeMillis();
     }
 
     @Override
     public String toString() {
-        return "Command: " + command + " done. A/c update :" + account;
+        return "Command: " + command + " done. A/c update :" + account + " at T=" + createdAt;
     }
 }
 
