@@ -19,8 +19,10 @@ public class Heartbeat extends Process {
             PaxosMessage msg = getNextMessage();
             stop_request();
             if (msg instanceof PingMessage) {
-                PingMessage ping = (PingMessage) msg;
-                sendMessage(ping.src, new PongMessage(me));
+                if(forLeader.active) {
+                    PingMessage ping = (PingMessage) msg;
+                    sendMessage(ping.src, new PongMessage(me));
+                }
             }
         }
     }

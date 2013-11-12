@@ -6,11 +6,11 @@ import java.util.logging.Level;
 
 public class Scout extends Process {
 
-    Process leader;
+    Leader leader;
 	ProcessId[] acceptors;
 	BallotNumber ballot_number;
 
-	public Scout(Env env, ProcessId me, Process leader,
+	public Scout(Env env, ProcessId me, Leader leader,
 			ProcessId[] acceptors, BallotNumber ballot_number){
 		this.env = env;
 		this.me = me;
@@ -18,16 +18,17 @@ public class Scout extends Process {
 		this.leader = leader;
 		this.ballot_number = ballot_number;
         this.my_name = "[["+me.toString()+"]]";
+        leader.leaseEndTime = System.currentTimeMillis() + this.leaseTime;
         setLogger();
         loadProp();
 		env.addProc(me, this);
 	}
 
 	public void body(){
-		P1aMessage m1 = new P1aMessage(me, ballot_number, leader.me);
+		P1aMessage m1 = new P1aMessage(me, ballot_number, leader.leaseEndTime);
 		Set<ProcessId> waitfor = new HashSet<ProcessId>();
 		for (ProcessId a: acceptors) {
-            if(stop_request(me)) break;
+            if(leader.stop_request(me)) break;
             sendMessage(a, m1);
 			waitfor.add(a);
 		}
@@ -54,7 +55,7 @@ public class Scout extends Process {
 			}
 		}
 
-        if(!stop_request(me))
+        if(!leader.stop_request(me))
 		    sendMessage(leader.me, new AdoptedMessage(me, ballot_number, pvalues));
 	}
 }

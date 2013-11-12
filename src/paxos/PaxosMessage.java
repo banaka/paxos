@@ -56,8 +56,7 @@ class PongMessage extends PaxosMessage {
 
 class P1aMessage extends PaxosMessage {
     BallotNumber ballot_number;
-    long leaseStartTime;
-    ProcessId srcLeader;
+    long leaseEndTime;
 
     @Override
     public String toString() {
@@ -66,13 +65,11 @@ class P1aMessage extends PaxosMessage {
                 '}';
     }
 
-    P1aMessage(ProcessId src, BallotNumber ballot_number, ProcessId srcLeader) {
+    P1aMessage(ProcessId src, BallotNumber ballot_number, long leaseEndTime) {
         this.src = src;
         this.src_name = src.name;
         this.ballot_number = ballot_number;
-        this.srcLeader = srcLeader;
-        this.leaseStartTime = System.currentTimeMillis();
-
+        this.leaseEndTime = leaseEndTime;
     }
 
 }
@@ -181,8 +178,33 @@ class DecisionMessage extends PaxosMessage {
     ProcessId src;
     int slot_number;
     Command command;
+    List<ReadOnlyMessage> readOnlyMessages;
 
-    public DecisionMessage(ProcessId src, int slot_number, Command command) {
+    public DecisionMessage(ProcessId src, int slot_number, Command command, List<ReadOnlyMessage> readOnlyMessages) {
+        this.src = src;
+        this.src_name = src.name;
+        this.slot_number = slot_number;
+        this.command = command;
+        this.readOnlyMessages = readOnlyMessages;
+    }
+
+    @Override
+    public String toString() {
+        return "DecisionMessage{" +
+                "src=" + src +
+                ", slot_number=" + slot_number +
+                ", command=" + command +
+                ", readOnlyMessages="+readOnlyMessages+
+                '}';
+    }
+}
+
+class ReadOnlyDecisionMessage extends PaxosMessage {
+    ProcessId src;
+    int slot_number;
+    Command command;
+
+    public ReadOnlyDecisionMessage(ProcessId src, int slot_number, Command command) {
         this.src = src;
         this.src_name = src.name;
         this.slot_number = slot_number;
@@ -269,6 +291,23 @@ class ProposeMessage extends PaxosMessage {
     public String toString() {
         return "ProposeMessage{" +
                 "slot_number=" + slot_number +
+                ", command=" + command +
+                '}';
+    }
+}
+
+class ReadOnlyMessage extends PaxosMessage {
+    Command command;
+
+    public ReadOnlyMessage(ProcessId src, Command command) {
+        this.src = src;
+        this.src_name = src.name;
+        this.command = command;
+    }
+
+    @Override
+    public String toString() {
+        return "ReadOnlyMessage{" +
                 ", command=" + command +
                 '}';
     }

@@ -1,8 +1,6 @@
 package paxos;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 import java.util.logging.Level;
 
 public class Leader extends Process {
@@ -16,6 +14,9 @@ public class Leader extends Process {
     int failureDetectionTimeout;
     boolean failureDetection;
     Map<Integer, Command> proposals = new HashMap<Integer, Command>();
+    public long leaseEndTime;
+    public HashMap<Integer, List<ReadOnlyMessage>> readOnlyMessagesFlag;
+    public HashSet<Integer /*slot number*/> decisionsTaken;
 
     public Leader(Env env, ProcessId me, ProcessId[] acceptors,
                   ProcessId[] replicas) {
@@ -103,9 +104,23 @@ public class Leader extends Process {
                 active = false;
                 failureDetector = null;
 //                }
+            } else if (msg instanceof ReadOnlyMessage) {
+                ReadOnlyMessage m = (ReadOnlyMessage) msg;
+                if(active && leaseEndTime > System.currentTimeMillis()) {
+                    //straight away tell the last decided slot to the replica
+                    sendMessage(msg.src, new ReadOnlyDecisionMessage(me, getMaxDecisionSlot(), m.command));
+                    //tag the next slot message
+                    List<ReadOnlyMessage> current = readOnlyMessagesFlag.get(1 + getMaxDecisionSlot());
+                    if(current == null) current = new ArrayList<ReadOnlyMessage>(); else current.add(m);
+                    readOnlyMessagesFlag.put(getMaxDecisionSlot(), current);
+                }
             } else {
                 System.err.println("paxos.Leader: unknown msg type");
             }
         }
+    }
+
+    private Integer getMaxDecisionSlot() {
+        return Collections.max(decisionsTaken);
     }
 }

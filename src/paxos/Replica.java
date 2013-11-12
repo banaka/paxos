@@ -11,6 +11,7 @@ public class Replica extends Process {
     List<Account> accountList;
     Map<Integer /* slot number */, Command> proposals = new HashMap<Integer, Command>();
     Map<Integer /* slot number */, Command> decisions = new HashMap<Integer, Command>();
+    Map<Integer /* slot number */, List<ReadOnlyMessage>> readOnlyFlags = new HashMap<Integer, List<ReadOnlyMessage>>();
 
     public Replica(Env env, ProcessId me, ProcessId[] leaders) {
         this.env = env;
@@ -49,7 +50,6 @@ public class Replica extends Process {
 
 
     void perform(Command c) {
-        //TODO:CHECK WHAT IS HAPPENING HERE.. SAME CMD SHOULD NOT BE BE EXECUTED MULTIPLE TIMES..
         for (int s = 1; s < slot_num; s++) {
             if (c.equals(decisions.get(s))) {
                 slot_num++;
@@ -104,6 +104,8 @@ public class Replica extends Process {
             } else if (msg instanceof DecisionMessage) {
                 DecisionMessage m = (DecisionMessage) msg;
                 decisions.put(m.slot_number, m.command);
+                readOnlyFlags.put(m.slot_number, m.readOnlyMessages);
+
                 while (!stop_request()) {
                     Command c = decisions.get(slot_num);
                     if (c == null) {
@@ -113,8 +115,11 @@ public class Replica extends Process {
                     if (c2 != null && !c2.equals(c)) {
                         propose(c2);
                     }
+                    //ToDo: CHECK READONLY_FLAGS to DISPLAY THE INquiry first
                     perform(c);
                 }
+            } else if (msg instanceof ReadOnlyDecisionMessage) {
+                //ToDo: TELL THE INQUIRY
             } else {
                 logger.log(Level.SEVERE, "paxos.Replica: unknown msg type");
             }

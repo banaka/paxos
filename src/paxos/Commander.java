@@ -3,13 +3,13 @@ package paxos;
 import java.util.*;
 
 public class Commander extends Process {
-    Process leader;
+    Leader leader;
     ProcessId[] acceptors, replicas;
     BallotNumber ballot_number;
     int slot_number;
     Command command;
 
-    public Commander(Env env, ProcessId me, Process leader, ProcessId[] acceptors,
+    public Commander(Env env, ProcessId me, Leader leader, ProcessId[] acceptors,
                      ProcessId[] replicas, BallotNumber ballot_number, int slot_number, Command command) {
         this.env = env;
         this.me = me;
@@ -29,7 +29,7 @@ public class Commander extends Process {
         P2aMessage m2 = new P2aMessage(me, ballot_number, slot_number, command);
         Set<ProcessId> waitfor = new HashSet<ProcessId>();
         for (ProcessId a : acceptors) {
-            if(stop_request(me)) break;
+            if(leader.stop_request(me)) break;
             sendMessage(a, m2);
             waitfor.add(a);
         }
@@ -50,9 +50,12 @@ public class Commander extends Process {
                 }
             }
         }
+        if(leader.stop_request(me)) return;
+        leader.decisionsTaken.add(slot_number);
+
         for (ProcessId r : replicas) {
-            if(stop_request(me)) break;
-            sendMessage(r, new DecisionMessage(me, slot_number, command));
+            if(leader.stop_request(me)) break;
+            sendMessage(r, new DecisionMessage(me, slot_number, command, leader.readOnlyMessagesFlag.get(slot_number)));
         }
     }
 }

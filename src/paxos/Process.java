@@ -26,6 +26,8 @@ public abstract class Process extends Thread {
     Map<String,Integer> sentCount = new HashMap<String, Integer>();
     Map<String,Integer> rcvdCount = new HashMap<String, Integer>();
 
+    int leaseTime;
+
     public boolean stop_request(ProcessId whoGotKilled){
         try {
             Thread.sleep(this.delay);
@@ -59,6 +61,7 @@ public abstract class Process extends Thread {
                 delay = Integer.parseInt(prop.getProperty("delay"));
             }
             messageLevel = "TRUE".equalsIgnoreCase(prop.getProperty("printMessages")) ? Level.CONFIG : Level.FINER;
+            leaseTime = Integer.parseInt(prop.getProperty("leaseTime"));
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.getMessage());
