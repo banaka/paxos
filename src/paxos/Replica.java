@@ -44,7 +44,7 @@ public class Replica extends Process {
         }
         if (!decisions.containsValue(c)) {
             for (int s = 1; ; s++) {
-                if (!proposals.containsKey(s) && !decisions.containsKey(s)) {
+                if (!proposals.containsKey(s) && (!decisions.containsKey(s) || decisions.get(s).op == null)) {
                     proposals.put(s, c);
                     for (ProcessId ldr : leaders) {
                         if(!stop_request())
@@ -164,7 +164,7 @@ public class Replica extends Process {
                         break;
                     }
                     Command c2 = proposals.get(slot_num);
-                    if (c2 != null && !c2.equals(c)) {
+                    if (c.op!= null && c2 != null && !c2.equals(c)) {
                         propose(c2);
                     }
                     if(!perform(c)) break;

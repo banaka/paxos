@@ -14,7 +14,7 @@ public class Leader extends Process {
     int failureDetectionTimeout;
     boolean failureDetection;
     Map<Integer, Command> proposals = new HashMap<Integer, Command>();
-//    public long leaseEndTime;
+    //    public long leaseEndTime;
     public Map<Integer, Set<ReadOnlyMessage>> readOnlyMessagesFlag = new HashMap<Integer, Set<ReadOnlyMessage>>();
     public Set<Integer /*slot number*/> decisionsTaken = new HashSet<Integer>();
 
@@ -57,8 +57,12 @@ public class Leader extends Process {
 
             if (msg instanceof ProposeMessage) {
                 ProposeMessage m = (ProposeMessage) msg;
-                if (!proposals.containsKey(m.slot_number)) {
-                    proposals.put(m.slot_number, m.command);
+                if (!proposals.containsKey(m.slot_number) || proposals.get(m.slot_number).op == null) {
+                    if (proposals.containsKey(m.slot_number) && proposals.get(m.slot_number).op == null) {
+                        m.command.readOnlySets=proposals.get(m.slot_number).readOnlySets;
+                    } else {
+                        proposals.put(m.slot_number, m.command);
+                    }
                     if (active) {
                         new Commander(env,
                                 new ProcessId("commander:" + me + ":" + ballot_number + ":" + m.slot_number),
@@ -73,7 +77,7 @@ public class Leader extends Process {
                     for (PValue pv : m.accepted) {
                         BallotNumber bn = max.get(pv.slot_number);
                         if (bn == null || bn.compareTo(pv.ballot_number) < 0) {
-                            if(pv.command.op == null && proposals.containsKey(pv.slot_number)) {
+                            if (pv.command.op == null && proposals.containsKey(pv.slot_number)) {
                                 pv.command.updateWith(proposals.get(pv.slot_number));
                             }
                             max.put(pv.slot_number, pv.ballot_number);
@@ -82,9 +86,9 @@ public class Leader extends Process {
                     }
 
                     for (int sn : proposals.keySet()) {
-                        if(proposals.get(sn).op == null) {
+                        if (proposals.get(sn).op == null) {
                             for (ProcessId r : replicas) {
-                                if(stop_request()) break;
+                                if (stop_request()) break;
                                 sendMessage(r, new DecisionMessage(me, sn, proposals.get(sn)));
                             }
                         } else {
@@ -124,14 +128,14 @@ public class Leader extends Process {
 //                logger.log(Level.FINER, "active :"+active+" leaseEnd: "+leaseEndTime+" T="+System.currentTimeMillis());
 //                if(active) {
 //                    if(leaseEndTime > System.currentTimeMillis()) {
-                        //straight away tell the last decided slot to the replica
+                //straight away tell the last decided slot to the replica
                 /*Chnaged the name of scout so that we can understand the scout has been created for which slot no...*/
-                if(active)
-                    new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number+":"+getPostMaxProposal()),
-                        this, acceptors, ballot_number, getPostMaxProposal(), m.command);
+                if (active)
+                    new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number + ":" + getPostMaxProposal()),
+                            this, acceptors, ballot_number, getPostMaxProposal(), m.command);
 
 //                sendMessage(msg.src, new ReadOnlyDecisionMessage(me, getMaxDecisionSlot(), m.command));
-                        //tag the next slot message
+                //tag the next slot message
 //                        Set<ReadOnlyMessage> current = readOnlyMessagesFlag.get(1 + getMaxDecisionSlot());
 //                        if(current == null) current = new HashSet<ReadOnlyMessage>(); else current.add(m);
 //                        readOnlyMessagesFlag.put(getMaxDecisionSlot(), current);
@@ -154,8 +158,8 @@ public class Leader extends Process {
     private Integer getPostMaxProposal() {
         if (proposals.keySet().isEmpty()) return 1;
         int max = 0;
-        for(Integer i : proposals.keySet()) {
-            if(proposals.get(i).op != null && max < i) max = i;
+        for (Integer i : proposals.keySet()) {
+            if (proposals.get(i).op != null && max < i) max = i;
         }
         return max + 1;
     }
