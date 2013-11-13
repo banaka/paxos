@@ -14,7 +14,7 @@ public class Leader extends Process {
     int failureDetectionTimeout;
     boolean failureDetection;
     Map<Integer, Command> proposals = new HashMap<Integer, Command>();
-    public long leaseEndTime;
+//    public long leaseEndTime;
     public Map<Integer, Set<ReadOnlyMessage>> readOnlyMessagesFlag = new HashMap<Integer, Set<ReadOnlyMessage>>();
     public Set<Integer /*slot number*/> decisionsTaken = new HashSet<Integer>();
 
@@ -111,20 +111,20 @@ public class Leader extends Process {
 //                }
             } else if (msg instanceof ReadOnlyMessage) {
                 ReadOnlyMessage m = (ReadOnlyMessage) msg;
-                logger.log(Level.FINER, "active :"+active+" leaseEnd: "+leaseEndTime+" T="+System.currentTimeMillis());
-                if(active) {
-                    if(leaseEndTime > System.currentTimeMillis()) {
+//                logger.log(Level.FINER, "active :"+active+" leaseEnd: "+leaseEndTime+" T="+System.currentTimeMillis());
+//                if(active) {
+//                    if(leaseEndTime > System.currentTimeMillis()) {
                         //straight away tell the last decided slot to the replica
                         sendMessage(msg.src, new ReadOnlyDecisionMessage(me, getMaxDecisionSlot(), m.command));
                         //tag the next slot message
                         Set<ReadOnlyMessage> current = readOnlyMessagesFlag.get(1 + getMaxDecisionSlot());
                         if(current == null) current = new HashSet<ReadOnlyMessage>(); else current.add(m);
                         readOnlyMessagesFlag.put(getMaxDecisionSlot(), current);
-                    } else {
-                        //first renew
-                        logger.log(Level.SEVERE, "LEASE EXPIRED!! ..");
-                    }
-                }
+//                    } else {
+//                        //first renew
+//                        logger.log(Level.SEVERE, "LEASE EXPIRED!! ..");
+//                    }
+//                }
             } else {
                 System.err.println("paxos.Leader: unknown msg type");
             }

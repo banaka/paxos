@@ -56,7 +56,7 @@ class PongMessage extends PaxosMessage {
 
 class P1aMessage extends PaxosMessage {
     BallotNumber ballot_number;
-    long leaseEndTime;
+//    long leaseEndTime;
 
     @Override
     public String toString() {
@@ -65,11 +65,12 @@ class P1aMessage extends PaxosMessage {
                 '}';
     }
 
-    P1aMessage(ProcessId src, BallotNumber ballot_number, long leaseEndTime) {
+//    P1aMessage(ProcessId src, BallotNumber ballot_number, long leaseEndTime) {
+    P1aMessage(ProcessId src, BallotNumber ballot_number) {
         this.src = src;
         this.src_name = src.name;
         this.ballot_number = ballot_number;
-        this.leaseEndTime = leaseEndTime;
+//        this.leaseEndTime = leaseEndTime;
     }
 
 }

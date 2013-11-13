@@ -21,13 +21,14 @@ public class Scout extends Process {
         setLogger();
         loadProp();
         env.addProc(me, this);
-        this.leader.leaseEndTime = System.currentTimeMillis() + leaseTime;
+//        this.leader.leaseEndTime = System.currentTimeMillis() + leaseTime;
 //        logger.log(Level.FINER, "LET:"+this.leader.leaseEndTime+"=="+leaseTime+"+"+System.currentTimeMillis());
 	}
 
 	public void body(){
-		P1aMessage m1 = new P1aMessage(me, ballot_number, leader.leaseEndTime);
-		Set<ProcessId> waitfor = new HashSet<ProcessId>();
+//		P1aMessage m1 = new P1aMessage(me, ballot_number, leader.leaseEndTime);
+        P1aMessage m1 = new P1aMessage(me, ballot_number);
+        Set<ProcessId> waitfor = new HashSet<ProcessId>();
 		for (ProcessId a: acceptors) {
             if(leader.stop_request(me)) break;
             sendMessage(a, m1);
