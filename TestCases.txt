@@ -319,9 +319,10 @@ WAY 2: he can ignore the read only cmds which it has executed. by maintaining a 
 
 Case 7:
 Execute a write cmd and then read cmd and then a read only cmd again :
-BUG: WHEN THE INQUIRY CMD IS EXCUTED AFTER A WITHDRAW CMD THE DECISON HAS COME BUT THE CODE DOESNT EXECUTE IT
-TX 1:Inquiry$4$100 replica1:30000
 TX 1:Withdraw$0$50
+TX 1:Inquiry$4$100 replica1:30000
+TX 1:Inquiry$4$100 replica1:30000
+
 
 
 Case 8:
@@ -355,3 +356,9 @@ Replica not performing the RO for slot 2.
 
 2. Leader once gets adopted, creates a new commander for every proposal
 
+TX 1:Inquiry$4$100
+TX 1:Withdraw$0$50
+TX 1:Inquiry$4$100
+
+
+3. The Client sent multiple RO cmds to same replica(when we have only one replica and one leader)

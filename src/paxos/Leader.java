@@ -63,6 +63,7 @@ public class Leader extends Process {
                     } else {
                         proposals.put(m.slot_number, m.command);
                     }
+                    //Commanders should be created only when the leader is moving from not active to active
                     if (active) {
                         new Commander(env,
                                 new ProcessId("commander:" + me + ":" + ballot_number + ":" + m.slot_number),
@@ -92,6 +93,7 @@ public class Leader extends Process {
                                 sendMessage(r, new DecisionMessage(me, sn, proposals.get(sn)));
                             }
                         } else {
+                            if(!active)
                             new Commander(env,
                                     new ProcessId("commander:" + me + ":" + ballot_number + ":" + sn),
                                     this, acceptors, replicas, ballot_number, sn, proposals.get(sn));

@@ -61,9 +61,11 @@ public class Replica extends Process {
         for (int s = 1; s < slot_num; s++) {
             if (c.equals(decisions.get(s))) {
                 slot_num++;
+//                logger.log(messageLevel,"increasing slot no for same cmd "+slot_num);
                 return true;
             }
         }
+//        logger.log(messageLevel,"calling read only "+slot_num);
         sendReadOnlyBefore(c);
         if(c.op == null) return false; // FOR COMMANDS HAVING ONLY READ ONLY BUT NO ACTUAL CMD
         String[] operationArgs = c.op.operationArgs.split(Env.TX_MSG_SEPARATOR);
@@ -167,6 +169,7 @@ public class Replica extends Process {
                     if (c.op!= null && c2 != null && !c2.equals(c)) {
                         propose(c2);
                     }
+//                    logger.log(messageLevel, "CALLING PERFORM " + c + " for slot :" + (slot_num) +" de"+decisions);
                     if(!perform(c)) break;
                 }
             } else if (msg instanceof ReadOnlyDecisionMessage) {
