@@ -125,8 +125,9 @@ public class Leader extends Process {
 //                if(active) {
 //                    if(leaseEndTime > System.currentTimeMillis()) {
                         //straight away tell the last decided slot to the replica
+                /*Chnaged the name of scout so that we can understand the scout has been created for which slot no...*/
                 if(active)
-                    new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
+                    new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number+":"+getPostMaxProposal()),
                         this, acceptors, ballot_number, getPostMaxProposal(), m.command);
 
 //                sendMessage(msg.src, new ReadOnlyDecisionMessage(me, getMaxDecisionSlot(), m.command));
