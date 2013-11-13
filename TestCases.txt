@@ -307,6 +307,9 @@ Now some of the acceptors can the RO proposed by the leader0, and the other half
 
 Case 6:
 Execute multiple ready only cmds together without executing any upd cmd
+TX 1:Inquiry$4$100 replica1:30000
+TX 1:Inquiry$3$100 replica1:30000
+
 
 NOTE:
 Same read only cmd comes to the replica multiple times, for the same slot
@@ -317,6 +320,9 @@ WAY 2: he can ignore the read only cmds which it has executed. by maintaining a 
 Case 7:
 Execute a write cmd and then read cmd and then a read only cmd again :
 BUG: WHEN THE INQUIRY CMD IS EXCUTED AFTER A WITHDRAW CMD THE DECISON HAS COME BUT THE CODE DOESNT EXECUTE IT
+TX 1:Inquiry$4$100 replica1:30000
+TX 1:Withdraw$0$50
+
 
 Case 8:
 Execute a read cmd and then write cmd and then a read only cmd again :
@@ -335,4 +341,17 @@ The replica should not be performing the same readonly more than once.
 The leader should be sending the msg to all the replicas about what slot they should be executing the cmd at
 The Acceptor should be able to merge the pvalue if the dummy cmd exists for the same slot no and same ballot no.
 The replica gets the value after the the slot has been executed
+
+
+IMPLEMENTATION ISSUES:
+Found with :
+1.
+TX 1:Inquiry$4$100 replica1:30000
+TX 1:Withdraw$0$50
+TX 1:Inquiry$4$100 replica1:30000
+
+Replica not performing the RO for slot 2.
+
+
+2. Leader once gets adopted, creates a new commander for every proposal
 
