@@ -18,10 +18,11 @@ public class Scout extends Process {
 		this.leader = leader;
 		this.ballot_number = ballot_number;
         this.my_name = "[["+me.toString()+"]]";
-        leader.leaseEndTime = System.currentTimeMillis() + this.leaseTime;
         setLogger();
         loadProp();
-		env.addProc(me, this);
+        env.addProc(me, this);
+        this.leader.leaseEndTime = System.currentTimeMillis() + leaseTime;
+//        logger.log(Level.FINER, "LET:"+this.leader.leaseEndTime+"=="+leaseTime+"+"+System.currentTimeMillis());
 	}
 
 	public void body(){

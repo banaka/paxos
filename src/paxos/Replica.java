@@ -34,6 +34,14 @@ public class Replica extends Process {
     }
 
     void propose(Command c) {
+        /* COMMENT THIS IF BLOCK TO DISABLE SPECIAL TREATMENT OF READ ONLY*/
+        if(c.op.opType == Operation.OperationType.Inquiry) {
+            for (ProcessId ldr : leaders) {
+                if(!stop_request())
+                    sendMessage(ldr, new ReadOnlyMessage(me, c));
+            }
+            return;
+        }
         if (!decisions.containsValue(c)) {
             for (int s = 1; ; s++) {
                 if (!proposals.containsKey(s) && !decisions.containsKey(s)) {
@@ -60,7 +68,7 @@ public class Replica extends Process {
         sendReadOnlyBefore();
         try {
             Account account = accountList.get(Integer.parseInt(operationArgs[0]));
-            int amt = Integer.parseInt(operationArgs[1]);
+            int amt = operationArgs.length > 1 ? Integer.parseInt(operationArgs[1]) : 0;
             String output;
             switch (c.op.opType) {
                 case Deposit:
@@ -87,6 +95,7 @@ public class Replica extends Process {
             logger.log(messageLevel, "PERFORM " + c + " for slot :" + (slot_num) + " OUTPUT :" + output);
             sendMessage(c.client,new ResponseMessage(me,c,account));
         } catch (Exception e) {
+            e.printStackTrace();
             logger.log(Level.SEVERE, "Error in the input msg ");
             sendMessage(c.client,new ResponseMessage(me,c,null));
         }
@@ -127,9 +136,12 @@ public class Replica extends Process {
             } else if (msg instanceof DecisionMessage) {
                 DecisionMessage m = (DecisionMessage) msg;
                 decisions.put(m.slot_number, m.command);
-                Set<Command> readOnlyCommands = new HashSet<Command>();
-                for(ReadOnlyMessage r: m.readOnlyMessages) readOnlyCommands.add(r.command);
-                readOnlyFlags.put(m.slot_number, readOnlyCommands);
+
+                if (m.readOnlyMessages != null) {
+                    Set<Command> readOnlyCommands = new HashSet<Command>();
+                    for(ReadOnlyMessage r: m.readOnlyMessages) readOnlyCommands.add(r.command);
+                    readOnlyFlags.put(m.slot_number, readOnlyCommands);
+                }
 
                 while (!stop_request()) {
                     Command c = decisions.get(slot_num);
@@ -145,9 +157,10 @@ public class Replica extends Process {
             } else if (msg instanceof ReadOnlyDecisionMessage) {
                 ReadOnlyDecisionMessage m = (ReadOnlyDecisionMessage)msg;
                 Set<Command> currentReadOnlyBag = readOnlyFlags.get(m.slot_number);
-                if(currentReadOnlyBag == null) currentReadOnlyBag = new HashSet<Command>(); else currentReadOnlyBag.add(m.command);
+                if(currentReadOnlyBag == null) currentReadOnlyBag = new HashSet<Command>();
+                currentReadOnlyBag.add(m.command);
                 readOnlyFlags.put(m.slot_number, currentReadOnlyBag);
-                sendReadOnlyAfter();
+                sendReadOnlyBefore();
             } else {
                 logger.log(Level.SEVERE, "paxos.Replica: unknown msg type");
             }

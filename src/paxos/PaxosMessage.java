@@ -213,7 +213,7 @@ class ReadOnlyDecisionMessage extends PaxosMessage {
 
     @Override
     public String toString() {
-        return "DecisionMessage{" +
+        return "ReadOnlyDecisionMessage{" +
                 "src=" + src +
                 ", slot_number=" + slot_number +
                 ", command=" + command +

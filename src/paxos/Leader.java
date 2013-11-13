@@ -15,8 +15,8 @@ public class Leader extends Process {
     boolean failureDetection;
     Map<Integer, Command> proposals = new HashMap<Integer, Command>();
     public long leaseEndTime;
-    public HashMap<Integer, Set<ReadOnlyMessage>> readOnlyMessagesFlag;
-    public HashSet<Integer /*slot number*/> decisionsTaken;
+    public Map<Integer, Set<ReadOnlyMessage>> readOnlyMessagesFlag = new HashMap<Integer, Set<ReadOnlyMessage>>();
+    public Set<Integer /*slot number*/> decisionsTaken = new HashSet<Integer>();
 
     public Leader(Env env, ProcessId me, ProcessId[] acceptors,
                   ProcessId[] replicas) {
@@ -48,6 +48,11 @@ public class Leader extends Process {
         new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
                 this, acceptors, ballot_number);
         while (!stop_request()) {
+            //ToDo: CHECK AND RENEW YOUR LEASE (Handle from scout's end)
+//            if(active == true && leaseEndTime < (System.currentTimeMillis()))
+//                new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
+//                        this, acceptors, ballot_number);
+
             PaxosMessage msg = getNextMessage();
 
             if (msg instanceof ProposeMessage) {
@@ -106,13 +111,19 @@ public class Leader extends Process {
 //                }
             } else if (msg instanceof ReadOnlyMessage) {
                 ReadOnlyMessage m = (ReadOnlyMessage) msg;
-                if(active && leaseEndTime > System.currentTimeMillis()) {
-                    //straight away tell the last decided slot to the replica
-                    sendMessage(msg.src, new ReadOnlyDecisionMessage(me, getMaxDecisionSlot(), m.command));
-                    //tag the next slot message
-                    Set<ReadOnlyMessage> current = readOnlyMessagesFlag.get(1 + getMaxDecisionSlot());
-                    if(current == null) current = new HashSet<ReadOnlyMessage>(); else current.add(m);
-                    readOnlyMessagesFlag.put(getMaxDecisionSlot(), current);
+                logger.log(Level.FINER, "active :"+active+" leaseEnd: "+leaseEndTime+" T="+System.currentTimeMillis());
+                if(active) {
+                    if(leaseEndTime > System.currentTimeMillis()) {
+                        //straight away tell the last decided slot to the replica
+                        sendMessage(msg.src, new ReadOnlyDecisionMessage(me, getMaxDecisionSlot(), m.command));
+                        //tag the next slot message
+                        Set<ReadOnlyMessage> current = readOnlyMessagesFlag.get(1 + getMaxDecisionSlot());
+                        if(current == null) current = new HashSet<ReadOnlyMessage>(); else current.add(m);
+                        readOnlyMessagesFlag.put(getMaxDecisionSlot(), current);
+                    } else {
+                        //first renew
+                        logger.log(Level.SEVERE, "LEASE EXPIRED!! ..");
+                    }
                 }
             } else {
                 System.err.println("paxos.Leader: unknown msg type");
@@ -121,6 +132,7 @@ public class Leader extends Process {
     }
 
     private Integer getMaxDecisionSlot() {
+        if (decisionsTaken == null || decisionsTaken.isEmpty()) return 0;
         return Collections.max(decisionsTaken);
     }
 }

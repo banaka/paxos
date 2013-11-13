@@ -25,8 +25,9 @@ public class Acceptor extends Process {
 			if (msg instanceof P1aMessage) {
 				P1aMessage m = (P1aMessage) msg;
                 long currentTime = System.currentTimeMillis();
+                logger.log(messageLevel, "BN:"+ballot_number+"leaser:"+leaser+"B:"+m+"leaseEnd:"+leaseEndTime+"T="+currentTime);
                 if(ballot_number != null && leaseEndTime > currentTime &&
-                        m.ballot_number.leader_id != leaser) {
+                        !m.ballot_number.leader_id.equals(leaser)) {
                     logger.log(messageLevel, "Already in lease with "+leaser+" for "+leaseEndTime+" Current: "
                     + currentTime + "Ignoring : " + m.ballot_number);
                 } else if (ballot_number == null ||
