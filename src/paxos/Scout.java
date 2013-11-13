@@ -9,9 +9,18 @@ public class Scout extends Process {
     Leader leader;
 	ProcessId[] acceptors;
 	BallotNumber ballot_number;
+    int maxPostProposal = -1;
+    Command readOnlyCommand;
 
-	public Scout(Env env, ProcessId me, Leader leader,
-			ProcessId[] acceptors, BallotNumber ballot_number){
+    public Scout(Env env, ProcessId me, Leader leader,
+                 ProcessId[] acceptors, BallotNumber ballot_number, Integer maxPostProposal, Command c){
+        this(env, me, leader, acceptors, ballot_number);
+        this.maxPostProposal = maxPostProposal;
+        this.readOnlyCommand = c;
+    }
+
+    public Scout(Env env, ProcessId me, Leader leader,
+        ProcessId[] acceptors, BallotNumber ballot_number){
 		this.env = env;
 		this.me = me;
 		this.acceptors = acceptors;
@@ -27,7 +36,7 @@ public class Scout extends Process {
 
 	public void body(){
 //		P1aMessage m1 = new P1aMessage(me, ballot_number, leader.leaseEndTime);
-        P1aMessage m1 = new P1aMessage(me, ballot_number);
+        P1aMessage m1 = new P1aMessage(me, ballot_number, maxPostProposal, readOnlyCommand);
         Set<ProcessId> waitfor = new HashSet<ProcessId>();
 		for (ProcessId a: acceptors) {
             if(leader.stop_request(me)) break;
@@ -36,6 +45,7 @@ public class Scout extends Process {
 		}
 
 		Set<PValue> pvalues = new HashSet<PValue>();
+//        HashMap<Integer, Set<Command>> readOnlyFlagsAll = new HashMap<Integer, Set<Command>>();
 		while (2 * waitfor.size() >= acceptors.length && !leader.stop_request(me)) {
 			PaxosMessage msg = getNextMessage();
 
@@ -50,6 +60,12 @@ public class Scout extends Process {
 				if (waitfor.contains(m.src)) {
 					waitfor.remove(m.src);
 					pvalues.addAll(m.accepted);
+//                    for(Integer i: m.readOnlyFlags.keySet()) {
+//                        Set<Command> commands = m.readOnlyFlags.get(i);
+//                        if(commands != null && !commands.isEmpty()) {
+//
+//                        }
+//                    }
 				}
 			}
 			else {

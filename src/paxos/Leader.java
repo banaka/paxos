@@ -73,15 +73,25 @@ public class Leader extends Process {
                     for (PValue pv : m.accepted) {
                         BallotNumber bn = max.get(pv.slot_number);
                         if (bn == null || bn.compareTo(pv.ballot_number) < 0) {
+                            if(pv.command.op == null && proposals.containsKey(pv.slot_number)) {
+                                pv.command.updateWith(proposals.get(pv.slot_number));
+                            }
                             max.put(pv.slot_number, pv.ballot_number);
                             proposals.put(pv.slot_number, pv.command);
                         }
                     }
 
                     for (int sn : proposals.keySet()) {
-                        new Commander(env,
-                                new ProcessId("commander:" + me + ":" + ballot_number + ":" + sn),
-                                this, acceptors, replicas, ballot_number, sn, proposals.get(sn));
+                        if(proposals.get(sn).op == null) {
+                            for (ProcessId r : replicas) {
+                                if(stop_request()) break;
+                                sendMessage(r, new DecisionMessage(me, sn, proposals.get(sn)));
+                            }
+                        } else {
+                            new Commander(env,
+                                    new ProcessId("commander:" + me + ":" + ballot_number + ":" + sn),
+                                    this, acceptors, replicas, ballot_number, sn, proposals.get(sn));
+                        }
                     }
                     active = true;
                 }
@@ -115,11 +125,15 @@ public class Leader extends Process {
 //                if(active) {
 //                    if(leaseEndTime > System.currentTimeMillis()) {
                         //straight away tell the last decided slot to the replica
-                        sendMessage(msg.src, new ReadOnlyDecisionMessage(me, getMaxDecisionSlot(), m.command));
+                if(active)
+                    new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
+                        this, acceptors, ballot_number, getPostMaxProposal(), m.command);
+
+//                sendMessage(msg.src, new ReadOnlyDecisionMessage(me, getMaxDecisionSlot(), m.command));
                         //tag the next slot message
-                        Set<ReadOnlyMessage> current = readOnlyMessagesFlag.get(1 + getMaxDecisionSlot());
-                        if(current == null) current = new HashSet<ReadOnlyMessage>(); else current.add(m);
-                        readOnlyMessagesFlag.put(getMaxDecisionSlot(), current);
+//                        Set<ReadOnlyMessage> current = readOnlyMessagesFlag.get(1 + getMaxDecisionSlot());
+//                        if(current == null) current = new HashSet<ReadOnlyMessage>(); else current.add(m);
+//                        readOnlyMessagesFlag.put(getMaxDecisionSlot(), current);
 //                    } else {
 //                        //first renew
 //                        logger.log(Level.SEVERE, "LEASE EXPIRED!! ..");
@@ -134,5 +148,14 @@ public class Leader extends Process {
     private Integer getMaxDecisionSlot() {
         if (decisionsTaken == null || decisionsTaken.isEmpty()) return 0;
         return Collections.max(decisionsTaken);
+    }
+
+    private Integer getPostMaxProposal() {
+        if (proposals.keySet().isEmpty()) return 1;
+        int max = 0;
+        for(Integer i : proposals.keySet()) {
+            if(proposals.get(i).op != null && max < i) max = i;
+        }
+        return max + 1;
     }
 }

@@ -56,20 +56,26 @@ class PongMessage extends PaxosMessage {
 
 class P1aMessage extends PaxosMessage {
     BallotNumber ballot_number;
+    int maxPostProposal;
+    Command readOnlyCommand;
 //    long leaseEndTime;
 
     @Override
     public String toString() {
         return "P1aMessage{" +
                 "ballot_number=" + ballot_number +
+                "Max Proposal="+ maxPostProposal +
+                "Read only cmd="+ readOnlyCommand +
                 '}';
     }
 
 //    P1aMessage(ProcessId src, BallotNumber ballot_number, long leaseEndTime) {
-    P1aMessage(ProcessId src, BallotNumber ballot_number) {
+    P1aMessage(ProcessId src, BallotNumber ballot_number, int maxPostProposal, Command readOnlyCommand) {
         this.src = src;
         this.src_name = src.name;
         this.ballot_number = ballot_number;
+        this.maxPostProposal = maxPostProposal;
+        this.readOnlyCommand = readOnlyCommand;
 //        this.leaseEndTime = leaseEndTime;
     }
 
@@ -78,12 +84,15 @@ class P1aMessage extends PaxosMessage {
 class P1bMessage extends PaxosMessage {
     BallotNumber ballot_number;
     Set<PValue> accepted;
+//    Map<Integer, Set<Command>> readOnlyFlags;
 
+//    P1bMessage(ProcessId src, BallotNumber ballot_number, Set<PValue> accepted, Map<Integer, Set<Command>> readOnlyFlags) {
     P1bMessage(ProcessId src, BallotNumber ballot_number, Set<PValue> accepted) {
         this.src = src;
         this.src_name = src.name;
         this.ballot_number = ballot_number;
         this.accepted = accepted;
+//        this.readOnlyFlags = readOnlyFlags;
     }
 
     @Override
@@ -91,6 +100,7 @@ class P1bMessage extends PaxosMessage {
         return "P1bMessage{" +
                 "ballot_number=" + ballot_number +
                 ", accepted=" + accepted +
+//                ", readOnly="+ readOnlyFlags +
                 '}';
     }
 }
@@ -179,14 +189,14 @@ class DecisionMessage extends PaxosMessage {
     ProcessId src;
     int slot_number;
     Command command;
-    Set<ReadOnlyMessage> readOnlyMessages;
+//    Set<ReadOnlyMessage> readOnlyMessages;
 
-    public DecisionMessage(ProcessId src, int slot_number, Command command, Set<ReadOnlyMessage> readOnlyMessages) {
+    public DecisionMessage(ProcessId src, int slot_number, Command command) {
         this.src = src;
         this.src_name = src.name;
         this.slot_number = slot_number;
         this.command = command;
-        this.readOnlyMessages = readOnlyMessages;
+//        this.readOnlyMessages = readOnlyMessages;
     }
 
     @Override
@@ -195,7 +205,6 @@ class DecisionMessage extends PaxosMessage {
                 "src=" + src +
                 ", slot_number=" + slot_number +
                 ", command=" + command +
-                ", readOnlyMessages="+readOnlyMessages+
                 '}';
     }
 }

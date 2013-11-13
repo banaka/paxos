@@ -1,9 +1,22 @@
 package paxos;
 
+import java.util.Set;
+
 public class Command {
 	ProcessId client;
 	int req_id;
     Operation op;
+    Set<Command> readOnlySets;
+
+	public Command(Set<Command> readOnlySets){
+        this.readOnlySets = readOnlySets;
+    }
+
+    public void updateWith(Command c){
+        this.client = c.client;
+        this.req_id = c.req_id;
+        this.op = c.op;
+    }
 
 	public Command(ProcessId client, int req_id, Operation op){
 		this.client = client;
@@ -26,16 +39,20 @@ public class Command {
         if (!(o instanceof Command)) return false;
 
         Command command = (Command) o;
-
-        if (req_id != command.req_id) return false;
-        if (!client.equals(command.client)) return false;
-        if (!op.equals(command.op)) return false;
+        if(op != null) {
+            if (req_id != command.req_id) return false;
+            if (!client.equals(command.client)) return false;
+            if (!op.equals(command.op)) return false;
+        }
+//        else {
+//            for()
+//        }
 
         return true;
     }
 
     public String toString(){
-		return "paxos.Command(" + client + "," + req_id + "," + op + ")";
+		return "paxos.Command(" + client + "," + req_id + "," + op + ", RO:" + readOnlySets + ")";
 	}
 }
 

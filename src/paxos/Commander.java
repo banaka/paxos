@@ -55,7 +55,7 @@ public class Commander extends Process {
 
         for (ProcessId r : replicas) {
             if(leader.stop_request(me)) break;
-            sendMessage(r, new DecisionMessage(me, slot_number, command, leader.readOnlyMessagesFlag.get(slot_number)));
+            sendMessage(r, new DecisionMessage(me, slot_number, command));
         }
     }
 }
