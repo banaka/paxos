@@ -59,7 +59,7 @@ public class Leader extends Process {
                 ProposeMessage m = (ProposeMessage) msg;
                 if (!proposals.containsKey(m.slot_number) || proposals.get(m.slot_number).op == null) {
                     if (proposals.containsKey(m.slot_number) && proposals.get(m.slot_number).op == null) {
-                        m.command.readOnlySets=proposals.get(m.slot_number).readOnlySets;
+                        m.command.readOnlySets = proposals.get(m.slot_number).readOnlySets;
                     } else {
                         proposals.put(m.slot_number, m.command);
                     }
@@ -93,10 +93,10 @@ public class Leader extends Process {
                                 sendMessage(r, new DecisionMessage(me, sn, proposals.get(sn)));
                             }
                         } else {
-                            if(!active)
-                            new Commander(env,
-                                    new ProcessId("commander:" + me + ":" + ballot_number + ":" + sn),
-                                    this, acceptors, replicas, ballot_number, sn, proposals.get(sn));
+                            if (!active)
+                                new Commander(env,
+                                        new ProcessId("commander:" + me + ":" + ballot_number + ":" + sn),
+                                        this, acceptors, replicas, ballot_number, sn, proposals.get(sn));
                         }
                     }
                     active = true;
@@ -131,11 +131,16 @@ public class Leader extends Process {
 //                if(active) {
 //                    if(leaseEndTime > System.currentTimeMillis()) {
                 //straight away tell the last decided slot to the replica
-                /*Chnaged the name of scout so that we can understand the scout has been created for which slot no...*/
-                if (active)
+                if (active) {
+                    //We need to add this read only cmd to the proposal set. we need to do this so that any cmd which comes after this scout
+                    //has been spawned then we want the commander for this slot to actually include the read only cmd.
+                    m.command.readOnlySets = proposals.get(getPostMaxProposal()).readOnlySets;
+                    Set<Command> roMessage = new HashSet<Command>(); roMessage.add(m.command);
+                    proposals.put(getPostMaxProposal(), new Command(roMessage));
+                /*Changed the name of scout so that we can understand the scout has been created for which slot no...*/
                     new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number + ":" + getPostMaxProposal()),
                             this, acceptors, ballot_number, getPostMaxProposal(), m.command);
-
+                }
 //                sendMessage(msg.src, new ReadOnlyDecisionMessage(me, getMaxDecisionSlot(), m.command));
                 //tag the next slot message
 //                        Set<ReadOnlyMessage> current = readOnlyMessagesFlag.get(1 + getMaxDecisionSlot());
