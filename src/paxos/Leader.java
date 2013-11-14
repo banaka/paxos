@@ -58,11 +58,11 @@ public class Leader extends Process {
             if (msg instanceof ProposeMessage) {
                 ProposeMessage m = (ProposeMessage) msg;
                 if (!proposals.containsKey(m.slot_number) || proposals.get(m.slot_number).op == null) {
+                    //SLOT NUMBER IS NEW OR SLOT NUMBER's OP IS EMPTY
                     if (proposals.containsKey(m.slot_number) && proposals.get(m.slot_number).op == null) {
-                        m.command.readOnlySets = proposals.get(m.slot_number).readOnlySets;
-                    } else {
-                        proposals.put(m.slot_number, m.command);
+                        m.command.readOnlySets=proposals.get(m.slot_number).readOnlySets;
                     }
+                    proposals.put(m.slot_number, m.command);
                     //Commanders should be created only when the leader is moving from not active to active
                     if (active) {
                         new Commander(env,
@@ -168,6 +168,6 @@ public class Leader extends Process {
         for (Integer i : proposals.keySet()) {
             if (proposals.get(i).op != null && max < i) max = i;
         }
-        return max + 1;
+        return proposals.get(max).op == null ? max : max + 1;
     }
 }
