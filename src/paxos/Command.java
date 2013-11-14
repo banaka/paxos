@@ -39,6 +39,15 @@ public class Command {
         return true;
     }
 
+    public boolean cmdEquals(Command command) {
+        if (req_id != command.req_id) return false;
+        if (!client.equals(command.client)) return false;
+        if (op != null ? !op.equals(command.op) : command.op != null) return false;
+//        if (readOnlySets != null ? !readOnlySets.equals(command.readOnlySets) : command.readOnlySets != null)
+//            return false;
+        return true;
+    }
+
     @Override
     public int hashCode() {
         int result = client != null ? client.hashCode() : 0;

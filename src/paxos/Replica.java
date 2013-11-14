@@ -58,16 +58,16 @@ public class Replica extends Process {
 
 
     boolean perform(Command c) {
+        sendReadOnlyBefore(c);
+        if(c.op == null) return false; // FOR COMMANDS HAVING ONLY READ ONLY BUT NO ACTUAL CMD
         for (int s = 1; s < slot_num; s++) {
-            if (c.equals(decisions.get(s))) {
+            if (c.cmdEquals(decisions.get(s))) {
                 slot_num++;
 //                logger.log(messageLevel,"increasing slot no for same cmd "+slot_num);
                 return true;
             }
         }
 //        logger.log(messageLevel,"calling read only "+slot_num);
-        sendReadOnlyBefore(c);
-        if(c.op == null) return false; // FOR COMMANDS HAVING ONLY READ ONLY BUT NO ACTUAL CMD
         String[] operationArgs = c.op.operationArgs.split(Env.TX_MSG_SEPARATOR);
         try {
             Account account = accountList.get(Integer.parseInt(operationArgs[0]));
