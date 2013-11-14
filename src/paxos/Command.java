@@ -24,14 +24,6 @@ public class Command {
         this.op = op;
     }
 
-    @Override
-    public int hashCode() {
-        int result = client.hashCode();
-        result = 31 * result + req_id;
-        result = 31 * result + op.hashCode();
-        return result;
-    }
-
     //Changed the equals function to take into consideration the read only set...
     @Override
     public boolean equals(Object o) {
@@ -39,17 +31,24 @@ public class Command {
         if (!(o instanceof Command)) return false;
 
         Command command = (Command) o;
-
         if (req_id != command.req_id) return false;
         if (!client.equals(command.client)) return false;
         if (op != null ? !op.equals(command.op) : command.op != null) return false;
         if (readOnlySets != null ? !readOnlySets.equals(command.readOnlySets) : command.readOnlySets != null)
             return false;
-
         return true;
     }
 
-//    @Override
+    @Override
+    public int hashCode() {
+        int result = client != null ? client.hashCode() : 0;
+        result = 31 * result + req_id;
+        result = 31 * result + (op != null ? op.hashCode() : 0);
+        result = 31 * result + (readOnlySets != null ? readOnlySets.hashCode() : 0);
+        return result;
+    }
+
+    //    @Override
 //    public boolean equals(Object o) {
 //        if (this == o) return true;
 //        if (!(o instanceof Command)) return false;

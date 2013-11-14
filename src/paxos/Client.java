@@ -19,7 +19,7 @@ class TimeoutClock extends Thread {
         }
         if(client.currentMessage == oldMessageCount) {
             System.err.println("Client Timeout! Resending request to Replicas...");
-            client.checkIfMessageCanBeSent();
+            client.checkIfMessageCanBeSent(oldMessageCount);
         }
     }
 }
@@ -59,14 +59,18 @@ public class Client extends Process {
         env.addProc(me, this);
     }
 
-    public void checkIfMessageCanBeSent(){
-        if(currentMessage < (queue.size()))  {
-            PaxosMessage msg = queue.get(currentMessage);
-            new TimeoutClock(currentMessage, clientTimeout, this).start();
+    public void checkIfMessageCanBeSent(int whichMessage){
+        if(whichMessage <= currentMessage && whichMessage < (queue.size()))  {
+            PaxosMessage msg = queue.get(whichMessage);
+            new TimeoutClock(whichMessage, clientTimeout, this).start();
             for (Replica r: env.replicas) {
                 new Messenger(msg,r,this).start();
             }
         }
+    }
+
+    public void checkIfMessageCanBeSent(){
+        checkIfMessageCanBeSent(currentMessage);
     }
 
     @Override
@@ -77,7 +81,7 @@ public class Client extends Process {
 
             if(msg instanceof TxMessage){
                 queue.add(msg);
-                checkIfMessageCanBeSent();
+                checkIfMessageCanBeSent(queue.size() - 1);
             } else if(msg instanceof ResponseMessage) {
                 if(((ResponseMessage) msg).command.req_id == currentMessage){
                     if(((ResponseMessage) msg).account == null)

@@ -104,11 +104,13 @@ public class Leader extends Process {
             } else if (msg instanceof PreemptedMessage) {
                 PreemptedMessage m = (PreemptedMessage) msg;
                 if (ballot_number.compareTo(m.ballot_number) < 0) {
-                    if (failureDetection && failureDetector == null) {
-                        ProcessId activeLeader = m.ballot_number.leader_id;
-                        BallotNumber lastActiveBallot_number = m.ballot_number;
-                        failureDetector = new FailureDetector(env, new ProcessId("failureDetector:" + me + ":" + activeLeader), this, lastActiveBallot_number);
-                        logger.log(messageLevel, "Created a FailureDetector for " + activeLeader);
+                    if (failureDetection) {
+                        if(failureDetector == null) {
+                            ProcessId activeLeader = m.ballot_number.leader_id;
+                            BallotNumber lastActiveBallot_number = m.ballot_number;
+                            failureDetector = new FailureDetector(env, new ProcessId("failureDetector:" + me + ":" + activeLeader), this, lastActiveBallot_number);
+                            logger.log(messageLevel, "Created a FailureDetector for " + activeLeader);
+                        } //JUST IGNORE IF FAILURE DETECTOR IS ALREADY RUNNING...ITS TIMEOUT WILL TAKE CARE
                     } else {
                         ballot_number = new BallotNumber(m.ballot_number.round + 1, me);
                         new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number),
@@ -134,12 +136,16 @@ public class Leader extends Process {
                 if (active) {
                     //We need to add this read only cmd to the proposal set. we need to do this so that any cmd which comes after this scout
                     //has been spawned then we want the commander for this slot to actually include the read only cmd.
-                    m.command.readOnlySets = proposals.get(getPostMaxProposal()).readOnlySets;
-                    Set<Command> roMessage = new HashSet<Command>(); roMessage.add(m.command);
-                    proposals.put(getPostMaxProposal(), new Command(roMessage));
+                    Integer maxProposal = getPostMaxProposal();
+                    if(proposals.get(maxProposal) != null)
+                        proposals.get(maxProposal).readOnlySets.add(m.command);
+                    else {
+                        Set<Command> roMessage = new HashSet<Command>(); roMessage.add(m.command);
+                        proposals.put(maxProposal, new Command(roMessage));
+                    }
                 /*Changed the name of scout so that we can understand the scout has been created for which slot no...*/
-                    new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number + ":" + getPostMaxProposal()),
-                            this, acceptors, ballot_number, getPostMaxProposal(), m.command);
+                    new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number + ":" + maxProposal),
+                            this, acceptors, ballot_number, maxProposal, proposals.get(maxProposal));
                 }
 //                sendMessage(msg.src, new ReadOnlyDecisionMessage(me, getMaxDecisionSlot(), m.command));
                 //tag the next slot message
@@ -164,10 +170,10 @@ public class Leader extends Process {
 
     private Integer getPostMaxProposal() {
         if (proposals.keySet().isEmpty()) return 1;
-        int max = 0;
+        int max = 1;
         for (Integer i : proposals.keySet()) {
             if (proposals.get(i).op != null && max < i) max = i;
         }
-        return proposals.get(max).op == null ? max : max + 1;
+        return (proposals.get(max) == null || proposals.get(max).op == null) ? max : max + 1;
     }
 }

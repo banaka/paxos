@@ -10,7 +10,7 @@ public class Heartbeat extends Process {
         setLogger();
         loadProp();
         env.addProc(me, this);
-        delay = 0;
+        delay = Integer.parseInt(prop.getProperty("heartbeatDelay"));;
     }
 
     public void body() {
@@ -19,10 +19,13 @@ public class Heartbeat extends Process {
             PaxosMessage msg = getNextMessage();
             stop_request();
             if (msg instanceof PingMessage) {
-                if(forLeader.active) {
-                    PingMessage ping = (PingMessage) msg;
-                    sendMessage(ping.src, new PongMessage(me));
+                PingMessage ping = (PingMessage) msg;
+                try {
+                    Thread.sleep(delay);
+                } catch (InterruptedException e) {
+
                 }
+                sendMessage(ping.src, new PongMessage(me));
             }
         }
     }

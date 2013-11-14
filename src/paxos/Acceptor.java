@@ -44,12 +44,15 @@ public class Acceptor extends Process {
                             if(p.ballot_number.equals(m.ballot_number) && p.slot_number == m.maxPostProposal) {
                                 found = true;
                                 if(p.command.readOnlySets == null) p.command.readOnlySets = new HashSet<Command>();
-                                p.command.readOnlySets.add(m.readOnlyCommand);
+                                for(Command readOnlyFromLeader : m.readOnlyCommand.readOnlySets)
+                                    p.command.readOnlySets.add(readOnlyFromLeader);
                             }
                         }
                         logger.log(Level.FINER, found + "--"+m.maxPostProposal+"--"+accepted);
                         if(found == false && m.maxPostProposal != -1) {
-                            Set<Command> r = new HashSet<Command>(); r.add(m.readOnlyCommand);
+                            Set<Command> r = new HashSet<Command>();
+                            for(Command readOnlyFromLeader : m.readOnlyCommand.readOnlySets)
+                                r.add(readOnlyFromLeader);
                             accepted.add(new PValue(m.ballot_number,m.maxPostProposal, new Command(r)));
                         }
                         logger.log(Level.FINER, found + "++"+m.maxPostProposal+"++"+accepted);
