@@ -382,3 +382,18 @@ TX 1:Inquiry$4$100
 
 
 3. The Client sent multiple RO cmds to same replica(when we have only one replica and one leader)
+
+
+
+######Test Case Repro: [Leader gets killed after sending one msg to acceptor, another leader doesnt get
+###### msg from Replica but gets it from acceptor and sends it to the Replica
+Reverse up the leaders -- Uncomment Line 49,50 and comment 51 in Replica.java
+commander\:leader1\:BN(0,leader1)\:2_KILL=SEND\:acceptor1\:1
+nReplicas=1
+
+TX 1:Withdraw$0$50
+DELAY replica0 50000
+TX 1:Withdraw$0$50
+KILL leader1
+> Replica0 will get msg back from Leader0
+######
