@@ -185,9 +185,9 @@ Leader 0 gets the values decided and sends decision to all
 
 
 Cmds:
-> TX 1:Withdraw$0$50
-> DELAY leader1 2000
-> TX 1:Withdraw$0$50
+TX 1:Withdraw$0$50
+DELAY leader1 2000
+TX 1:Withdraw$0$50
 
 NOTE:
 When the Leader0 timesout it starts a new scout and then sends commander for all the decisions that have been made.
