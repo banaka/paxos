@@ -28,6 +28,7 @@ public class Leader extends Process {
         this.setLogger();
         loadProp();
         heartbeat = new Heartbeat(env, new ProcessId("heartbeat:" + me + ":"), this);
+        failureDetectionTimeout = Integer.parseInt(prop.getProperty("failureDetectionTimeout"));
         env.addProc(me, this);
     }
 

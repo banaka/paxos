@@ -1,12 +1,10 @@
 package paxos;
 
 import java.util.Properties;
-import java.util.logging.Level;
 
 public class FailureDetector extends Process {
     Leader forLeader;
     BallotNumber lastActiveBallot_number;
-    int timeout;
 
     public FailureDetector(Env env, ProcessId me, Leader leader, BallotNumber lastActiveBallot_number) {
         this.env = env;
@@ -20,11 +18,6 @@ public class FailureDetector extends Process {
 
     Properties loadProp() {
         super.loadProp();
-        try {
-            timeout = Integer.parseInt(prop.getProperty("failureDetectionTimeout"));
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, e.getMessage());
-        }
         return prop;
     }
 
@@ -40,7 +33,7 @@ public class FailureDetector extends Process {
                 sendMessage(forLeader.me, new LeaderTimeoutMessage(me, lastActiveBallot_number));
                 break;
             }
-            PaxosMessage msg = getNextMessage(this.timeout);
+            PaxosMessage msg = getNextMessage(forLeader.failureDetectionTimeout);
             if (!(msg instanceof PongMessage) || msg == null ) {
                 sendMessage(forLeader.me, new LeaderTimeoutMessage(me, lastActiveBallot_number));
                 break;

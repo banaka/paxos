@@ -97,6 +97,7 @@ enum Commands {
     HELP("Shows this stuff again"),
     TX("TX 1:Deposit$0$21 replica0:3000 ** TX 1:Inquiry$2//Make a Transaction"),
     DELAY("DELAY <pid> <time>"),
+    EXC("EXC <replica_ID> leader0:leader1"),
     L2L("L2L <pid> <time> //Leader ping timeout"),
     FD("FD T/F");
 
