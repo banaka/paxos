@@ -61,6 +61,18 @@ public abstract class Process extends Thread {
                 delay = Integer.parseInt(prop.getProperty("delay"));
             }
             messageLevel = "TRUE".equalsIgnoreCase(prop.getProperty("printMessages")) ? Level.CONFIG : Level.FINER;
+            //Schedule KILL
+            String killSchedule = prop.getProperty(this.me+"_KILL");
+            if(killSchedule != null) {
+                String[] pidOptionSplit = killSchedule.split(Env.CLIENT_MSG_SEPARATOR,3);
+                ProcessId pidToCount = null;
+                for(ProcessId pp : env.procs.keySet())
+                    if(pp.toString().equals(pidOptionSplit[1]))
+                        pidToCount = pp;
+                scheduledToCountSend = ("SEND").equals(pidOptionSplit[0]);
+                countMessagesOf = pidToCount;
+                messagesToCount = Integer.parseInt(pidOptionSplit[2]);
+            }
 //            leaseTime = Integer.parseInt(prop.getProperty("leaseTime"));
 
         } catch (Exception e) {

@@ -39,14 +39,14 @@ public class Scout extends Process {
         P1aMessage m1 = new P1aMessage(me, ballot_number, maxPostProposal, readOnlyCommand);
         Set<ProcessId> waitfor = new HashSet<ProcessId>();
 		for (ProcessId a: acceptors) {
-            if(leader.stop_request(me)) break;
+            if(!(!leader.stop_request(me) && !stop_request())) break;
             sendMessage(a, m1);
 			waitfor.add(a);
 		}
 
 		Set<PValue> pvalues = new HashSet<PValue>();
 //        HashMap<Integer, Set<Command>> readOnlyFlagsAll = new HashMap<Integer, Set<Command>>();
-		while (2 * waitfor.size() >= acceptors.length && !leader.stop_request(me)) {
+		while (2 * waitfor.size() >= acceptors.length && !leader.stop_request(me) && !stop_request()) {
 			PaxosMessage msg = getNextMessage();
 
 			if (msg instanceof P1bMessage) {
@@ -73,7 +73,7 @@ public class Scout extends Process {
 			}
 		}
 
-        if(!leader.stop_request(me))
+        if(!leader.stop_request(me) && !stop_request())
 		    sendMessage(leader.me, new AdoptedMessage(me, ballot_number, pvalues));
 	}
 }

@@ -91,7 +91,7 @@ public class Command {
 }
 
 enum Commands {
-    KILL("KILL <pid> // Kills the pid thread " + "\n KILL pid : SEND/RECV from pid count"),
+    KILL("KILL <pid> // Kills the pid thread " + "\n KILL pid : SEND/RECV from : pid count"),
     SHOW("Shows all live pids"),
     HELP("Shows this stuff again"),
     TX("TX 1:Deposit$0$21 replica0:3000 ** TX 1:Inquiry$2//Make a Transaction"),

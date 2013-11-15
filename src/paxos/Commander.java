@@ -29,12 +29,12 @@ public class Commander extends Process {
         P2aMessage m2 = new P2aMessage(me, ballot_number, slot_number, command);
         Set<ProcessId> waitfor = new HashSet<ProcessId>();
         for (ProcessId a : acceptors) {
-            if(leader.stop_request(me)) break;
+            if(!(!leader.stop_request(me) && !stop_request())) break;
             sendMessage(a, m2);
             waitfor.add(a);
         }
 
-        while (2 * waitfor.size() >= acceptors.length && !leader.stop_request(me)) {
+        while (2 * waitfor.size() >= acceptors.length && !leader.stop_request(me) && !stop_request()) {
             PaxosMessage msg = getNextMessage();
 
             if (msg instanceof P2bMessage) {
@@ -50,11 +50,11 @@ public class Commander extends Process {
                 }
             }
         }
-        if(leader.stop_request(me)) return;
+        if(!(!leader.stop_request(me) && !stop_request())) return;
         leader.decisionsTaken.add(slot_number);
 
         for (ProcessId r : replicas) {
-            if(leader.stop_request(me)) break;
+            if(!(!leader.stop_request(me) && !stop_request())) break;
             sendMessage(r, new DecisionMessage(me, slot_number, command));
         }
     }

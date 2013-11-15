@@ -3,7 +3,6 @@ package paxos;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.logging.Level;
 
 public class Acceptor extends Process {
     BallotNumber ballot_number = null;
@@ -48,14 +47,14 @@ public class Acceptor extends Process {
                                     p.command.readOnlySets.add(readOnlyFromLeader);
                             }
                         }
-                        logger.log(Level.FINER, found + "--"+m.maxPostProposal+"--"+accepted);
+//                        logger.log(Level.FINER, found + "--"+m.maxPostProposal+"--"+accepted);
                         if(found == false && m.maxPostProposal != -1) {
                             Set<Command> r = new HashSet<Command>();
                             for(Command readOnlyFromLeader : m.readOnlyCommand.readOnlySets)
                                 r.add(readOnlyFromLeader);
                             accepted.add(new PValue(m.ballot_number,m.maxPostProposal, new Command(r)));
                         }
-                        logger.log(Level.FINER, found + "++"+m.maxPostProposal+"++"+accepted);
+//                        logger.log(Level.FINER, found + "++"+m.maxPostProposal+"++"+accepted);
                     }
 //                    Set<Command> currentFlags = readOnlyFlags.get(m.maxPostProposal);
 //                    if(currentFlags == null) currentFlags = new HashSet<Command>();
