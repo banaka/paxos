@@ -46,6 +46,8 @@ public class Replica extends Process {
             for (int s = 1; ; s++) {
                 if (!proposals.containsKey(s) && (!decisions.containsKey(s) || decisions.get(s).op == null)) {
                     proposals.put(s, c);
+//                    for(int i = leaders.length -1; i >= 0; i-- ) {
+//                      ProcessId ldr = leaders[i];
                     for (ProcessId ldr : leaders) {
                         if(!stop_request())
                             sendMessage(ldr, new ProposeMessage(me, s, c));
