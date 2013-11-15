@@ -347,9 +347,29 @@ The replica gets the value after the the slot has been executed
 IMPLEMENTATION ISSUES:
 Found with :
 1.
-TX 1:Inquiry$4$100 replica1:30000
-TX 1:Withdraw$0$50
-TX 1:Inquiry$4$100 replica1:30000
+TX 1:Inquiry$4 replica1:30000
+TX 3:Withdraw$4$50
+TX 1:Deposit$4$50
+TX 1:Inquiry$4 replica0:30000
+TX 2:Transfer$4$100$2
+TX 1:Deposit$4$50
+TX 1:Inquiry$4 replica0:30000
+TX 2:Inquiry$2 replica1:30000
+TX 3:Inquiry$4 replica0:30000
+TX 1:Inquiry$2 replica1:30000
+TX 4:Inquiry$4 replica0:30000
+TX 1:Deposit$4$50
+TX 2:Deposit$4$50
+TX 3:Deposit$4$50
+TX 1:Deposit$4$50
+TX 1:Deposit$4$50
+TX 4:Deposit$4$50
+TX 1:Inquiry$4 replica0:30000
+TX 2:Inquiry$2 replica1:30000
+TX 3:Inquiry$4 replica0:30000
+TX 2:Deposit$4$50
+TX 1:Deposit$4$50
+
 
 Replica not performing the RO for slot 2.
 
