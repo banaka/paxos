@@ -67,7 +67,7 @@ public class Leader extends Process {
                     if (active) {
                         new Commander(env,
                                 new ProcessId("commander:" + me + ":" + ballot_number + ":" + m.slot_number),
-                                this, acceptors, replicas, ballot_number, m.slot_number, m.command);
+                                this, acceptors, replicas, ballot_number, m.slot_number, new Command(m.command));
                     }
                 }
             } else if (msg instanceof AdoptedMessage) {
@@ -86,17 +86,17 @@ public class Leader extends Process {
                         }
                     }
 
-                    for (int sn : proposals.keySet()) {
-                        if (proposals.get(sn).op == null) {
+                    for (int slot_no : proposals.keySet()) {
+                        if (proposals.get(slot_no).op == null) {
                             for (ProcessId r : replicas) {
                                 if (stop_request()) break;
-                                sendMessage(r, new DecisionMessage(me, sn, proposals.get(sn)));
+                                sendMessage(r, new DecisionMessage(me, slot_no, new Command(proposals.get(slot_no))));
                             }
                         } else {
                             if (!active)
                                 new Commander(env,
-                                        new ProcessId("commander:" + me + ":" + ballot_number + ":" + sn),
-                                        this, acceptors, replicas, ballot_number, sn, proposals.get(sn));
+                                        new ProcessId("commander:" + me + ":" + ballot_number + ":" + slot_no),
+                                        this, acceptors, replicas, ballot_number, slot_no, new Command(proposals.get(slot_no)));
                         }
                     }
                     active = true;
@@ -145,7 +145,7 @@ public class Leader extends Process {
                     }
                 /*Changed the name of scout so that we can understand the scout has been created for which slot no...*/
                     new Scout(env, new ProcessId("scout:" + me + ":" + ballot_number + ":" + maxProposal),
-                            this, acceptors, ballot_number, maxProposal, proposals.get(maxProposal));
+                            this, acceptors, ballot_number, maxProposal, new Command(proposals.get(maxProposal)));
                 }
 //                sendMessage(msg.src, new ReadOnlyDecisionMessage(me, getMaxDecisionSlot(), m.command));
                 //tag the next slot message

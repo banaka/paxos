@@ -1,5 +1,6 @@
 package paxos;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Command {
@@ -24,6 +25,15 @@ public class Command {
         this.op = op;
     }
 
+    public Command(Command c) {
+        this.client = c.client;
+        this.req_id = c.req_id;
+        this.op = c.op;
+        if (c.readOnlySets != null) {
+            this.readOnlySets = new HashSet<Command>(c.readOnlySets);
+        }
+    }
+
     //Changed the equals function to take into consideration the read only set...
     @Override
     public boolean equals(Object o) {
@@ -32,7 +42,7 @@ public class Command {
 
         Command command = (Command) o;
         if (req_id != command.req_id) return false;
-        if (!client.equals(command.client)) return false;
+        if (client!= null ? !client.equals(command.client): command.client!= null) return false;
         if (op != null ? !op.equals(command.op) : command.op != null) return false;
         if (readOnlySets != null ? !readOnlySets.equals(command.readOnlySets) : command.readOnlySets != null)
             return false;
