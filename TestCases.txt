@@ -185,9 +185,9 @@ Leader 0 gets the values decided and sends decision to all
 
 
 Cmds:
-> TX 1:Withdraw$0$50
-> DELAY leader1 2000
-> TX 1:Withdraw$0$50
+TX 1:Withdraw$0$50
+DELAY leader1 2000
+TX 1:Withdraw$0$50
 
 NOTE:
 When the Leader0 timesout it starts a new scout and then sends commander for all the decisions that have been made.
@@ -384,7 +384,6 @@ TX 1:Inquiry$4$100
 3. The Client sent multiple RO cmds to same replica(when we have only one replica and one leader)
 
 
-
 Testing Basic :
 TX 1:Deposit$4$100
 TX 1:Withdraw$4$50
@@ -405,3 +404,15 @@ TX 1:Deposit$4$100
 TX 1:Withdraw$4$50
 TX 1:Inquiry$4 replica0:30000
 TX 1:Deposit$4$100
+
+######Test Case Repro: [Leader gets killed after sending one msg to acceptor, another leader doesnt get
+###### msg from Replica but gets it from acceptor and sends it to the Replica
+Reverse up the leaders -- Uncomment Line 49,50 and comment 51 in Replica.java
+commander\:leader1\:BN(0,leader1)\:2_KILL=SEND\:acceptor1\:1
+nReplicas=1
+
+TX 1:Withdraw$0$50
+DELAY replica0 50000
+TX 1:Withdraw$0$50
+KILL leader1
+> Replica0 will get msg back from Leader0

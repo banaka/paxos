@@ -12,7 +12,7 @@ class LeaderTimeoutMessage extends PaxosMessage {
 
     @Override
     public String toString() {
-        return "LeaderTimeoutMessage{" +
+        return "LEADER TIMEOUT MESSAGE!!(LeaderTimeoutMessage){" +
                 ", lastActiveBallot_number=" + lastActiveBallot_number +
                 '}';
     }

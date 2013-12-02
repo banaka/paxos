@@ -133,6 +133,20 @@ public class Env {
                     System.out.println(cc + " -- " + cc.getDescription());
                 }
                 break;
+            case EXC:
+                String[] replica_leaders = arr[1].split(BODY_MSG_SEPERATOR,2);
+                for (ProcessId p : procs.keySet()) {
+                    if(p.toString().equals(replica_leaders[0])) {
+                        Replica replica = (Replica)procs.get(p);
+                        String[] leaders = replica_leaders[1].split(CLIENT_MSG_SEPARATOR);
+                        replica.excludedLeaders = new HashSet<String>();
+                        for(String leader : leaders){
+                            replica.excludedLeaders.add(leader);
+                        }
+                        System.out.println("Excluding "+replica_leaders[1]+" for replica : "+replica.me);
+                    }
+                }
+                break;
             case DELAY:
                 String[] pidDelay = arr[1].split(BODY_MSG_SEPERATOR, 2);
                 boolean changed= false;

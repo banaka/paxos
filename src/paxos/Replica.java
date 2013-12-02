@@ -7,11 +7,11 @@ import java.util.logging.Level;
 public class Replica extends Process {
     ProcessId[] leaders;
     int slot_num = 1;
-    int state = 1;
     List<Account> accountList;
     Map<Integer /* slot number */, Command> proposals = new HashMap<Integer, Command>();
     Map<Integer /* slot number */, Command> decisions = new HashMap<Integer, Command>();
     Map<Integer /* slot number */, Set<Command>> readOnlyFlags = new HashMap<Integer, Set<Command>>();
+    Set<String> excludedLeaders = new HashSet<String>();
 
     public Replica(Env env, ProcessId me, ProcessId[] leaders) {
         this.env = env;
@@ -37,6 +37,7 @@ public class Replica extends Process {
         /* COMMENT THIS IF BLOCK TO DISABLE SPECIAL TREATMENT OF READ ONLY*/
         if(c.op.opType == Operation.OperationType.Inquiry) {
             for (ProcessId ldr : leaders) {
+                if(excludedLeaders.contains(ldr.name)) continue;
                 if(!stop_request())
                     sendMessage(ldr, new ReadOnlyMessage(me, c));
             }
@@ -46,7 +47,10 @@ public class Replica extends Process {
             for (int s = 1; ; s++) {
                 if (!proposals.containsKey(s) && (!decisions.containsKey(s) || decisions.get(s).op == null)) {
                     proposals.put(s, c);
+//                    for(int i = leaders.length -1; i >= 0; i-- ) {
+//                      ProcessId ldr = leaders[i];
                     for (ProcessId ldr : leaders) {
+                        if(excludedLeaders.contains(ldr.name)) continue;
                         if(!stop_request())
                             sendMessage(ldr, new ProposeMessage(me, s, c));
                     }
@@ -120,7 +124,7 @@ public class Replica extends Process {
                 Account account = accountList.get(Integer.parseInt(operationArgs[0]));
                 if(c.op.opType == Operation.OperationType.Inquiry){
                     logger.log(messageLevel, "PERFORM R/O " + c + " after slot :" + (slot_num) + " OUTPUT :" + account);
-                    sendMessage(c.client,new ResponseMessage(me,c,account));
+                    sendMessage(c.client, new ResponseMessage(me, c, account));
                 } else logger.log(Level.SEVERE, "Not a Read only command - " + c);
             }
         }
