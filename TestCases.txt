@@ -367,8 +367,8 @@ TX 4:Deposit$4$50
 TX 1:Inquiry$4 replica0:30000
 TX 2:Inquiry$2 replica1:30000
 TX 3:Inquiry$4 replica0:30000
-TX 2:Deposit$4$50
 TX 1:Deposit$4$50
+TX 2:Deposit$4$50
 
 
 Replica not performing the RO for slot 2.
@@ -382,3 +382,26 @@ TX 1:Inquiry$4$100
 
 
 3. The Client sent multiple RO cmds to same replica(when we have only one replica and one leader)
+
+
+
+Testing Basic :
+TX 1:Deposit$4$100
+TX 1:Withdraw$4$50
+TX 1:Deposit$3$50
+
+Testing with Failure detector :
+failureDetection=TRUE
+
+NETWORK PARTITION : Enabled with
+heartbeatDelay=200
+failureDetectionTimeout=100
+
+READ ONLY CMD
+heartbeatDelay=10
+failureDetectionTimeout=1000
+
+TX 1:Deposit$4$100
+TX 1:Withdraw$4$50
+TX 1:Inquiry$4 replica0:30000
+TX 1:Deposit$4$100
